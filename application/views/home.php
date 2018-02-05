@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>TUP E - LEARNING</title>
+		<title>TUP E-LEARNING</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -13,18 +13,17 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="home.html">Welcome!</a>
 				<a class="logo" href="home.html">Home</a>
-				<a class="logo" href="home.html">About Us</a>
-				<a class="logo" href="home.html">Contact Us</a>
-				<a class="logo" href="home.html">Login</a>
+				<a class="logo" href="">About Us</a>
+				<a class="logo" href="">Contact Us</a>
+				<a class="logo" href="">Login</a>
 
 			</header>
 
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
-					<h1>TUP E - LEARNING</h1>
+					<h1>TUP E-LEARNING</h1>
 					<p>Enjoy learning anytime, anywhere.</p>
 				</div>
 				<video autoplay loop muted playsinline src="<?php echo base_url().'/assets/images/banner.mp4';?>"></video>
@@ -34,63 +33,63 @@
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>Sem turpis amet semper</h2>
-						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
+						<h2>Highlights</h2>
+						<p>TUP E-Learning is an interactive website exclusively for the Technological University of the Philippines.  It aims to create a convenient online learning environment between TUP students and professors.</p>
 					</header>
 					<div class="highlights">
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-									<h3>Feugiat consequat</h3>
+									<h3>Profile</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>Each TUPian have an already-made account to access TUP E-Learning where they can bring studying online.</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-									<h3>Ante sem integer</h3>
+									<h3>Modules</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>Students can have access to lessons per topic from different classes; and take exams online. </p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-									<h3>Ipsum consequat</h3>
+									<h3>Save</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>Students can download modules from their classes and review lessons anytime, anywhere.</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
-									<h3>Interdum gravida</h3>
+									<h3>Achievements</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>Students have achievement board where every activity they do inside the E-Learning is recorded.</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
-									<h3>Faucibus consequat</h3>
+									<h3>Connect</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+								<p>Both students and professors can connect with each other through personal message and discussions.</p>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<header>
 									<a href="#" class="icon fa-qrcode"><span class="label">Icon</span></a>
-									<h3>Accumsan viverra</h3>
+									<h3>Registration Code</h3>
 								</header>
-								<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
-							</div>
+								<p>Students are required to enter a verificaion code to join a specific online class created by professors.</p>
+							</div>	
 						</section>
 					</div>
 				</div>
@@ -99,8 +98,10 @@
 		<!-- CTA -->
 			<section id="cta" class="wrapper">
 				<div class="inner">
-					<h2>Curabitur ullamcorper ultricies</h2>
-					<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+					<h2>TUP VISION</h2>
+					<p>The Technological University of the Philippines shall be the premiere state university with recognized excellence in engineering and technology education at par with leading universities in the ASEAN region.</p>
+					<h2>TUP MISSION</h2>
+					<p>The Technological University shall provide higher and advanced vocational, technical, industrial and professional education and training in the industries and technology, and practical arts leading to certificates, diplomas and degrees. It shaall provide progressive leadership in applied research developmental studies in technical, industrial, and technological fields and production using indigenous materials; effect technology transfer in the countryside; and assist in the development of small-and-medium scale indusrtries in identified growth centers. </p>
 				</div>
 			</section>
 
@@ -108,46 +109,46 @@
 			<section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<h2>Faucibus consequat lorem</h2>
-						<p>In arcu accumsan arcu adipiscing accumsan orci ac. Felis id enim aliquet. Accumsan ac integer lobortis commodo ornare aliquet accumsan erat tempus amet porttitor.</p>
+						<h2>Inspiration</h2>
+						<p>TUP is struggling to have an E-Learning Website that can teach or help the student to learn more in their chosen field or courses. Thus, the following TUP personnels are the reasons behind the making of this website.</p>
 					</header>
 					<div class="testimonials">
 						<section>
 							<div class="content">
 								<blockquote>
-									<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+									<p>Through your hard work, you have created a learning campus that can generate technologically erudite society. You are a survivor at all times and therefore, you have proven yourself worthy of recognitions and accolades. The achievements you have realized are remarkable. I’m deeply gratified to have the opportunity to serve with you. 
 								</blockquote>
 								<div class="author">
 									<div class="image">
-										<img src="<?php echo base_url().'/assets/images/pic01.jpg';?>" alt="" />
+										<img src="<?php echo base_url().'/assets/images/1.jpg';?>" alt="" />
 									</div>
-									<p class="credit">- <strong>Jane Doe</strong> <span>CEO - ABC Inc.</span></p>
+									<p class="credit">- <strong>Dr. Adora S. Pili</strong> <span>TUP President</span></p>
 								</div>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<blockquote>
-									<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+									<p>First things first, as a user and a TUP faculty, it’s better if during account creation and or login, TUP-related ID information would be used as a username since this project should be exclusively available for TUP students and professors. For the password, a default one should suffice but immediate request for a password change should be implemented as to avoid account misuse issues.
 								</blockquote>
 								<div class="author">
 									<div class="image">
-										<img src="<?php echo base_url().'/assets/images/pic03.jpg';?>" alt="" />
+										<img src="<?php echo base_url().'/assets/images/sir-butch.jpg';?>" alt="" />
 									</div>
-									<p class="credit">- <strong>John Doe</strong> <span>CEO - ABC Inc.</span></p>
+									<p class="credit">- <strong>Mr. Renato Bituonan</strong> <span>Web Programming Professor</span></p>
 								</div>
 							</div>
 						</section>
 						<section>
 							<div class="content">
 								<blockquote>
-									<p>Nunc lacinia ante nunc ac lobortis ipsum. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus.</p>
+									<p>As a professor, I want a site where I can provide lists of lectures and modules to the students so they can have advance readings about certain topics and we can have a smooth conversation inside the classroom. I also want a part of that website where I can give assignments, quizzes, and examinations so that we are not going to be late in the school calendar.
 								</blockquote>
 								<div class="author">
 									<div class="image">
-										<img src="<?php echo base_url().'/assets/images/pic02.jpg';?>" alt="" />
+										<img src="<?php echo base_url().'/assets/images/mam-may.jpg';?>" alt="" />
 									</div>
-									<p class="credit">- <strong>Janet Smith</strong> <span>CEO - ABC Inc.</span></p>
+									<p class="credit">- <strong>Ma'am May Garcia</strong> <span>Software Engineering Professor</span></p>
 								</div>
 							</div>
 						</section>
@@ -160,30 +161,31 @@
 				<div class="inner">
 					<div class="content">
 						<section>
-							<h3>Accumsan montes viverra</h3>
-							<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+							<h3>Intension</h3>
+							<p>The TUP E-Learning Website is intended to initially improve the university’s learning environment by which would address some school-classroom constraints such as inability to access professor’s lecture files. Moreover, it aims to provide an online learning environment by which professor’s lecture files are available for reading/download all the time for the students. It provides a foundation that facilitates orderly growth for future enhancements.
 						</section>
 						<section>
-							<h4>Sem turpis amet semper</h4>
+							<h4>Important Features</h4>
 							<ul class="alt">
-								<li><a href="#">Dolor pulvinar sed etiam.</a></li>
-								<li><a href="#">Etiam vel lorem sed amet.</a></li>
-								<li><a href="#">Felis enim feugiat viverra.</a></li>
-								<li><a href="#">Dolor pulvinar magna etiam.</a></li>
+								<li><a href="#">Classes</a></li>
+								<li><a href="#">Discussions</a></li>
+								<li><a href="#">Modules</a></li>
+								<li><a href="#">Achievements Board</a></li>
 							</ul>
 						</section>
 						<section>
-							<h4>Magna sed ipsum</h4>
+							<h4>contact Us</h4>
 							<ul class="plain">
-								<li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
-								<li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
-								<li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-								<li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+								<li><a href="https://twitter.com/TUPManila"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+								<li><a href="https://www.facebook.com/TUPian"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+								<li><a href="https://www.google.com.ph/maps/place/Technological+University+Of+The+Philippines/@14.5873733,120.9817367,17z/data=!3m1!4b1!4m5!3m4!1s0x3397ca21ac302015:0x92dcca0f915010d9!8m2!3d14.5873733!4d120.9839254"><i class="icon fa-map-marker">&nbsp;</i>Address</a></li>
+								<li><a href="http://www.tup.edu.ph/"><i class="icon fa-globe">&nbsp;</i>Website</a></li>
 							</ul>
 						</section>
 					</div>
 					<div class="copyright">
-						&copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a href="https://coverr.co">Coverr</a>.
+						 &copy; 2018. Technological University of the Philippines. All rights reserved.
+						<p> Developed by Computer Science Students, TUP Manila.</p>
 					</div>
 				</div>
 			</footer>
