@@ -8,6 +8,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 	</head>
 	<body class="is-preload">
 
@@ -16,9 +17,6 @@
 				<a class="logo" href="home.html">Home</a>
 				<a class="logo" href="">About Us</a>
 				<a class="logo" href="">Contact Us</a>
-				<style> 
-					<?php include 'style.css'; ?> 
-				</style>
 				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 				<div id="id01" class="modal">
@@ -31,11 +29,9 @@
 						  <label><b>Password</b></label>
 						  <input type="password" placeholder="Enter Password" name="psw" required>
 							
-						  <button type="submit">Login</button>
-						  <input type="checkbox" id="check" checked>
-						  <label for="check">Remember me</label>
-						</div>
-
+						  <button class="login" type="submit">Login</button>
+								<input type="checkbox" id="checkbox">
+								<label for="checkbox" checked>Remember Me</label>
 						<div class="container" style="background-color:#f1f1f1">
 						  <label class="psw">Forgot <a href="#">password?</a></label>
 						</div>
