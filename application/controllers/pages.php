@@ -21,6 +21,7 @@ class Pages extends CI_Controller {
 			$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 			if(!empty($result)){
 
+			foreach($result as $mom){
 				//echo $mom['emp_name'];
 				$usernameee['uname']=$mom['username'];
 			}
