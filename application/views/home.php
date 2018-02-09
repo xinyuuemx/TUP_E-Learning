@@ -20,14 +20,27 @@
 				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 				<div id="id01" class="modal">
-  
-					<form class="modal-content animate" action="/action_page.php">
+					<div class="modal-content animate">
+					<?php echo "<br />";
+							if(isset($msg)){
+								echo $msg;
+								$usern=$username;
+								$passw=$password;
+							}
+							else
+							{
+								$usern='Enter Student ID';
+								$passw='Enter Password';
+							}
+							
+						  ?>
+					<?php echo form_open('pages/login_authorize'); ?>
 						<div class="container">
 						  <label><b>Username</b></label>
-						  <input type="text" placeholder="Enter Username" name="uname" required>
+						  <input type="text" placeholder="<?php echo $usern?>" name="uname" required>
 
 						  <label><b>Password</b></label>
-						  <input type="password" placeholder="Enter Password" name="psw" required>
+						  <input type="password" placeholder="<?php echo $passw ?>" name="psw" required>
 							
 						  <button class="login" type="submit">Login</button>
 								<input type="checkbox" id="checkbox">
@@ -35,9 +48,10 @@
 						<div class="container" style="background-color:#f1f1f1">
 						  <label class="psw">Forgot <a href="#">password?</a></label>
 						</div>
-					</form>
+						<?php echo form_close(); ?>
+					</div>
 				</div>
-
+				</div>
 			<script>
 			// Get the modal
 			var modal = document.getElementById('id01');
