@@ -14,7 +14,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="home.html">Home</a>
+				<a class="logo" href="">Home</a>
 				<a class="logo" href="">About Us</a>
 				<a class="logo" href="">Contact Us</a>
 				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
