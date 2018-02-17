@@ -8,16 +8,16 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
-		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 	</head>
 	<body class="is-preload">
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="home.html">Home</a>
+				<a class="logo" href="">Home</a>
 				<a class="logo" href="">About Us</a>
 				<a class="logo" href="">Contact Us</a>
-				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+				<a class="logo" href="">Login</a>
+
 
 				<div id="id01" class="modal">
 					<div class="modal-content animate">
@@ -63,6 +63,7 @@
 				}
 			}
 			</script>
+
 			</header>
 
 		<!-- Banner -->
