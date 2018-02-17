@@ -396,10 +396,11 @@ textarea {
     box-shadow: none; }
 
 label {
+  color: #ce1b28;
   display: block;
   font-size: 1rem;
   font-weight: 600;
-  margin: 0 0 1rem 0; }
+  margin: 0 0 -0.5rem 1rem; }
 
 input[type="text"],
 input[type="password"],
@@ -422,7 +423,7 @@ select {
     display: none; }
 
 textarea {
-  padding: 0.75rem 1rem; }
+  padding: 0 1rem; }
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -432,7 +433,7 @@ input[type="radio"] {
   appearance: none;
   display: block;
   float: left;
-  margin-right: -2rem;
+  margin: 0;
   opacity: 0;
   width: 1rem;
   z-index: -1; }
@@ -443,7 +444,7 @@ input[type="radio"] {
     display: inline-block;
     font-size: 1rem;
     font-weight: 400;
-    padding-left: 2.825rem;
+    padding-left: 2.5rem;
     padding-right: 0.875rem;
     position: relative; }
     input[type="checkbox"] + label:before,
@@ -465,7 +466,7 @@ input[type="radio"] {
       line-height: 1.86875rem;
       position: absolute;
       text-align: center;
-      top: -0.1625rem;
+      top: 0.5rem;
       width: 1.95rem; }
   input[type="checkbox"]:checked + label:before,
   input[type="radio"]:checked + label:before {
