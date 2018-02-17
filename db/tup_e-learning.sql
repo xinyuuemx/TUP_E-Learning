@@ -28,6 +28,9 @@ SET time_zone = "+00:00";
 -- Table structure for table `accounts`
 --
 
+CREATE DATABASE IF NOT EXISTS `tup_e-learning` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tup_e-learning`;
+
 CREATE TABLE `accounts` (
   `Account_ID` varchar(15) NOT NULL,
   `Password` varchar(20) NOT NULL
