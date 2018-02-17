@@ -8,6 +8,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 	</head>
 	<body class="is-preload">
 
@@ -16,8 +17,7 @@
 				<a class="logo" href="">Home</a>
 				<a class="logo" href="">About Us</a>
 				<a class="logo" href="">Contact Us</a>
-				<a class="logo" href="">Login</a>
-
+				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 				<div id="id01" class="modal">
 					<div class="modal-content animate">
@@ -43,10 +43,10 @@
 						  <input type="password" placeholder="<?php echo $passw ?>" name="psw" required>
 							
 						  <button class="login" type="submit">Login</button>
-								<input type="checkbox" id="checkbox">
-								<label for="checkbox" checked>Remember Me</label>
+						  <input type="checkbox">
+						  <label>Remember me</label>
 						<div class="container" style="background-color:#f1f1f1">
-						  <label class="psw">Forgot <a href="#">password?</a></label>
+						  <label>Forgot <a href="#">password?</a></label>
 						</div>
 						<?php echo form_close(); ?>
 					</div>
@@ -55,7 +55,6 @@
 			<script>
 			// Get the modal
 			var modal = document.getElementById('id01');
-
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
 				if (event.target == modal) {
@@ -63,7 +62,6 @@
 				}
 			}
 			</script>
-
 			</header>
 
 		<!-- Banner -->
@@ -244,6 +242,7 @@
 			<script src="<?php echo base_url().'/assets/js/breakpoints.min.js';?>"></script>
 			<script src="<?php echo base_url().'/assets/js/util.js';?>"></script>
 			<script src="<?php echo base_url().'/assets/js/main.js';?>"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	</body>
 </html>
