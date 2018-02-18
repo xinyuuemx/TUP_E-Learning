@@ -32,7 +32,7 @@ class Pages extends CI_Controller {
 				$data['msg']='<font color=red>Invalid username and/or password.</font><br />';
 				$data['username']=$_POST['uname'];
 				$data['password']=$_POST['psw'];
-				$this->load->view('home',$data);
+				$this->load->view('home');
 			}
 }
 }
