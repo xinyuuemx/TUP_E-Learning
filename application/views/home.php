@@ -46,7 +46,7 @@
 						  <input type="checkbox">
 						  <label>Remember me</label>
 						<div class="container" style="background-color:#f1f1f1">
-						  <label>Forgot <a href="#">password?</a></label>
+						  <label> <a href="#">Forgot password?</a></label>
 						</div>
 						<?php echo form_close(); ?>
 					</div>

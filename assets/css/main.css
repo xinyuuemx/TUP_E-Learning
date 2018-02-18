@@ -236,19 +236,31 @@ hr {
   border-bottom-color: rgba(0, 0, 0, 0.25); }
 
 /* Inner */
+
+
 .inner {
-  margin: 0 auto;
+  
+  float:left;
+ 
+  padding-left: 150px;
   width: 75rem;
   max-width: calc(100% - 6rem); }
-  @media screen and (max-width: 480px) {
-    .inner {
-      max-width: calc(100% - 3rem); } }
+  
+.box1 {
+  float: right;
+  position:absolute;
+  padding-left: 300px;
+  padding-right: 30px;
+  max-width: calc(100% - 6rem); }
+
+   
 
 /* Button */
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
 button,
+
 .button {
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -1776,7 +1788,7 @@ ul.icons {
 
 /* Wrapper */
 .wrapper {
-  padding: 8rem 0 6rem 0 ;
+  padding: 3rem 0 6rem 0 ;
   position: relative;
   z-index: 1; }
   @media screen and (max-width: 1280px) {
@@ -2471,7 +2483,21 @@ body {
 @media screen and (max-width: 980px) {
   body {
     padding-top: 44px; }
-
+#container { 
+		 width: 150px; 
+		 min-height: 600px; 
+		 border: 1px solid #aaa;
+		 border-style: none!important;
+		 margin:0 auto;
+		 box-sizing: border-box;
+		 padding-left: 150px;
+		 padding-top: 10000px;
+		 padding-right:150px;
+		 position: absolute;
+}			
+	
+	
+	
   #header {
     height: 44px;
     line-height: 44px; } }
@@ -2508,6 +2534,7 @@ body {
   position: relative;
   text-align: center;
   width: 100%; }
+  
   #heading input, #heading select, #heading textarea {
     color: #ffffff; }
   #heading a {
@@ -2809,7 +2836,14 @@ body {
   @media screen and (max-width: 736px) {
     #menu {
       padding: 2.5rem 1.75rem; } }
-
+#right {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;
+}
+	  
 body.is-menu-visible #menu {
   -moz-transform: translateX(0);
   -webkit-transform: translateX(0);
