@@ -14,9 +14,11 @@
 
 		<!-- Header -->
 			<header id="header">
-				<a class="logo" href="">Home</a>
-				<a class="logo" href="">About Us</a>
-				<a class="logo" href="">Contact Us</a>
+				<div class="topnav">
+					<a href="home.html">Home</a>
+					<a href="#About">About Us</a>
+					<a href="">Contact Us</a>
+					</div>
 				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 				<div id="id01" class="modal">
@@ -213,7 +215,6 @@
 							<ul class="alt">
 								<li><a href="#">Classes</a></li>
 								<li><a href="#">Discussions</a></li>
-								<li><a href="#">Modules</a></li>
 								<li><a href="#">Achievements Board</a></li>
 							</ul>
 						</section>
