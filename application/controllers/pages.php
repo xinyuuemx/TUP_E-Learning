@@ -5,7 +5,9 @@ class Pages extends CI_Controller {
 		$this->load->helper('form');		
 		//pre load all models
 		$this->load->model('pages_model','pages');
+		$gdata;
 		}
+		
         public function index(){
 			$this->load->view('home');
         }
@@ -22,17 +24,29 @@ class Pages extends CI_Controller {
 			if(!empty($result)){
 
 			foreach($result as $mom){
-				//echo $mom['emp_name'];
 				$usernameee['uname']=$mom['username'];
+				$usernameee['gender']=$mom['gender'];
+				$usernameee['id']=$mom['id'];
 			}
-			echo $usernameee['uname'];
-			//$this->load->view('dashboard',$usernameee);
+			$gdata=$usernameee;
+			$this->Dboard();
+			$this->Snav_Bar($usernameee);
 			}	
 			else{
 				$data['msg']='<font color=red>Invalid username and/or password.</font><br />';
 				$data['username']=$_POST['uname'];
 				$data['password']=$_POST['psw'];
-				$this->load->view('home');
+				$this->load->view('home',$data);
 			}
-}
+		}
+		public function Dboard(){
+			$this->load->view('stud_dashboard');
+		}
+		public function SNav_Bar($data){
+			$this->load->view('stud_nav',$data);
+		}
+		public function student_classes(){	
+			$this->load->view('stud_classes');
+		}
+		
 }
