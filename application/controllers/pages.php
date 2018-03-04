@@ -12,9 +12,9 @@ class Pages extends CI_Controller {
     }
 
 		public function view(){
-        if ( ! file_exists(APPPATH.'views/home.php')){
-        		show_404();
-        }
+				if (!file_exists(APPPATH.'views/home.php')){
+					show_404();
+      	}
         $this->load->view('home');
     }
 
@@ -22,23 +22,23 @@ class Pages extends CI_Controller {
 				$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 				if(!empty($result)){
 						foreach($result as $mom){
-						//echo $mom['emp_name'];
-						$usernameee['uname']=$mom['username'];
+								//echo $mom['emp_name'];
+								$usernameee['uname']=$mom['username'];
 						}
 						echo $usernameee['uname'];
 						//$this->load->view('dashboard',$usernameee);
 				}	else {
-				$data['msg']='<font color=red>Invalid username and/or password.</font><br />';
-				$data['username']=$_POST['uname'];
-				$data['password']=$_POST['psw'];
-				$this->load->view('home');
+						$data['msg']='<font color=red>Invalid username and/or password.</font><br />';
+						$data['username']=$_POST['uname'];
+						$data['password']=$_POST['psw'];
+						$this->load->view('home');
 				}
 		}
 		//test function temporary using md5, may switch to password_hash
 		public function hashing() {
-		$name = "testName";
-		$salt = "$2y$12dFQEReUdok2Fq.Jq1KyJ2u4TuyHIcpAPHG6OQmMG8FVl87Brka3s.";
-		$secpass = md5($name.$salt);
-		echo $secpass ."<br>";
+				$name = "testName";
+				$salt = "$2y$12dFQEReUdok2Fq.Jq1KyJ2u4TuyHIcpAPHG6OQmMG8FVl87Brka3s.";
+				$secpass = md5($name.$salt);
+				echo $secpass ."<br>";
 		}
 }
