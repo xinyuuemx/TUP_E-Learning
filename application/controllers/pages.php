@@ -34,5 +34,11 @@ class Pages extends CI_Controller {
 				$this->load->view('home');
 				}
 		}
-
+		//test function temporary using md5, may switch to password_hash
+		public function hashing() {
+		$name = "testName";
+		$salt = "$2y$12dFQEReUdok2Fq.Jq1KyJ2u4TuyHIcpAPHG6OQmMG8FVl87Brka3s.";
+		$secpass = md5($name.$salt);
+		echo $secpass ."<br>";
+		}
 }
