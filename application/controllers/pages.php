@@ -34,11 +34,14 @@ class Pages extends CI_Controller {
 						$this->load->view('home');
 				}
 		}
-		//test function temporary using md5, may switch to password_hash
+		//test function of password hashing and verifying using password_hash()
 		public function hashing() {
-				$name = "testName";
-				$salt = "$2y$12dFQEReUdok2Fq.Jq1KyJ2u4TuyHIcpAPHG6OQmMG8FVl87Brka3s.";
-				$secpass = md5($name.$salt);
-				echo $secpass ."<br>";
+				$inputPassword = "Joselle";
+				$dbPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
+				if (password_verify($inputPassword,$dbPassword	)) {
+					echo "Password is verified";
+				} else {
+					echo "Password is not verified";
+				}
 		}
 }
