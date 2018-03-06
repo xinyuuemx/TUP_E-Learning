@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2018 at 07:56 AM
+-- Generation Time: Mar 06, 2018 at 09:01 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -28,13 +28,17 @@ SET time_zone = "+00:00";
 -- Table structure for table `accounts`
 --
 
-CREATE DATABASE IF NOT EXISTS `tup_e-learning` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `tup_e-learning`;
-
 CREATE TABLE `accounts` (
   `Account_ID` varchar(15) NOT NULL,
   `Password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
+('janine', '554345');
 
 -- --------------------------------------------------------
 
@@ -112,8 +116,16 @@ CREATE TABLE `students` (
   `M_name` varchar(20) NOT NULL,
   `Course` varchar(6) NOT NULL,
   `Section` varchar(2) NOT NULL,
-  `E-mail` varchar(30) NOT NULL
+  `E-mail` varchar(30) NOT NULL,
+  `Account_id` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`, `Account_id`) VALUES
+('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', 'B', 'janine.ramirez@tup.edu.ph', 'janine');
 
 -- --------------------------------------------------------
 

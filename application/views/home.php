@@ -14,6 +14,10 @@
 
 		<!-- Header -->
 			<header id="header">
+				<a class="logo" href="<?php echo base_url().'pages'?>">Home</a>
+				<a class="logo" href="<?php echo base_url().'About_us'?>">About Us</a>
+				<a class="logo" href="<?php echo base_url().'Contact_us'?>">Contact Us</a>
+
 				<div class="topnav">
 					<a href="home.html">Home</a>
 					<a href="#About">About Us</a>
@@ -42,13 +46,13 @@
 						  <input type="text" placeholder="<?php echo $usern?>" name="uname" required>
 
 						  <label><b>Password</b></label>
-						  <input type="password" placeholder="<?php echo $passw ?>" name="psw" required>
+						  <input type="password" placeholder="password" name="psw" required>
 							
 						  <button class="login" type="submit">Login</button>
-						  <input type="checkbox">
-						  <label>Remember me</label>
+								<input type="checkbox" id="checkbox">
+								<label for="checkbox" checked>Remember Me</label>
 						<div class="container" style="background-color:#f1f1f1">
-						  <label>Forgot <a href="#">password?</a></label>
+						  <label class="psw">Forgot <a href="#">password?</a></label>
 						</div>
 						<?php echo form_close(); ?>
 					</div>
@@ -57,6 +61,7 @@
 			<script>
 			// Get the modal
 			var modal = document.getElementById('id01');
+
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
 				if (event.target == modal) {
@@ -243,7 +248,6 @@
 			<script src="<?php echo base_url().'/assets/js/breakpoints.min.js';?>"></script>
 			<script src="<?php echo base_url().'/assets/js/util.js';?>"></script>
 			<script src="<?php echo base_url().'/assets/js/main.js';?>"></script>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 	</body>
 </html>
