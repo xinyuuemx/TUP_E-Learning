@@ -1,10 +1,6 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600");
-/*
-	Industrious by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
-*/
+
 /* Basic */
 @-ms-viewport {
   width: device-width; }
@@ -53,7 +49,6 @@ section, summary, time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
   display: block; }
-
 
 body {
   line-height: 1; }
@@ -116,7 +111,7 @@ a {
   -webkit-transition: color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out;
-  text-decoration: underline; }
+  text-decoration: none; }
   a:hover {
     text-decoration: none; }
 
@@ -129,7 +124,13 @@ em, i {
 p {
   margin: 0 0 2rem 0; }
 
-
+header.special {
+  text-align: center;
+  margin-bottom: 4rem; }
+  header.special p {
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
@@ -160,7 +161,44 @@ h5 {
 h6 {
   font-size: 0.7rem; }
 
-@media screen and (max-width: 736px) {
+.topnav a {
+  float: center;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: 600; }
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 2;
+    overflow-x: hidden;
+    padding-top: 80px;
+	padding-left: 30px;
+	padding-right: 30px;
+	text-align: center; }
+
+.sidenav a {
+    text-decoration: none;
+    color: #818181;
+    display: block;
+	text-align: left;
+	font-weight: 600; }
+
+.main {
+    margin-left: 300px; /* Same as the width of the sidenav */
+	margin-right: 30px;
+    font-size: inherit;
+    padding: 25px 5px; }
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  
   h1 {
     font-size: 2.75rem;
     line-height: 1.3; }
@@ -217,8 +255,16 @@ input, select, textarea {
   color: #555555; }
 
 a {
-  color: #ce1b28; }
-
+  color: inherit;
+  text-decoration: none;}
+a:hover {
+  color: #ce1b28;
+  text-decoration: none;}
+a.active {
+color: #ce1b28;
+text-decoration: none;}
+  
+  
 strong, b {
   color: #555555; }
 
@@ -396,11 +442,10 @@ textarea {
     box-shadow: none; }
 
 label {
-  color: #ce1b28;
   display: block;
   font-size: 1rem;
   font-weight: 600;
-  margin: 0 0 -0.5rem 1rem; }
+  margin: 0 0 1rem 0; }
 
 input[type="text"],
 input[type="password"],
@@ -423,7 +468,7 @@ select {
     display: none; }
 
 textarea {
-  padding: 0 1rem; }
+  padding: 0.75rem 1rem; }
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -433,7 +478,7 @@ input[type="radio"] {
   appearance: none;
   display: block;
   float: left;
-  margin: 0;
+  margin-right: -2rem;
   opacity: 0;
   width: 1rem;
   z-index: -1; }
@@ -444,7 +489,7 @@ input[type="radio"] {
     display: inline-block;
     font-size: 1rem;
     font-weight: 400;
-    padding-left: 2.5rem;
+    padding-left: 2.825rem;
     padding-right: 0.875rem;
     position: relative; }
     input[type="checkbox"] + label:before,
@@ -466,7 +511,7 @@ input[type="radio"] {
       line-height: 1.86875rem;
       position: absolute;
       text-align: center;
-      top: 0.5rem;
+      top: -0.1625rem;
       width: 1.95rem; }
   input[type="checkbox"]:checked + label:before,
   input[type="radio"]:checked + label:before {
@@ -615,9 +660,10 @@ table {
     border-left: 0;
     border-right: 0; }
   table td {
-    padding: 0.75rem 0.75rem; }
+    padding: 0.75rem 0.75rem;
+	font-size: 1rem;	}
   table th {
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 600;
     padding: 0 0.75rem 0.75rem 0.75rem;
     text-align: left; }
@@ -2204,7 +2250,7 @@ ul.icons {
 #footer {
   background-color: #111111;
   color: rgba(255, 255, 255, 0.5);
-  padding: 8rem 0 6rem 0 ; }
+  padding: 8rem 0 3rem 0 ; }
   #footer input, #footer select, #footer textarea {
     color: #ffffff; }
   #footer a {
@@ -2466,7 +2512,6 @@ body {
           padding-left: 1rem; }
         #header > nav > a:last-child {
           padding-right: 1rem; } }
-
 
 @media screen and (max-width: 980px) {
   body {
