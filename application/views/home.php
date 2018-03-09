@@ -32,7 +32,7 @@
 								$usern='Enter Student ID';
 								$passw='Enter Password';
 							}
-							
+
 						  ?>
 					<?php echo form_open('pages/login_authorize'); ?>
 						<div class="container">
@@ -41,7 +41,7 @@
 
 						  <label><b>Password</b></label>
 						  <input type="password" placeholder="<?php echo $passw ?>" name="psw" required>
-							
+
 						  <button class="login" type="submit">Login</button>
 						  <input type="checkbox">
 						  <label>Remember me</label>
@@ -49,8 +49,8 @@
 						  <label>Forgot <a href="#">password?</a></label>
 						</div>
 						<?php echo form_close(); ?>
+						</div>
 					</div>
-				</div>
 				</div>
 			<script>
 			// Get the modal
@@ -133,7 +133,7 @@
 									<h3>Registration Code</h3>
 								</header>
 								<p>Students are required to enter a verificaion code to join a specific online class created by professors.</p>
-							</div>	
+							</div>
 						</section>
 					</div>
 				</div>
@@ -160,7 +160,7 @@
 						<section>
 							<div class="content">
 								<blockquote>
-									<p>Through your hard work, you have created a learning campus that can generate technologically erudite society. You are a survivor at all times and therefore, you have proven yourself worthy of recognitions and accolades. The achievements you have realized are remarkable. I’m deeply gratified to have the opportunity to serve with you. 
+									<p>Through your hard work, you have created a learning campus that can generate technologically erudite society. You are a survivor at all times and therefore, you have proven yourself worthy of recognitions and accolades. The achievements you have realized are remarkable. I’m deeply gratified to have the opportunity to serve with you.
 								</blockquote>
 								<div class="author">
 									<div class="image">

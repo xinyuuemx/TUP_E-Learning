@@ -36,12 +36,6 @@ class Pages extends CI_Controller {
 		}
 		//test function of password hashing and verifying using password_hash()
 		public function hashing() {
-				$inputPassword = "Joselle";
-				$dbPassword = password_hash($inputPassword, PASSWORD_DEFAULT);
-				if (password_verify($inputPassword,$dbPassword	)) {
-					echo "Password is verified";
-				} else {
-					echo "Password is not verified";
-				}
+				$this->load->view('testHash');
 		}
 }
