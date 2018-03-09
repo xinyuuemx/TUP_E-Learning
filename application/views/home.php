@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>TUP E-LEARNING</title>
+		<title>TUP E-Learning</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="" />
@@ -17,12 +17,6 @@
 				<a class="logo" href="<?php echo base_url().'pages'?>">Home</a>
 				<a class="logo" href="<?php echo base_url().'About_us'?>">About Us</a>
 				<a class="logo" href="<?php echo base_url().'Contact_us'?>">Contact Us</a>
-
-				<div class="topnav">
-					<a href="home.html">Home</a>
-					<a href="#About">About Us</a>
-					<a href="">Contact Us</a>
-					</div>
 				<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
 				<div id="id01" class="modal">
