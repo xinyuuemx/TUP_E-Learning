@@ -3,9 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Mar 06, 2018 at 03:45 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -25,6 +27,9 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `accounts`
 --
+
+CREATE DATABASE IF NOT EXISTS `tup_e-learning` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tup_e-learning`;
 
 CREATE TABLE `accounts` (
   `Account_ID` varchar(15) NOT NULL,
@@ -134,6 +139,7 @@ CREATE TABLE `students` (
   `M_name` varchar(20) NOT NULL,
   `Course` varchar(6) NOT NULL,
   `Section` varchar(2) NOT NULL,
+
   `E-mail` varchar(30) NOT NULL,
   `Account_id` varchar(32) NOT NULL,
   `gender` varchar(12) NOT NULL

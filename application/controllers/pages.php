@@ -1,23 +1,18 @@
 <?php if (!defined('BASEPATH')) exit ('No direct script access allowed');
 class Pages extends CI_Controller {
-		public function __construct(){
-		parent::__construct();
-		$this->load->helper('form');		
-		//pre load all models
-		$this->load->model('pages_model','pages');
-		
+		public function __construct() {
+				parent::__construct();
+				$this->load->helper('form');
+				$this->load->model('pages_model','pages'); //pre load all models
 		}
-		
-        public function index(){
-			$this->load->view('home');
-        }
-        public function view(){
 
-              if ( ! file_exists(APPPATH.'views/home.php')){
-                      // Whoops, we don't have a page for that!
-                      show_404();
-              }
-              $this->load->view('home');
+    public function index() {
+				$this->load->view('home');
+    }
+
+		public function view(){
+        if(!file_exists(APPPATH.'views/home.php')) {
+                    show_404();
         }
        	public function login_authorize(){	
 			$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
@@ -50,11 +45,11 @@ class Pages extends CI_Controller {
 		public function Dboard($data){
 			$this->load->view('stud_dashboard',$data);
 		}
+
 		public function SNav_Bar($data){
-			$this->load->view('stud_nav',$data);
+				$this->load->view('stud_nav',$data);
 		}
-		public function student_classes(){	
-			$this->load->view('stud_classes');
-		}
-		
+		public function student_classes(){
+				$this->load->view('stud_classes');
+		}	
 }
