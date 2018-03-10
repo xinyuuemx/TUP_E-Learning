@@ -38,11 +38,11 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
-('15-027-001', '$2y$10$Sq1vMDSwE4aqb'),
-('15-027-002', '$2y$10$8WCrg0bro8sPH'),
-('15-027-003', '$2y$10$y6QYiH8sfzmUC'),
-('15-027-004', '$2y$10$izbqbqnn6dzhq'),
-('15-027-005', '$2y$10$DXa4FKYqiIc/b');
+('15-027-001', '123456'),
+('15-027-002', '123456'),
+('15-027-003', '123456'),
+('15-027-004', '123456'),
+('15-027-005', '123456');
 
 -- --------------------------------------------------------
 
@@ -127,11 +127,11 @@ CREATE TABLE `professors` (
 --
 
 INSERT INTO `professors` (`Prof_ID`, `L_name`, `F_name`, `M_name`, `E-mail`) VALUES
-('1', 'Bituonan', 'Butch', '', 'bituonan.butch@example.com'),
-('2', 'Garcia', 'May', '', 'garcia.may@example.com'),
-('3', 'Calayag', 'Ernita', '', 'calayag.nitz@example.com'),
-('4', 'Molino', 'Yany', '', 'molino.yany@example.com'),
-('5', 'Renegado', 'Fernando', '', 'renegado.fernando@example.com');
+('1', 'Bituonan', 'Butch', 'A', 'bituonan.butch@example.com'),
+('2', 'Garcia', 'May', 'B', 'garcia.may@example.com'),
+('3', 'Calayag', 'Ernita', 'C', 'calayag.nitz@example.com'),
+('4', 'Molino', 'Yany', 'D', 'molino.yany@example.com'),
+('5', 'Renegado', 'Fernando', 'E', 'renegado.fernando@example.com');
 
 -- --------------------------------------------------------
 
@@ -168,11 +168,11 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`) VALUES
-('15-027-001', 'Dela Cruz', 'Juan', '', 'BSCS', '3A', 'delacruz.juan@example.com'),
-('15-027-002', 'Dela Cruz', 'Pedro', '', 'BSCS', '3B', 'delacruz.pedro@example.com'),
-('15-027-003', 'Dela Cruz', 'Bugoy', '', 'BSCS', '3A', 'delacruz.bugoy@example.com'),
-('15-027-004', 'Dela Cruz', 'Auderic', '', 'BSCS', '3B', 'delacruz.auderic@example.com'),
-('15-027-005', 'Dela Cruz', 'Wilberto', '', 'BSCS', '3A', 'delacruz.wilberto@example.com');
+('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com'),
+('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com'),
+('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com'),
+('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com'),
+('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com');
 
 -- --------------------------------------------------------
 
