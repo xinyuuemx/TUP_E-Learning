@@ -2,8 +2,9 @@
 class SDboard extends CI_Controller {
 
 		function __construct(){
-				public function Dboard(){
-					$this->load->view('stud_dashboard');
-        }
 		}
+		
+		public function Dboard($data){
+			$this->load->view('stud_dashboard',$data);
+        }
 }

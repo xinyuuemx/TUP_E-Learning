@@ -12,8 +12,39 @@
 	</head>
 	
 	<body class="is-preload">
+	<nav>
+			<header id="header">
+				<div class="topnav">
+					<a href="home.html">Home</a>
+					<a href="">About Us</a>
+					<a href="">Contact Us</a>
+					</div>
+					<div class="topnav-right">
+						<a href="">Sign Out</a>
+					</div>
+			</header>
+		</nav>
+			
+			<div class="sidenav">
+			<?php $image=$img_id;?>
+			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg';?>" alt="Profile Picture" width="240" height="240">
 
+			<ul class="alt">
+				<li><b><?php $name_print = $name; echo $name_print;?></b></li>
+				<li><?php $sid = $student_id; echo $sid;?></li>
+			</ul>	
+						
+			<ul class="alt">
+				<li><a class="active" href="stud_dashboard.html">Dashboard</a></li>
+				<li><a href="<?php echo base_url().'pages/student_classes';?>">Classes</a></li>
+				<li><a href="#">Discussions</a></li>
+				<li><a href="stud_modules.html">Modules</a></li>
+			</ul>
+			</div>
+			</section>
+			</div>	
 <div class="main">
+		
 	<div class="table-wrapper">
 		<h2>Dashboard</h2>
 		<table>

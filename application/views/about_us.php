@@ -8,7 +8,7 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/about.css';?>" />
-		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 	</head>
 	<body class="is-preload">
 
