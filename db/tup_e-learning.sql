@@ -4,9 +4,9 @@
 --
 -- Host: 127.0.0.1
 
--- Generation Time: Mar 06, 2018 at 03:45 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- Generation Time: Mar 09, 2018 at 02:12 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -28,9 +28,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `accounts`
 --
 
-CREATE DATABASE IF NOT EXISTS `tup_e-learning` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `tup_e-learning`;
-
 CREATE TABLE `accounts` (
   `Account_ID` varchar(15) NOT NULL,
   `Password` varchar(20) NOT NULL
@@ -41,8 +38,16 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
+
 ('henouji', 'henneko21'),
 ('janine', '554345');
+
+('15-027-001', '123456'),
+('15-027-002', '123456'),
+('15-027-003', '123456'),
+('15-027-004', '123456'),
+('15-027-005', '123456');
+
 
 -- --------------------------------------------------------
 
@@ -56,6 +61,17 @@ CREATE TABLE `class` (
   `Prof_ID` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `class`
+--
+
+INSERT INTO `class` (`Class_ID`, `Subject_code`, `Prof_ID`) VALUES
+(1111, 111, '1'),
+(2221, 222, '2'),
+(3331, 333, '3'),
+(4441, 444, '4'),
+(5551, 555, '5');
+
 -- --------------------------------------------------------
 
 --
@@ -66,6 +82,17 @@ CREATE TABLE `class_members` (
   `Class_ID` int(10) NOT NULL,
   `Student_ID` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `class_members`
+--
+
+INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
+(1, '15-027-001'),
+(2, '15-027-002'),
+(3, '15-027-003'),
+(4, '15-027-004'),
+(5, '15-027-005');
 
 -- --------------------------------------------------------
 
@@ -78,6 +105,13 @@ CREATE TABLE `comments` (
   `Topic_ID` int(10) NOT NULL,
   `Comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`Account_ID`, `Topic_ID`, `Comment`) VALUES
+('15-027-001', 11111, 'amam om');
 
 -- --------------------------------------------------------
 
@@ -92,6 +126,17 @@ CREATE TABLE `professors` (
   `M_name` varchar(20) NOT NULL,
   `E-mail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `professors`
+--
+
+INSERT INTO `professors` (`Prof_ID`, `L_name`, `F_name`, `M_name`, `E-mail`) VALUES
+('1', 'Bituonan', 'Butch', 'A', 'bituonan.butch@example.com'),
+('2', 'Garcia', 'May', 'B', 'garcia.may@example.com'),
+('3', 'Calayag', 'Ernita', 'C', 'calayag.nitz@example.com'),
+('4', 'Molino', 'Yany', 'D', 'molino.yany@example.com'),
+('5', 'Renegado', 'Fernando', 'E', 'renegado.fernando@example.com');
 
 -- --------------------------------------------------------
 
@@ -149,9 +194,18 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
+
 INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`, `Account_id`, `gender`) VALUES
 ('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', 'B', 'janine.ramirez@tup.edu.ph', 'janine', 'f'),
 ('15-027-054', 'Boado', 'Jose Angelo David', 'San Gabriel', 'BSCS', 'B', 'davidsgboado@gmail.com', 'henouji', 'Male');
+
+INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`) VALUES
+('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com'),
+('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com'),
+('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com'),
+('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com'),
+('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com');
+
 
 -- --------------------------------------------------------
 
@@ -163,6 +217,17 @@ CREATE TABLE `subjects` (
   `Subject_code` int(10) NOT NULL,
   `S_description` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `subjects`
+--
+
+INSERT INTO `subjects` (`Subject_code`, `S_description`) VALUES
+(111, 'Web Development'),
+(222, 'Software Engineering'),
+(333, 'Linear Algebra'),
+(444, 'Object Oriented Programming'),
+(555, 'Data Structures');
 
 -- --------------------------------------------------------
 
@@ -197,6 +262,13 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `password`, `username`, `gender`) VALUES
 (1, 'henouji', 'David Boado', 'm'),
 (2, 'shion', 'Jessica Dian', 'f');
+
+--
+-- Dumping data for table `topics`
+--
+
+INSERT INTO `topics` (`Topic_ID`, `Class_ID`, `T_file`, `T_description`) VALUES
+(11111, 1111, 0, 'topic 1');
 
 --
 -- Indexes for dumped tables
