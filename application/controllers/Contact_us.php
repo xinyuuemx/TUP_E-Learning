@@ -8,6 +8,8 @@ class Contact_us extends CI_Controller {
 		}
 
     public function index(){
+			  $this->load->view('include/header');
 				$this->load->view('Contact_us');
+				$this->load->view('include/footer');
     }
 }

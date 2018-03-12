@@ -1,4 +1,5 @@
-<?php if (!defined('BASEPATH')) exit ('No direct script access allowed');
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Pages extends CI_Controller {
 		public function __construct() {
 				parent::__construct();
@@ -7,18 +8,21 @@ class Pages extends CI_Controller {
 		}
 
     public function index() {
+				$this->load->view('include/header');
 				$this->load->view('home');
+				$this->load->view('include/footer');
     }
 
 		public function view(){
-        if(!file_exists(APPPATH.'views/home.php')) {
-                    show_404();
-        }
-       	public function login_authorize(){	
+			if(!file_exists(APPPATH.'views/home.php')) {
+						show_404();
+			}
+		}
+       	public function login_authorize(){
 			$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 			if(!empty($result))
 			{
-				
+
 				foreach($result as $pass){
 					//Get the DATA
 					$data['username']=$pass['Account_ID'];
@@ -33,8 +37,8 @@ class Pages extends CI_Controller {
 					$data['img_id']=$pass3['img_ID'];
 				}
 				$this->Dboard($data);
-				
-			}	
+
+			}
 			else{
 				$data['msg']='<font color=red>Invalid username and/or password.</font><br />';
 				$data['username']=$_POST['uname'];
@@ -51,5 +55,5 @@ class Pages extends CI_Controller {
 		}
 		public function student_classes(){
 				$this->load->view('stud_classes');
-		}	
+		}
 }
