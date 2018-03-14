@@ -1,5 +1,3 @@
-
-
 		<!-- Banner -->
 			<section id="banner">
 				<div class="inner">
@@ -69,7 +67,7 @@
 									<h3>Registration Code</h3>
 								</header>
 								<p>Students are required to enter a verificaion code to join a specific online class created by professors.</p>
-							</div>	
+							</div>
 						</section>
 					</div>
 				</div>
@@ -96,7 +94,7 @@
 						<section>
 							<div class="content">
 								<blockquote>
-									<p>Through your hard work, you have created a learning campus that can generate technologically erudite society. You are a survivor at all times and therefore, you have proven yourself worthy of recognitions and accolades. The achievements you have realized are remarkable. I’m deeply gratified to have the opportunity to serve with you. 
+									<p>Through your hard work, you have created a learning campus that can generate technologically erudite society. You are a survivor at all times and therefore, you have proven yourself worthy of recognitions and accolades. The achievements you have realized are remarkable. I’m deeply gratified to have the opportunity to serve with you.
 								</blockquote>
 								<div class="author">
 									<div class="image">
@@ -135,5 +133,3 @@
 					</div>
 				</div>
 			</section>
-
-		
