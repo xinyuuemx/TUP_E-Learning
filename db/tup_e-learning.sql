@@ -39,9 +39,6 @@ CREATE TABLE `accounts` (
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 
-('henouji', 'henneko21'),
-('janine', '554345');
-
 ('15-027-001', '123456'),
 ('15-027-002', '123456'),
 ('15-027-003', '123456'),
