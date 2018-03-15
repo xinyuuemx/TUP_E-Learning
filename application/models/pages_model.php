@@ -3,6 +3,7 @@ class Pages_model extends CI_Model {
 
 	private $table = "accounts";
 	private $table2 = "students";
+	private $table3 = "profile_elements";
 
 	// Constructor
 	public function __construct() {
@@ -22,11 +23,17 @@ class Pages_model extends CI_Model {
 	public function read_account($acc) {
 		$this->db->select("*");
 		$this->db->from($this->table2);
-		$this->db->where('Account_ID', $acc);
+		$this->db->where('Student_ID', $acc);
 		$query=$this->db->get();
 		return $query->result_array();
 	}
-
+	public function get_image($account_id){
+		$this->db->select("*");
+		$this->db->from($this->table3);
+		$this->db->where('Account_ID', $account_id);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
 }
 
 ?>

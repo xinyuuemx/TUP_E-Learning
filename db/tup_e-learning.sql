@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2018 at 02:12 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Mar 14, 2018 at 06:09 PM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -136,6 +134,25 @@ INSERT INTO `professors` (`Prof_ID`, `L_name`, `F_name`, `M_name`, `E-mail`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `profile_elements`
+--
+
+CREATE TABLE `profile_elements` (
+  `Account_ID` varchar(11) NOT NULL,
+  `img_ID` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profile_elements`
+--
+
+INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
+('15-027-002', 'j_pp'),
+('15-027-001', 'david_pp');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `quizzes`
 --
 
@@ -160,19 +177,23 @@ CREATE TABLE `students` (
   `M_name` varchar(20) NOT NULL,
   `Course` varchar(6) NOT NULL,
   `Section` varchar(2) NOT NULL,
-  `E-mail` varchar(30) NOT NULL
+  `E-mail` varchar(30) NOT NULL,
+  `Account_id` varchar(32) NOT NULL,
+  `gender` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`) VALUES
-('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com'),
-('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com'),
-('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com'),
-('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com'),
-('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com');
+INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`, `Account_id`, `gender`) VALUES
+('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com', '', ''),
+('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com', '', ''),
+('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com', '', ''),
+('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com', '', ''),
+('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com', '', ''),
+('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', 'B', 'janine.ramirez@tup.edu.ph', 'janine', 'f'),
+('15-027-054', 'Boado', 'Jose Angelo David', 'San Gabriel', 'BSCS', 'B', 'davidsgboado@gmail.com', 'henouji', 'Male');
 
 -- --------------------------------------------------------
 
@@ -215,6 +236,27 @@ CREATE TABLE `topics` (
 
 INSERT INTO `topics` (`Topic_ID`, `Class_ID`, `T_file`, `T_description`) VALUES
 (11111, 1111, 0, 'topic 1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(5) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `gender` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `password`, `username`, `gender`) VALUES
+(1, 'henouji', 'David Boado', 'm'),
+(2, 'shion', 'Jessica Dian', 'f');
 
 --
 -- Indexes for dumped tables
@@ -267,7 +309,6 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `topics`
   ADD PRIMARY KEY (`Topic_ID`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

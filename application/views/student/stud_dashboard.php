@@ -1,19 +1,5 @@
-<!DOCTYPE HTML>
 
-<html>
-	<head>
-		<title>TUP E-LEARNING</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
-		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
-	</head>
-	
-	<body class="is-preload">
-
-<div class="main">
+	<div class="main">
 	<div class="table-wrapper">
 		<h2>Dashboard</h2>
 		<table>
@@ -66,6 +52,5 @@
     
 </div>
 	 
-</body>
-</html> 
+
 

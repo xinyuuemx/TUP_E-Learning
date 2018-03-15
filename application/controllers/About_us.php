@@ -8,6 +8,8 @@ class About_us extends CI_Controller {
 		}
 
     public function index(){
-				$this->load->view('about_us');
+				$this->load->view('include/header');
+				$this->load->view('aboutus');
+				$this->load->view('include/footer');
     }
 }
