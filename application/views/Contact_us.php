@@ -1,5 +1,6 @@
-<section id ="main" class="wrapper">
-	<div class= "inner">
+
+		<section id ="main" class="wrapper">
+		<div class= "inner">
 		<div class = "content">
 			<div class="table-wrapper">
 				<h2 style="text-align:center">Contact US</h2>
