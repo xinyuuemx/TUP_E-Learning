@@ -1,6 +1,5 @@
 
 	<body class="is-preload">	
-	
 		<div class="main">
 			<div class="inner">
 				<header class="special">
@@ -27,9 +26,7 @@
 							$x = $x+1;
 						}
 					?>
-							
-							
-							
+						
 				
 			<ul class="actions">
 				<li><a href="#" class="button primary">Add Class</a></li>

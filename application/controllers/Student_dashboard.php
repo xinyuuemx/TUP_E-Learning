@@ -4,7 +4,7 @@ class Student_dashboard extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper('form');
-		$this->load->model('pages_model','pages'); //pre load all models
+		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation'); 
