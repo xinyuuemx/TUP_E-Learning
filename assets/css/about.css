@@ -241,8 +241,8 @@ hr {
   padding-left: 300px;
   padding-right: 30px;
   max-width: calc(100% - 6rem); }
-  
-  
+
+
 /* Button */
 input[type="submit"],
 input[type="reset"],
@@ -2471,9 +2471,9 @@ body {
 @media screen and (max-width: 980px) {
   body {
     padding-top: 44px; }
-#container { 
-		 width: 150px; 
-		 min-height: 600px; 
+#container {
+		 width: 150px;
+		 min-height: 600px;
 		 border: 1px solid #aaa;
 		 border-style: none!important;
 		 margin:0 auto;
@@ -2482,10 +2482,10 @@ body {
 		 padding-top: 10000px;
 		 padding-right:150px;
 		 position: absolute;
-}			
-	
-	
-	
+}
+
+
+
   #header {
     height: 44px;
     line-height: 44px; } }
@@ -2522,7 +2522,7 @@ body {
   position: relative;
   text-align: center;
   width: 100%; }
-  
+
   #heading input, #heading select, #heading textarea {
     color: #ffffff; }
   #heading a {
@@ -2831,7 +2831,7 @@ body {
     border: 3px solid #73AD21;
     padding: 10px;
 }
-	  
+
 body.is-menu-visible #menu {
   -moz-transform: translateX(0);
   -webkit-transform: translateX(0);
