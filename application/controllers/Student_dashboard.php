@@ -6,7 +6,7 @@ class Student_dashboard extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('pages_model','pages'); //pre load all models
 		$this->load->library('session');
-		$this->load->library('form_validation'); 
+		$this->load->library('form_validation');
 	}
 	public function index($scene = null) {
 		if(!isset($_SESSION['student_id'])){
@@ -16,33 +16,33 @@ class Student_dashboard extends CI_Controller {
 			$this->load->view('template/footer');
 		}
 		else{
-			// Load Dashboard 
+			// Load Dashboard
 			$this->load->view('template/student_dashboard_header',$_SESSION);
 			switch ($scene) {
 				case 'classes':
 				$this->load->view('student/stud_classes',$_SESSION);
-				break; 
-				
+				break;
+
 				case 'modules':
 				$this->load->view('student/stud_modules',$_SESSION);
-				break; 
-				
+				break;
+
 				default:
 				echo $scene;
 				$this->load->view('student/stud_dashboard',$_SESSION);
-				break; 
-				
+				break;
+
 			}
 			$this->load->view('template/student_dashboard_footer');
 		}
-		
+
 	}
-	public function login_validate(){			
+	public function login_validate(){
 	$password = $this->input->post('psw');
 	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 	if(!empty($result))
 	{
-		
+
 		foreach($result as $pass){
 			// Get the DATA
 			$data['username']=$pass['Account_ID'];
@@ -64,16 +64,16 @@ class Student_dashboard extends CI_Controller {
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'student');
-		
-	}	
+
+	}
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
-		redirect(base_url().'student/login');
+		redirect(base_url().'login');
 		}
-	}	
+	}
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
 	}
-		
+
 }
