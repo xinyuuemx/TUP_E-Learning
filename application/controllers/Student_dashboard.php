@@ -4,7 +4,8 @@ class Student_dashboard extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper('form');
-		$this->load->model('pages_model','pages'); //pre load all models
+		$this->load->model('pages_model','pages');
+		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -20,9 +21,9 @@ class Student_dashboard extends CI_Controller {
 			$this->load->view('template/student_dashboard_header',$_SESSION);
 			switch ($scene) {
 				case 'classes':
-				$this->load->view('student/stud_classes',$_SESSION);
-				break;
-
+				$data = $this->get_classes();
+				$this->load->view('student/stud_classes',$data);
+				break; 
 				case 'modules':
 				$this->load->view('student/stud_modules',$_SESSION);
 				break;
@@ -76,4 +77,25 @@ class Student_dashboard extends CI_Controller {
 		redirect(base_url().'pages');
 	}
 
+  public function get_classes(){
+		$x=0;
+		$result = $this->classes->read_classes($_SESSION['student_id']);
+		foreach($result as $pass){
+			// Get the DATA
+			$data['classes'][$x]= $pass['Class_ID'];
+			
+				$result2 = $this->classes->read_details($pass['Class_ID']);
+				foreach($result2 as $code){
+					$data['code'][$x] = $code['Subject_code']; 
+					$desc_result = $this->classes->read_desc($data['code'][$x]);
+					foreach($desc_result as $desc_pass){
+						$data['description'][$x] = $desc_pass['S_description'];
+						}
+				}
+			$x = $x+1;
+		}
+		
+		return $data;
+	}
+		
 }
