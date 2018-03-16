@@ -3,7 +3,7 @@
 					<div class="content">
 						<section>
 							<h3>Intension</h3>
-							<p style="text-align: justify; text-justify: inter-word;">The TUP E-Learning Website is intended to initially improve the university’s learning environment by which would address some school-classroom constraints such as inability to access professor’s lecture files. Moreover, it aims to provide an online learning environment by which professor’s lecture files are available for reading/download all the time for the students. It provides a foundation that facilitates orderly growth for future enhancements.
+							<p>The TUP E-Learning Website is intended to initially improve the university’s learning environment by which would address some school-classroom constraints such as inability to access professor’s lecture files. Moreover, it aims to provide an online learning environment by which professor’s lecture files are available for reading/download all the time for the students. It provides a foundation that facilitates orderly growth for future enhancements.
 						</section>
 						<section>
 							<h4>Important Features</h4>

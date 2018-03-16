@@ -30,7 +30,7 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #111111;
+  background: #4CAF50;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -41,7 +41,7 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #111111;
+  background: #43A047;
 }
 .form .message {
   margin: 15px 0 0;
@@ -91,5 +91,5 @@
 body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale;      
 }
