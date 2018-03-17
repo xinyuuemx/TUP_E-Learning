@@ -23,7 +23,7 @@ class Student_dashboard extends CI_Controller {
 				case 'classes':
 				$data = $this->get_classes();
 				$this->load->view('student/stud_classes',$data);
-				break; 
+				break;
 				case 'modules':
 				$this->load->view('student/stud_modules',$_SESSION);
 				break;
@@ -41,7 +41,8 @@ class Student_dashboard extends CI_Controller {
 	public function login_validate(){
 	$password = $this->input->post('psw');
 	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
-	if(!empty($result))
+	$result3 = $this->pages->read_account($_POST['uname']);
+	if(!empty($result) and !empty($result3))
 	{
 
 		foreach($result as $pass){
@@ -83,10 +84,10 @@ class Student_dashboard extends CI_Controller {
 		foreach($result as $pass){
 			// Get the DATA
 			$data['classes'][$x]= $pass['Class_ID'];
-			
+
 				$result2 = $this->classes->read_details($pass['Class_ID']);
 				foreach($result2 as $code){
-					$data['code'][$x] = $code['Subject_code']; 
+					$data['code'][$x] = $code['Subject_code'];
 					$desc_result = $this->classes->read_desc($data['code'][$x]);
 					foreach($desc_result as $desc_pass){
 						$data['description'][$x] = $desc_pass['S_description'];
@@ -94,8 +95,8 @@ class Student_dashboard extends CI_Controller {
 				}
 			$x = $x+1;
 		}
-		
+
 		return $data;
 	}
-		
+
 }
