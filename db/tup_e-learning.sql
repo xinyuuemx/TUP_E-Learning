@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2018 at 10:54 AM
+-- Generation Time: Mar 17, 2018 at 09:43 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 SET FOREIGN_KEY_CHECKS = 0;
 SET GROUP_CONCAT_MAX_LEN=32768;
@@ -36,7 +35,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 --
 -- Database: `tup_e-learning`
 --
-
 
 -- --------------------------------------------------------
 
@@ -217,22 +215,21 @@ CREATE TABLE `students` (
   `Course` varchar(6) NOT NULL,
   `Section` varchar(2) NOT NULL,
   `E-mail` varchar(30) NOT NULL,
-  `Account_id` varchar(32) NOT NULL,
-  `gender` varchar(12) NOT NULL
+  `Gender` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`, `Account_id`, `gender`) VALUES
-('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com', '', ''),
-('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com', '', ''),
-('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com', '', ''),
-('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com', '', ''),
-('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com', '', ''),
-('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', 'B', 'janine.ramirez@tup.edu.ph', 'janine', 'f'),
-('15-027-054', 'Boado', 'Jose Angelo David', 'San Gabriel', 'BSCS', 'B', 'davidsgboado@gmail.com', 'henouji', 'Male');
+INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`, `Gender`) VALUES
+('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', '3A', 'delacruz.juan@example.com', 'Male'),
+('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', '3B', 'delacruz.pedro@example.com', 'Male'),
+('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', '3A', 'delacruz.bugoy@example.com', 'Male'),
+('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', '3B', 'delacruz.auderic@example.com', 'Male'),
+('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', '3A', 'delacruz.wilberto@example.com', 'Male'),
+('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', '3B', 'janine.ramirez@tup.edu.ph', 'Female'),
+('15-027-054', 'Boado', 'Jose Angelo David', 'San Gabriel', 'BSCS', '3B', 'davidsgboado@gmail.com', 'Male');
 
 -- --------------------------------------------------------
 
@@ -275,27 +272,6 @@ CREATE TABLE `topics` (
 
 INSERT INTO `topics` (`Topic_ID`, `Class_ID`, `T_file`, `T_description`) VALUES
 (11111, 1111, '0', 'topic 1');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(5) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `username` varchar(32) NOT NULL,
-  `gender` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `password`, `username`, `gender`) VALUES
-(1, 'henouji', 'David Boado', 'm'),
-(2, 'shion', 'Jessica Dian', 'f');
 
 --
 -- Indexes for dumped tables
