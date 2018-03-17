@@ -14,4 +14,10 @@ class Login_controller extends CI_Controller {
   		$this->load->view('login_page');
   		$this->load->view('template/footer');
     }
+	
+	public function professor(){
+		$this->load->view('template/header');
+  		$this->load->view('login_page_prof');
+  		$this->load->view('template/footer');	
+	}
 }
