@@ -20,6 +20,8 @@
 					<a class="logo" href="<?php echo base_url().'pages'?>">Home</a>
 					<a class="logo" href="<?php echo base_url().'pages/about'?>">About Us</a>
 					<a class="logo" href="<?php echo base_url().'pages/contact'?>">Contact Us</a>
+				</div>
+				<div class="topnav">
 					<a class="logo" href="<?php echo base_url()?>login">Login</a>
 				</div>
 			</header>
