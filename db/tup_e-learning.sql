@@ -1,14 +1,31 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2018 at 06:09 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.5.38
+-- Generation Time: Mar 17, 2018 at 10:54 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+SET FOREIGN_KEY_CHECKS = 0;
+SET GROUP_CONCAT_MAX_LEN=32768;
+SET @tables = NULL;
+SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
+  FROM information_schema.tables
+  WHERE table_schema = (SELECT DATABASE());
+SELECT IFNULL(@tables,'dummy') INTO @tables;
+
+SET @tables = CONCAT('DROP TABLE IF EXISTS ', @tables);
+PREPARE stmt FROM @tables;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET FOREIGN_KEY_CHECKS = 1;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -20,6 +37,7 @@ SET time_zone = "+00:00";
 -- Database: `tup_e-learning`
 --
 
+
 -- --------------------------------------------------------
 
 --
@@ -28,7 +46,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `accounts` (
   `Account_ID` varchar(15) NOT NULL,
-  `Password` varchar(20) NOT NULL
+  `Password` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -36,6 +54,7 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
+('1', '123456'),
 ('15-027-001', '123456'),
 ('15-027-002', '123456'),
 ('15-027-003', '123456'),
@@ -105,6 +124,26 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`Account_ID`, `Topic_ID`, `Comment`) VALUES
 ('15-027-001', 11111, 'amam om');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `Account_ID` varchar(15) NOT NULL,
+  `Notification` text NOT NULL,
+  `Notif_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`Account_ID`, `Notification`, `Notif_date`) VALUES
+('15-027-001', 'Welcome to your E-Learning profile!', '2017-11-21'),
+('15-027-001', 'You have registered to CS311 Class. You can now read your modules.', '2017-12-06');
 
 -- --------------------------------------------------------
 
@@ -226,7 +265,7 @@ INSERT INTO `subjects` (`Subject_code`, `S_description`) VALUES
 CREATE TABLE `topics` (
   `Topic_ID` int(10) NOT NULL,
   `Class_ID` int(10) NOT NULL,
-  `T_file` int(10) NOT NULL,
+  `T_file` varchar(30) NOT NULL,
   `T_description` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -235,7 +274,7 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`Topic_ID`, `Class_ID`, `T_file`, `T_description`) VALUES
-(11111, 1111, 0, 'topic 1');
+(11111, 1111, '0', 'topic 1');
 
 -- --------------------------------------------------------
 
@@ -309,6 +348,7 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `topics`
   ADD PRIMARY KEY (`Topic_ID`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
