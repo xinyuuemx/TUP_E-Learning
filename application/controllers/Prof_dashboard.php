@@ -83,6 +83,7 @@ class Prof_dashboard extends CI_Controller {
 		$result = $this->classes->read_classes($_SESSION['prof_id']);
 		foreach($result as $pass){
 			// Get the DATA
+
 			  $data['classes'][$x]= $pass['Class_ID'];
 
 				$result2 = $this->classes->read_details($pass['Class_ID']);
