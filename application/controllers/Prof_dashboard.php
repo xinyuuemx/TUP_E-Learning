@@ -35,6 +35,7 @@ class Prof_dashboard extends CI_Controller {
 
 			}
 			$this->load->view('template/prof_dashboard_footer');
+
 		}
 
 	}
@@ -66,7 +67,6 @@ class Prof_dashboard extends CI_Controller {
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'professor');
-
 	}
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
@@ -83,14 +83,14 @@ class Prof_dashboard extends CI_Controller {
 		$result = $this->classes->read_classes($_SESSION['prof_id']);
 		foreach($result as $pass){
 			// Get the DATA
-			$data['classes'][$x]= $pass['Class_ID'];
+			  $data['classes'][$x]= $pass['Class_ID'];
 
 				$result2 = $this->classes->read_details($pass['Class_ID']);
 				foreach($result2 as $code){
-					$data['code'][$x] = $code['Subject_code'];
-					$desc_result = $this->classes->read_desc($data['code'][$x]);
-					foreach($desc_result as $desc_pass){
-						$data['description'][$x] = $desc_pass['S_description'];
+					  $data['code'][$x] = $code['Subject_code'];
+					  $desc_result = $this->classes->read_desc($data['code'][$x]);
+					  foreach($desc_result as $desc_pass){
+						  $data['description'][$x] = $desc_pass['S_description'];
 						}
 				}
 			$x = $x+1;
@@ -98,5 +98,4 @@ class Prof_dashboard extends CI_Controller {
 
 		return $data;
 	}
-
 }

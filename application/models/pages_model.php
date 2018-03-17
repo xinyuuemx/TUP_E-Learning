@@ -37,7 +37,7 @@ class Pages_model extends CI_Model {
 	public function read_profaccount($acc) {
 		$this->db->select("*");
 		$this->db->from($this->table4);
-		$this->db->where('prof_ID', $acc);
+		$this->db->where('Prof_ID', $acc);
 		$query=$this->db->get();
 		return $query->result_array();
 	}
