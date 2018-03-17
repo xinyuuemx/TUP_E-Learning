@@ -1,5 +1,6 @@
 <?php echo form_open('student/login_authorize'); ?>
 <div class="login-page">
+<h1>Student</h1>
   <div class="form">
     <form class="register-form">
       <input type="text" placeholder="name"/>

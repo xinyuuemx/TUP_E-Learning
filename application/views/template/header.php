@@ -16,12 +16,13 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="topnav">
+				<div class="topnav" style="margin-left:5%;">
+					<a class="logo" href="<?php echo base_url().'pages'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
+				</div>
+				<div class="topnav" style="margin-right:6px;">
 					<a class="logo" href="<?php echo base_url().'pages'?>">Home</a>
 					<a class="logo" href="<?php echo base_url().'pages/about'?>">About Us</a>
 					<a class="logo" href="<?php echo base_url().'pages/contact'?>">Contact Us</a>
-				</div>
-				<div class="topnav" style="margin-right:6px;">
 					<a class="logo" href="<?php echo base_url()?>login">Login</a>
 				</div>
 			</header>

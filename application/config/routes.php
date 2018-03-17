@@ -51,10 +51,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'pages';
 $route['student'] = 'student_dashboard';
-<<<<<<< HEAD
 $route['professor'] = 'prof_dashboard';
-=======
->>>>>>> aeada7f434d92f503d5ab838254d56b468ed4c6c
 $route['login'] = 'login_controller';
+$route['loginprof'] = 'login_controller/professor';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

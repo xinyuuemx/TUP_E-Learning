@@ -25,7 +25,7 @@ class Student_dashboard extends CI_Controller {
 				case 'classes':
 				$data = $this->get_classes();
 				$this->load->view('student/stud_classes',$data);
-				break; 
+				break;
 				case 'modules':
 				$this->load->view('student/stud_modules',$_SESSION);
 				break;
@@ -40,41 +40,38 @@ class Student_dashboard extends CI_Controller {
 		}
 
 	}
-	public function login_validate(){			
-		$password = $this->input->post('psw');
-		$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
-		if(!empty($result)){
-			foreach($result as $pass){
-				// Get the DATA
-				$data['username']=$pass['Account_ID'];
-				$account_result = $this->pages->read_account($pass['Account_ID']);
-				$result2 = $this->pages->get_image($pass['Account_ID']);
-			}
-			foreach ($account_result as $account_pass) {
-				$data['student_id']=$account_pass['Student_ID'];
-				$data['name']=$account_pass['L_name'].", ".$account_pass['F_name']." ".$account_pass['M_name'];
-				$data['d_name']=$account_pass['F_name'];
-			}
-			foreach($result2 as $pass3){
-				$data['img_id']=$pass3['img_ID'];
-			}
-			$session_data = array(
-				'student_id' => $data['student_id'],
-				'password' => $password,
-				'name' => $data['name'],
-				'img_id' => $data['img_id'],
-				'link_name' => $data['d_name']
-			);
-			$this->session->set_userdata($session_data);
-			$this->homepage();
-			
-		}	
-		else{
-			$this->session->set_flashdata('error', 'Invalid Username or Password');
-			redirect(base_url().'student');
+	public function login_validate(){
+	$password = $this->input->post('psw');
+	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
+	$result3 = $this->pages->read_account($_POST['uname']);
+	if(!empty($result) and !empty($result3))
+	{
+
+		foreach($result as $pass){
+			// Get the DATA
+			$data['username']=$pass['Account_ID'];
+			$account_result = $this->pages->read_account($pass['Account_ID']);
+			$result2 = $this->pages->get_image($pass['Account_ID']);
+		}
+		foreach ($account_result as $account_pass) {
+			$data['student_id']=$account_pass['Student_ID'];
+			$data['name']=$account_pass['L_name'].", ".$account_pass['F_name']." ".$account_pass['M_name'];
+		}
+		foreach($result2 as $pass3){
+			$data['img_id']=$pass3['img_ID'];
+		}
+		$session_data = array(
+			'student_id' => $data['username'],
+			'password' => $password,
+			'name' => $data['name'],
+			'img_id' => $data['img_id']
+		);
+		$this->session->set_userdata($session_data);
+		redirect(base_url().'student');
 
 		}
 	}
+  
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
@@ -87,10 +84,10 @@ class Student_dashboard extends CI_Controller {
 		foreach($result as $pass){
 			// Get the DATA
 			$data['classes'][$x]= $pass['Class_ID'];
-			
+
 				$result2 = $this->classes->read_details($pass['Class_ID']);
 				foreach($result2 as $code){
-					$data['code'][$x] = $code['Subject_code']; 
+					$data['code'][$x] = $code['Subject_code'];
 					$desc_result = $this->classes->read_desc($data['code'][$x]);
 					foreach($desc_result as $desc_pass){
 						$data['description'][$x] = $desc_pass['S_description'];
@@ -147,6 +144,5 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('student/stud_add_class');
 		$this->load->view('template/student_dashboard_footer');
 	}
-
 }
 

@@ -5,7 +5,7 @@ class Prof_dashboard extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->model('pages_model','pages');
-		$this->load->model('classes_model','classes');
+		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -13,7 +13,7 @@ class Prof_dashboard extends CI_Controller {
 		if(!isset($_SESSION['prof_id'])){
 			// Load Login Page
 			$this->load->view('template/header');
-			$this->load->view('login_page');
+			$this->load->view('login_page_prof');
 			$this->load->view('template/footer');
 		}
 		else{
@@ -22,21 +22,28 @@ class Prof_dashboard extends CI_Controller {
 			switch ($scene) {
 				case 'classes':
 				$data = $this->get_classes();
-				$this->load->view('professors/prof_classes',$data);
-				break; 
+				$this->load->view('professor/prof_classes',$data);
+				break;
+				case 'modules':
+				$this->load->view('professor/prof_modules',$_SESSION);
+				break;
+
 				default:
 				echo $scene;
-				$this->load->view('professors/prof_dashboard',$_SESSION);
+				$this->load->view('professor/prof_dashboard',$_SESSION);
 				break;
+
 			}
-			$this->load->view('template/student_dashboard_footer');
+			$this->load->view('template/prof_dashboard_footer');
+
 		}
 
 	}
 	public function login_validate(){
 	$password = $this->input->post('psw');
 	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
-	if(!empty($result))
+	$result3 = $this->pages->read_profaccount($_POST['uname']);
+	if(!empty($result) and !empty($result3))
 	{
 
 		foreach($result as $pass){
@@ -59,12 +66,11 @@ class Prof_dashboard extends CI_Controller {
 			'img_id' => $data['img_id']
 		);
 		$this->session->set_userdata($session_data);
-		redirect(base_url().'prof_dashboard');
-
+		redirect(base_url().'professor');
 	}
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
-		redirect(base_url().'login');
+		redirect(base_url().'loginprof');
 		}
 	}
 	public function logout(){
@@ -74,17 +80,22 @@ class Prof_dashboard extends CI_Controller {
 
   public function get_classes(){
 		$x=0;
-		$result = $this->classes->read_subjects($_SESSION['prof_id']);
+		$result = $this->classes->read_classes($_SESSION['prof_id']);
 		foreach($result as $pass){
 			// Get the DATA
-			$data['code'][$x]= $pass['Subject_code'];
-				$desc_result = $this->classes->read_desc($pass['Subject_code']);
-				foreach($desc_result as $desc_pass){
-					$data['description'][$x] = $desc_pass['S_description'];
+			  $data['classes'][$x]= $pass['Class_ID'];
+
+				$result2 = $this->classes->read_details($pass['Class_ID']);
+				foreach($result2 as $code){
+					  $data['code'][$x] = $code['Subject_code'];
+					  $desc_result = $this->classes->read_desc($data['code'][$x]);
+					  foreach($desc_result as $desc_pass){
+						  $data['description'][$x] = $desc_pass['S_description'];
+						}
 				}
 			$x = $x+1;
-			}
+		}
+
 		return $data;
 	}
-		
 }
