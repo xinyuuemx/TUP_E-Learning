@@ -15,12 +15,14 @@
 		<nav>
 			<header id="header">
 				<div class="topnav">
-					<a href="home.html">Home</a>
-					<a href="">About Us</a>
-					<a href="">Contact Us</a>
+					<a href="<?php echo base_url().'Student_dashboard/homepage';?>">Home</a>
+					<a href="<?php echo base_url().'Student_dashboard/about';?>">About Us</a>
+					<a href="<?php echo base_url().'Student_dashboard/contact';?>">Contact Us</a>
+					<a href="<?php echo base_url().'student' ?>"><?php $namee=$link_name; echo $namee; ?></a>
 					</div>
-					<div class="topnav" style="margin-right:6px;">
-						<a  href="<?php echo base_url().'Student_dashboard/logout'?>">Sign Out</a>
+
+					<div class="topnav">
+						<a href="<?php echo base_url().'Student_dashboard/logout'?>">Sign Out</a>
 					</div>
 			</header>
 		</nav>
@@ -32,13 +34,7 @@
 			<ul class="alt">
 				<li><b><?php $name_print = $name; echo $name_print;?></b></li>
 				<li><?php $sid = $student_id; echo $sid;?></li>
-			</ul>
+			</ul>	
+						
+			
 
-			<ul class="alt">
-				<li><a class="active" href="<?php echo base_url().'student';?>">Dashboard</a></li>
-				<li><a href="<?php echo base_url().'Student_dashboard/index/classes';?>">Classes</a></li>
-				<li><a href="#">Discussions</a></li>
-				<li><a href="<?php echo base_url().'Student_dashboard/index/modules';?>">Modules</a></li>
-			</ul>
-		</div>
-	</body>
