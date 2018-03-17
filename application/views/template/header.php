@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/log.css';?>" />
-		
+
 	</head>
 	<body class="is-preload">
 
@@ -21,7 +21,7 @@
 					<a class="logo" href="<?php echo base_url().'pages/about'?>">About Us</a>
 					<a class="logo" href="<?php echo base_url().'pages/contact'?>">Contact Us</a>
 				</div>
-				<div class="topnav">
+				<div class="topnav" style="margin-right:6px;">
 					<a class="logo" href="<?php echo base_url()?>login">Login</a>
 				</div>
 			</header>

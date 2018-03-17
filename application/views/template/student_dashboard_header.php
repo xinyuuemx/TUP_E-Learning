@@ -20,11 +20,13 @@
 					<a href="<?php echo base_url().'Student_dashboard/contact';?>">Contact Us</a>
 					<a href="<?php echo base_url().'student' ?>"><?php $namee=$link_name; echo $namee; ?></a>
 					</div>
+
 					<div class="topnav">
 						<a href="<?php echo base_url().'Student_dashboard/logout'?>">Sign Out</a>
 					</div>
 			</header>
-		</nav>	
+		</nav>
+
 		<div class="sidenav">
 			<?php $image=$img_id;?>
 			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg';?>" alt="Profile Picture" width="240" height="240">
@@ -35,3 +37,4 @@
 			</ul>	
 						
 			
+
