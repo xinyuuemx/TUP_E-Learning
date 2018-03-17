@@ -40,4 +40,11 @@ class Classes_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+	public function read_subjects($prof_id) {
+		$this->db->select("*");
+		$this->db->from($this->table3);
+		$this->db->where('Prof_ID', $prof_id);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
 }

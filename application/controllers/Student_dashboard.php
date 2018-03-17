@@ -13,12 +13,14 @@ class Student_dashboard extends CI_Controller {
 		if(!isset($_SESSION['student_id'])){
 			// Load Login Page
 			$this->load->view('template/header');
-			$this->load->view('login_page');
+			$this->load->view('main/login_page');
 			$this->load->view('template/footer');
 		}
 		else{
-			// Load Dashboard
+
+			$scene_data['scene'] = $scene;
 			$this->load->view('template/student_dashboard_header',$_SESSION);
+			$this->load->view('template/student_dashboard_nav',$scene_data);
 			switch ($scene) {
 				case 'classes':
 				$data = $this->get_classes();
@@ -38,46 +40,48 @@ class Student_dashboard extends CI_Controller {
 		}
 
 	}
-	public function login_validate(){
-	$password = $this->input->post('psw');
-	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
-	if(!empty($result))
-	{
+	public function login_validate(){			
+		$password = $this->input->post('psw');
+		$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
+		if(!empty($result)){
+			foreach($result as $pass){
+				// Get the DATA
+				$data['username']=$pass['Account_ID'];
+				$account_result = $this->pages->read_account($pass['Account_ID']);
+				$result2 = $this->pages->get_image($pass['Account_ID']);
+			}
+			foreach ($account_result as $account_pass) {
+				$data['student_id']=$account_pass['Student_ID'];
+				$data['name']=$account_pass['L_name'].", ".$account_pass['F_name']." ".$account_pass['M_name'];
+				$data['d_name']=$account_pass['F_name'];
+			}
+			foreach($result2 as $pass3){
+				$data['img_id']=$pass3['img_ID'];
+			}
+			$session_data = array(
+				'student_id' => $data['student_id'],
+				'password' => $password,
+				'name' => $data['name'],
+				'img_id' => $data['img_id'],
+				'link_name' => $data['d_name']
+			);
+			$this->session->set_userdata($session_data);
+			$this->homepage();
+			
+		}	
+		else{
+			$this->session->set_flashdata('error', 'Invalid Username or Password');
+			redirect(base_url().'student');
 
-		foreach($result as $pass){
-			// Get the DATA
-			$data['username']=$pass['Account_ID'];
-			$account_result = $this->pages->read_account($pass['Account_ID']);
-			$result2 = $this->pages->get_image($pass['Account_ID']);
-		}
-		foreach ($account_result as $account_pass) {
-			$data['student_id']=$account_pass['Student_ID'];
-			$data['name']=$account_pass['L_name'].", ".$account_pass['F_name']." ".$account_pass['M_name'];
-		}
-		foreach($result2 as $pass3){
-			$data['img_id']=$pass3['img_ID'];
-		}
-		$session_data = array(
-			'student_id' => $data['username'],
-			'password' => $password,
-			'name' => $data['name'],
-			'img_id' => $data['img_id']
-		);
-		$this->session->set_userdata($session_data);
-		redirect(base_url().'student');
-
-	}
-	else{
-		$this->session->set_flashdata('error', 'Invalid Username and Password');
-		redirect(base_url().'login');
 		}
 	}
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
 	}
+	public function get_classes(){
+		$dummy = null;
 
-  public function get_classes(){
 		$x=0;
 		$result = $this->classes->read_classes($_SESSION['student_id']);
 		foreach($result as $pass){
@@ -94,8 +98,55 @@ class Student_dashboard extends CI_Controller {
 				}
 			$x = $x+1;
 		}
-		
-		return $data;
+		if(isset($data)){
+			return $data;
+		}
+		else
+			return $dummy;
 	}
-		
+	public function search_class(){
+		$class_id = $this->input->post('class_ID');
+		if(isset($class_id)){
+		$result2 = $this->classes->read_details($class_id);
+			foreach ($result2 as $key) {
+				$data['subject_code']= $key['Subject_code'];
+			}
+			$desc_result = $this->classes->read_desc($data['subject_code']);
+			foreach ($desc_result as $key) {
+				$data['description'] = $key['S_description'];
+			}
+		}
+		else
+			$data = null;
+		$this->result_class($data);
+	}
+	public function result_class($data){
+		$this->load->view('template/student_dashboard_header',$_SESSION);
+		$scene_data['scene']='classes';
+		$this->load->view('template/student_dashboard_nav',$scene_data);
+		$this->load->view('student/stud_result_class',$data);
+		$this->load->view('template/student_dashboard_footer');
+	}
+	public function homepage(){
+		$this->load->view('template/student_homepage_header',$_SESSION);
+		$this->load->view('main/home');
+		$this->load->view('template/footer');
+	}
+	public function contact(){
+		$this->load->view('template/student_homepage_header',$_SESSION);
+		$this->load->view('main/contact_us');
+		$this->load->view('template/footer');
+	}
+	public function about(){
+		$this->load->view('template/student_homepage_header',$_SESSION);
+		$this->load->view('main/about_us');
+		$this->load->view('template/footer');
+	}
+	public function add_class(){
+		$this->load->view('template/student_dashboard_header',$_SESSION);
+		$this->load->view('student/stud_add_class');
+		$this->load->view('template/student_dashboard_footer');
+	}
+
 }
+
