@@ -13,18 +13,14 @@
 
 	<body class="is-preload">
 		<nav>
-			<header id="header">
-				<div class="topnav">
-					<a href="<?php echo base_url().'Student_dashboard/homepage';?>">Home</a>
-					<a href="<?php echo base_url().'Student_dashboard/about';?>">About Us</a>
-					<a href="<?php echo base_url().'Student_dashboard/contact';?>">Contact Us</a>
-					<a href="<?php echo base_url().'student' ?>"><?php $namee=$link_name; echo $namee; ?></a>
+				<header id="header">
+					<div class="topnav" style="margin-left:1%;">
+						<a class="logo" href="<?php echo base_url().'Student_dashboard/homepage'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
 					</div>
-
-					<div class="topnav">
-						<a href="<?php echo base_url().'Student_dashboard/logout'?>">Sign Out</a>
+					<div class="topnav" style="margin-right:6px;">
+							<a  href="<?php echo base_url().'Student_dashboard/logout'?>">Sign Out</a>
 					</div>
-			</header>
+				</header>
 		</nav>
 
 		<div class="sidenav">
@@ -34,7 +30,13 @@
 			<ul class="alt">
 				<li><b><?php $name_print = $name; echo $name_print;?></b></li>
 				<li><?php $sid = $student_id; echo $sid;?></li>
-			</ul>	
-						
-			
+			</ul>
 
+			<ul class="alt">
+				<li><a class="active" href="<?php echo base_url().'student';?>">Dashboard</a></li>
+				<li><a href="<?php echo base_url().'Student_dashboard/index/classes';?>">Classes</a></li>
+				<li><a href="#">Discussions</a></li>
+				<li><a href="<?php echo base_url().'Student_dashboard/index/modules';?>">Modules</a></li>
+			</ul>
+		</div>
+	</body>

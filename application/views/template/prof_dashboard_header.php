@@ -14,8 +14,8 @@
 	<body class="is-preload">
 		<nav>
 			<header id="header">
-				<div class="topnav" style="margin-left:5%;">
-					<a class="logo" href="<?php echo base_url().'professor'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
+				<div class="topnav" style="margin-left:1%;">
+					<a class="logo" href="<?php echo base_url().'Prof_dashboard/homepage'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
 				</div>
 				<div class="topnav" style="margin-right:6px;">
 						<a  href="<?php echo base_url().'Prof_dashboard/logout'?>">Sign Out</a>

@@ -13,14 +13,13 @@ class Student_dashboard extends CI_Controller {
 		if(!isset($_SESSION['student_id'])){
 			// Load Login Page
 			$this->load->view('template/header');
-			$this->load->view('main/login_page');
+			$this->load->view('login_page');
 			$this->load->view('template/footer');
 		}
 		else{
-
+			// Load Dashboard
 			$scene_data['scene'] = $scene;
 			$this->load->view('template/student_dashboard_header',$_SESSION);
-			$this->load->view('template/student_dashboard_nav',$scene_data);
 			switch ($scene) {
 				case 'classes':
 				$data = $this->get_classes();
@@ -69,22 +68,24 @@ class Student_dashboard extends CI_Controller {
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'student');
 
+	}
+	else{
+		$this->session->set_flashdata('error', 'Invalid Username and Password');
+		redirect(base_url().'login');
 		}
 	}
-  
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
 	}
+
 	public function get_classes(){
 		$dummy = null;
-
 		$x=0;
 		$result = $this->classes->read_classes($_SESSION['student_id']);
 		foreach($result as $pass){
 			// Get the DATA
 			$data['classes'][$x]= $pass['Class_ID'];
-
 				$result2 = $this->classes->read_details($pass['Class_ID']);
 				foreach($result2 as $code){
 					$data['code'][$x] = $code['Subject_code'];
@@ -126,17 +127,17 @@ class Student_dashboard extends CI_Controller {
 	}
 	public function homepage(){
 		$this->load->view('template/student_homepage_header',$_SESSION);
-		$this->load->view('main/home');
+		$this->load->view('home');
 		$this->load->view('template/footer');
 	}
 	public function contact(){
 		$this->load->view('template/student_homepage_header',$_SESSION);
-		$this->load->view('main/contact_us');
+		$this->load->view('contact_us');
 		$this->load->view('template/footer');
 	}
 	public function about(){
 		$this->load->view('template/student_homepage_header',$_SESSION);
-		$this->load->view('main/about_us');
+		$this->load->view('about_us');
 		$this->load->view('template/footer');
 	}
 	public function add_class(){
@@ -144,5 +145,5 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('student/stud_add_class');
 		$this->load->view('template/student_dashboard_footer');
 	}
-}
 
+}
