@@ -16,7 +16,7 @@
 
 		<!-- Header -->
 			<header id="header">
-				<div class="topnav" style="margin-left:5%;">
+				<div class="topnav" style="margin-left:1%;">
 					<a class="logo" href="<?php echo base_url().'pages'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
 				</div>
 				<div class="topnav" style="margin-right:6px;">

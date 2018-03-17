@@ -18,6 +18,7 @@ class Prof_dashboard extends CI_Controller {
 		}
 		else{
 			// Load Dashboard
+			$scene_data['scene'] = $scene;
 			$this->load->view('template/prof_dashboard_header',$_SESSION);
 			switch ($scene) {
 				case 'classes':
@@ -35,7 +36,6 @@ class Prof_dashboard extends CI_Controller {
 
 			}
 			$this->load->view('template/prof_dashboard_footer');
-
 		}
 
 	}
@@ -67,6 +67,7 @@ class Prof_dashboard extends CI_Controller {
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'professor');
+
 	}
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
@@ -78,24 +79,70 @@ class Prof_dashboard extends CI_Controller {
 		redirect(base_url().'pages');
 	}
 
-  public function get_classes(){
+	public function get_classes(){
+		$dummy = null;
 		$x=0;
 		$result = $this->classes->read_classes($_SESSION['prof_id']);
 		foreach($result as $pass){
 			// Get the DATA
-			  $data['classes'][$x]= $pass['Class_ID'];
-
+			$data['classes'][$x]= $pass['Class_ID'];
 				$result2 = $this->classes->read_details($pass['Class_ID']);
 				foreach($result2 as $code){
-					  $data['code'][$x] = $code['Subject_code'];
-					  $desc_result = $this->classes->read_desc($data['code'][$x]);
-					  foreach($desc_result as $desc_pass){
-						  $data['description'][$x] = $desc_pass['S_description'];
+					$data['code'][$x] = $code['Subject_code'];
+					$desc_result = $this->classes->read_desc($data['code'][$x]);
+					foreach($desc_result as $desc_pass){
+						$data['description'][$x] = $desc_pass['S_description'];
 						}
 				}
 			$x = $x+1;
 		}
-
-		return $data;
+		if(isset($data)){
+			return $data;
+		}
+		else
+			return $dummy;
+	}
+	public function search_class(){
+		$class_id = $this->input->post('class_ID');
+		if(isset($class_id)){
+		$result2 = $this->classes->read_details($class_id);
+			foreach ($result2 as $key) {
+				$data['subject_code']= $key['Subject_code'];
+			}
+			$desc_result = $this->classes->read_desc($data['subject_code']);
+			foreach ($desc_result as $key) {
+				$data['description'] = $key['S_description'];
+			}
+		}
+		else
+			$data = null;
+		$this->result_class($data);
+	}
+	public function result_class($data){
+		$this->load->view('template/prof_dashboard_header',$_SESSION);
+		$scene_data['scene']='classes';
+		$this->load->view('template/prof_dashboard_nav',$scene_data);
+		$this->load->view('student/prof_result_class',$data);
+		$this->load->view('template/prof_dashboard_footer');
+	}
+	public function homepage(){
+		$this->load->view('template/prof_homepage_header',$_SESSION);
+		$this->load->view('home');
+		$this->load->view('template/footer');
+	}
+	public function contact(){
+		$this->load->view('template/prof_homepage_header',$_SESSION);
+		$this->load->view('contact_us');
+		$this->load->view('template/footer');
+	}
+	public function about(){
+		$this->load->view('template/prof_homepage_header',$_SESSION);
+		$this->load->view('about_us');
+		$this->load->view('template/footer');
+	}
+	public function add_class(){
+		$this->load->view('template/prof_dashboard_header',$_SESSION);
+		$this->load->view('student/prof_add_class');
+		$this->load->view('template/prof_dashboard_footer');
 	}
 }

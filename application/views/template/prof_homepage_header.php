@@ -15,14 +15,14 @@
 		<nav>
 			<header id="header">
 				<div class="topnav"  style="margin-left:1%;">
-					<a class="logo" href="<?php echo base_url().'Student_dashboard/homepage'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
-					<!--<a href="<?php echo base_url().'Student_dashboard/homepage';?>">Home</a>-->
-					<a href="<?php echo base_url().'Student_dashboard/about';?>">About Us</a>
-					<a href="<?php echo base_url().'Student_dashboard/contact';?>">Contact Us</a>
+					<a class="logo" href="<?php echo base_url().'Prof_dashboard/homepage'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
+					<!--<a href="<?php echo base_url().'Prof_dashboard/homepage';?>">Home</a>-->
+					<a href="<?php echo base_url().'Prof_dashboard/about';?>">About Us</a>
+					<a href="<?php echo base_url().'Prof_dashboard/contact';?>">Contact Us</a>
 					</div>
 					<div class="topnav">
-						<a href="<?php echo base_url().'student' ?>"><?php echo $name; ?></a>
-						<a href="<?php echo base_url().'Student_dashboard/logout'?>">Sign Out</a>
+						<a href="<?php echo base_url().'professor' ?>"><?php echo $name; ?></a>
+						<a href="<?php echo base_url().'Prof_dashboard/logout'?>">Sign Out</a>
 					</div>
 			</header>
 		</nav>
