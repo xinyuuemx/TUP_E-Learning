@@ -6,10 +6,10 @@
       <input type="text" placeholder="username" name="uname" required />
       <input type="password" placeholder="password" name="psw" required />
       <button>login</button>
-       <p class="message">Not a professor? <a href="<?php echo base_url().'Login_controller'?>">Login here</a></p>
+       <p class="message">Not a professor? <a href="<?php echo base_url().'login'?>">Login here</a></p>
 	  <?php echo "<p class='text-danger'>".$this->session->flashdata("error")."<p>"; ?>
     </form>
-	
+
   </div>
 </div>
 <?php echo form_close(); ?>
