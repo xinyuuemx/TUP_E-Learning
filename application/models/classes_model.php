@@ -1,6 +1,5 @@
 <?php
 class Classes_model extends CI_Model {
-
 	private $table = "accounts";
 	private $table2 = "class_members";
 	private $table3 = "class";
