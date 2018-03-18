@@ -6,65 +6,31 @@
 					<h2>Modules</h2>
 						<ul class="alt">
 							<li>School Year 2017-2018</li>
-							<li>Second Semester</li>
+							<li><?php echo $code?></li>
 						</ul>
 				</header>
 				<div class="highlights">
-					<section>
+					<?php $x = 0;
+			if(isset($topic_id)){
+				foreach($topic_id as $data){
+						echo'
+						<section>
 						<div class="content">
-							<header>
-								<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>Lecture V</h3>
-							</header>
-							<p>Web Progamming Lecture (JavaScript)</p>
+						<header>
+							<a href="';
+							echo base_url().'assets/files/'.$file[$x].'" class="icon fa-graduation-cap">
+							<span class="label">Icon</span></a>
+							<h3>'.$topic_id[$x].'</h3>
+						</header>'.
+						'<p>'.$description[$x].'</p>
 						</div>
-					</section>
-					<section>
-						<div class="content">
-							<header>
-								<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>Lecture IV</h3>
-							</header>
-							<p>Web Progamming Lecture (Bootstrap)</p>
-						</div>
-					</section>
-					<section>
-						<div class="content">
-							<header>
-								<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>Lecture III</h3>
-							</header>
-							<p>Web Progamming Lecture (CSS)</p>
-						</div>
-					</section><section>
-						<div class="content">
-							<header>
-								<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>Lecture II</h3>
-							</header>
-							<p>Web Progamming Lecture(HTML)</p>
-						</div>
-					</section>
-					<section>
-						<div class="content">
-							<header>
-								<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>Lecture I</h3>
-							</header>
-							<p>Web Progamming Lecture (Introduction)</p>
-						</div>
-					</section>
-					<section>
-						<div class="content">
-							<header>
-								<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
-								<h3>Lecture I</h3>
-							</header>
-							<p>Operating Systems (Introduction)</p>
-						</div>
-					</section>
-				</div>
-
-
+						</section>';
+						$x = $x+1;
+				}
+			}
+			else
+				echo '<section><p>No Modules</p></section>'
+			?>
+	</div>
 </div>
 	 

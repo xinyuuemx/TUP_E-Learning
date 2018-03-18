@@ -10,23 +10,6 @@
 				</ul>
 		</header>
 		<div class="highlights">
-					<section>
-						<div class="content">
-							<header>
-								<div>
-								<?php echo form_open('Student_dashboard/search_class'); ?>
-									<icon class="icon fa-plus">
-										<span class="label">Icon</span>
-									</icon>
-								</div>
-								<input type="text" name="class_ID" placeholder="Type Here" required>
-							</header><br>
-						<ul class="actions">
-						<li><button class="button primary">Add Class</button></li>
-						</ul>
-						</div>
-						<?php echo form_close(); ?>
-					</section>
 			<?php $x = 0;
 			if(isset($code)){
 				foreach($code as $data){
@@ -34,7 +17,8 @@
 						<section>
 						<div class="content">
 						<header>
-							<a href="#" class="icon fa-graduation-cap">
+							<a href="';
+							echo base_url('Student_dashboard/view_class/'.$data).'" class="icon fa-graduation-cap">
 							<span class="label">Icon</span></a>
 							<h3>'.$data.'</h3>
 						</header>'.
