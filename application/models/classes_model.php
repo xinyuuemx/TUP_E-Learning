@@ -6,6 +6,7 @@ class Classes_model extends CI_Model {
 	private $table3 = "class";
 	private $table4 = "professors";
 	private $table5 = "subjects";
+	private $table6 = "topics";
 	
 	// Constructor
 	public function __construct() {
@@ -44,6 +45,21 @@ class Classes_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from($this->table3);
 		$this->db->where('Prof_ID', $prof_id);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+	public function read_class_id($subject_code)
+	{
+		$this->db->select("*");
+		$this->db->from($this->table3);
+		$this->db->where('Subject_code', $subject_code);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+	public function read_topic($class_id){
+		$this->db->select("*");
+		$this->db->from($this->table6);
+		$this->db->where('Class_ID', $class_id);
 		$query=$this->db->get();
 		return $query->result_array();
 	}
