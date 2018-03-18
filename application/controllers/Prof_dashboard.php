@@ -23,10 +23,8 @@ class Prof_dashboard extends CI_Controller {
 			switch ($scene) {
 				case 'classes':
 				$data = $this->get_classes();
-				$this->load->view('professor/prof_classes',$data);
-				break;
-				case 'modules':
-				$this->load->view('professor/prof_modules',$_SESSION);
+				$this->session->set_userdata('error','');
+				$this->load->view('professors/prof_classes',$data);
 				break;
 
 				default:
@@ -56,14 +54,15 @@ class Prof_dashboard extends CI_Controller {
 			$data['prof_id']=$account_pass['Prof_ID'];
 			$data['name']=$account_pass['L_name'].", ".$account_pass['F_name']." ".$account_pass['M_name'];
 		}
-		foreach($result2 as $pass3){
-			$data['img_id']=$pass3['img_ID'];
+		foreach($result2 as $pas){
+			$data['img_id'] = $pas['img_ID'];
 		}
 		$session_data = array(
 			'prof_id' => $data['username'],
 			'password' => $password,
 			'name' => $data['name'],
-			'img_id' => $data['img_id']
+			'img_id' => $data['img_id'],
+			'error' => ' '
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'professor');
@@ -82,7 +81,7 @@ class Prof_dashboard extends CI_Controller {
 	public function get_classes(){
 		$dummy = null;
 		$x=0;
-		$result = $this->classes->read_classes($_SESSION['prof_id']);
+		$result = $this->classes->read_subjects($_SESSION['prof_id']);
 		foreach($result as $pass){
 			// Get the DATA
 			$data['classes'][$x]= $pass['Class_ID'];
@@ -118,13 +117,7 @@ class Prof_dashboard extends CI_Controller {
 			$data = null;
 		$this->result_class($data);
 	}
-	public function result_class($data){
-		$this->load->view('template/prof_dashboard_header',$_SESSION);
-		$scene_data['scene']='classes';
-		$this->load->view('template/prof_dashboard_nav',$scene_data);
-		$this->load->view('student/prof_result_class',$data);
-		$this->load->view('template/prof_dashboard_footer');
-	}
+
 	public function homepage(){
 		$this->load->view('template/prof_homepage_header',$_SESSION);
 		$this->load->view('home');
@@ -145,4 +138,69 @@ class Prof_dashboard extends CI_Controller {
 		$this->load->view('student/prof_add_class');
 		$this->load->view('template/prof_dashboard_footer');
 	}
+	public function view_class($scene){
+		$data = $this->search_topics($scene);
+		$this->session->set_userdata('subject',$data);
+		$this->load->view('template/prof_dashboard_header',$_SESSION);
+		$this->load->view('professor/prof_modules',$data);
+		$this->load->view('template/prof_dashboard_footer');
+	}
+	public function search_topics($raw_data){
+		$class_id = $this->classes->read_class_id($raw_data);
+		$data['code'] = $raw_data;
+		$counter = 0;
+		foreach ($class_id as $key) {
+			//Get class ID to get the topics in the class
+			$topics = $this->classes->read_topic($key['Class_ID']);
+			$this->session->set_userdata('class_id',$key['Class_ID']);
+			$x = 0;
+			foreach ($topics as $key) {
+				$data['topic_id'][$x] = $key['Topic_ID'];
+				$data['file'][$x] = $key['T_file'];
+				$data['description'][$x] = $key['T_description'];
+				$x = $x + 1;
+			}
+		}
+		$y = $this->classes->count_all_topic();
+		foreach ($y as $key) {
+			$counter = $counter + 1;
+		}
+
+		$this->session->set_userdata('last',$counter+1);
+
+	return $data;
+	}
+	public function do_upload()
+    {
+        $config['upload_path']          = './assets/files';
+        $config['allowed_types']        = 'pdf|jpg';
+
+        $this->load->library('upload', $config);
+        
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+                $this->session->set_userdata('error',$error['error']);
+                $this->load->view('template/prof_dashboard_header',$_SESSION);
+                $this->load->view('professor/prof_modules',$_SESSION['subject']);
+                $this->load->view('template/prof_dashboard_footer',$_SESSION);
+        }
+        else
+        {
+                $data = array('upload_data' => $this->upload->data());            
+                $pass = $data['upload_data']['file_name'];
+            	$this->session->set_userdata('error','Successfully uploaded the file!');
+                $ins = array(
+                	'Topic_ID' => $_SESSION['last'],
+                	'Class_ID' => $_SESSION['class_id'],
+                	'T_file' => $pass,
+                	'T_description' => $_POST['description']
+                	);
+                
+                $this->load->view('template/prof_dashboard_header',$_SESSION);
+                $this->db->insert('topics',$ins);
+                $this->load->view('professor/prof_modules',$_SESSION['subject']);
+                $this->load->view('template/prof_dashboard_footer',$_SESSION);
+        }
+    }
 }

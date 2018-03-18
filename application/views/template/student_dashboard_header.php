@@ -32,11 +32,4 @@
 				<li><?php $sid = $student_id; echo $sid;?></li>
 			</ul>
 
-			<ul class="alt">
-				<li><a class="active" href="<?php echo base_url().'student';?>">Dashboard</a></li>
-				<li><a href="<?php echo base_url().'Student_dashboard/index/classes';?>">Classes</a></li>
-				<li><a href="#">Discussions</a></li>
-				<li><a href="<?php echo base_url().'Student_dashboard/index/modules';?>">Modules</a></li>
-			</ul>
-		</div>
-	</body>
+			
