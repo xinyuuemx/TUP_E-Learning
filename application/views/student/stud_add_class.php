@@ -16,9 +16,9 @@
 	      	<button>Search</button>
 	      	<?php echo "<p class='text-danger'>".$this->session->flashdata("error")."<p>"; ?>
 	    	</form>
-  		</div>		
+  		</div>
 	</div>
-	<?php echo form_close(); ?>	
+	<?php echo form_close(); ?>
 	<ul class="actions">
 		<li><a href="#" class="button primary">Add Class</a></li>
 	</ul>

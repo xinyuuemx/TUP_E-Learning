@@ -1,14 +1,15 @@
- <div class="main">
- <div class="highlights">
-	<section>
-		<div class="content">
-			<header>
-				<div class="icon fa-user-plus"><span class="label">Icon</span></div>
-				<input type="text" name="title" placeholder="Type Here">
-			</header><br>
-			<h3>Add Class</h3>
-	</section>
-	<?php $x = 0;
+
+<div class="main">
+	<div class="inner">
+		<header class="special">
+			<h2>Classes</h2>
+				<ul class="alt">
+					<li>School Year 2017-2018</li>
+					<li>Second Semester</li>
+				</ul>
+		</header>
+		<div class="highlights">
+			<?php $x = 0;
 			if(isset($code)){
 				foreach($code as $data){
 						echo'
@@ -27,6 +28,7 @@
 			}
 			else
 				echo '<section><p>No classes</p></section>'
-			?>			
+			?>
+</div>
 </div>
 </div>
