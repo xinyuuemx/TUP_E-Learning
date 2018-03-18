@@ -68,9 +68,10 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 --
 
 CREATE TABLE `class` (
-  `Class_ID` int(10) NOT NULL,
+  `Class_ID` int(10) NOT NULL AUTO_INCREMENT,
   `Subject_code` int(10) NOT NULL,
-  `Prof_ID` varchar(10) NOT NULL
+  `Prof_ID` varchar(10) NOT NULL,
+  PRIMARY KEY (Class_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -308,10 +309,6 @@ ALTER TABLE `accounts`
   ADD PRIMARY KEY (`Account_ID`);
 
 --
--- Indexes for table `class`
---
-ALTER TABLE `class`
-  ADD PRIMARY KEY (`Class_ID`);
 
 --
 -- Indexes for table `class_members`
