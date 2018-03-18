@@ -20,15 +20,12 @@ class Student_dashboard extends CI_Controller {
 			// Load Dashboard
 			$scene_data['scene'] = $scene;
 			$this->load->view('template/student_dashboard_header',$_SESSION);
+			$this->load->view('template/student_dashboard_nav',$scene_data);
 			switch ($scene) {
 				case 'classes':
 				$data = $this->get_classes();
 				$this->load->view('student/stud_classes',$data);
 				break;
-				case 'modules':
-				$this->load->view('student/stud_modules',$_SESSION);
-				break;
-
 				default:
 				echo $scene;
 				$this->load->view('student/stud_dashboard',$_SESSION);
@@ -144,6 +141,22 @@ class Student_dashboard extends CI_Controller {
 			$data = null;
 		$this->result_class($data);
 	}
+	public function search_topics($raw_data){
+		$class_id = $this->classes->read_class_id($raw_data);
+		$data['code'] = $raw_data;
+		foreach ($class_id as $key) {
+			//Get class ID to get the topics in the class
+			$topics = $this->classes->read_topic($key['Class_ID']);
+			$x = 0;
+			foreach ($topics as $key) {
+				$data['topic_id'][$x] = $key['Topic_ID'];
+				$data['file'][$x] = $key['T_file'];
+				$data['description'][$x] = $key['T_description'];
+				$x = $x + 1;
+			}
+		}
+	return $data;
+	}
 	public function result_class($data){
 		$this->load->view('template/student_dashboard_header',$_SESSION);
 		$scene_data['scene']='classes';
@@ -166,9 +179,12 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('about_us');
 		$this->load->view('template/footer');
 	}
-	public function add_class(){
+	public function view_class($scene){
+		$data = $this->search_topics($scene);
 		$this->load->view('template/student_dashboard_header',$_SESSION);
-		$this->load->view('student/stud_add_class');
+		$scene_data['scene'] = 'classes';
+		$this->load->view('template/student_dashboard_nav',$scene_data);
+		$this->load->view('student/stud_modules',$data);
 		$this->load->view('template/student_dashboard_footer');
 	}
 
