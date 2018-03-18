@@ -1,24 +1,9 @@
-
-	<div class="main">
-	<div class="table-wrapper">
-		<h2>Dashboard</h2>
-		<table>
-			<thead>
-				<tr>
-					<th>Date</th>
-					<th>Description</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>02-18-18</td>
-					<td><a href="">Manage.</a></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-					
-    
+<div class="main">
+	<div class="inner">
+		<h2>Manage Classes</h2>
+		<a href="<?php echo base_url().'admin/manage_classes/create'?>" class="button large"><i class="icon fa-plus" style="">&nbsp;&nbsp;&nbsp;</i>Create New Class</a>
+		<a href="<?php echo base_url().'admin/manage_classes/edit'?>" class="button large"><i class="icon fa-edit">&nbsp;&nbsp;&nbsp;</i>Edit Existing Class</a>
+	</div>    
 </div>
 	 
 

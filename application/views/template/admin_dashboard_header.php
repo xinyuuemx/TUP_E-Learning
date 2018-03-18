@@ -34,7 +34,7 @@
 
 			<ul class="alt">
 				<li><a href="<?php echo base_url().'admin';?>">Dashboard</a></li>
-				<li><a href="<?php echo base_url().'Admin_dashboard/index/manageclasses';?>">Manage Classes</a></li>
+				<li><a href="<?php echo base_url().'admin/manage_classes';?>">Manage Classes</a></li>
 			</ul>
 		</div>
 	</body>

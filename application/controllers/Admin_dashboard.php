@@ -24,6 +24,10 @@ class Admin_dashboard extends CI_Controller {
 				$this->load->view('admin/admin_manageclasses');
 				break;
 				
+				case 'createclass':
+				$this->load->view('admin/admin_createclass');
+				break;
+				
 				default:
 				echo $scene;
 				$this->load->view('admin/admin_dashboard',$_SESSION);
@@ -34,10 +38,20 @@ class Admin_dashboard extends CI_Controller {
 		}
 
 	}
-	
+
 	public function administrator(){
 		$this->load->view('template/admin_dashboard_header',$_SESSION);
 		$this->load->view('admin/admin_dashboard');
+	}
+	
+	public function create_class(){
+		$this->load->view('template/admin_dashboard_header',$_SESSION);
+		$this->load->view('admin/admin_create_class');
+	}
+	
+	public function manageclasses(){
+		$this->load->view('template/admin_dashboard_header',$_SESSION);
+		$this->load->view('admin/admin_manageclasses');
 	}
 	
 	public function logout(){
