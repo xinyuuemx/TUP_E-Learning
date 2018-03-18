@@ -19,13 +19,7 @@ class Classes_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
-	public function read_details($class_id) {
-		$this->db->select("*");
-		$this->db->from($this->table3);
-		$this->db->where('Class_ID', $class_id);
-		$query=$this->db->get();
-		return $query->result_array();
-	}
+	
 	public function read_professors($prof_id) {
 		$this->db->select("*");
 		$this->db->from($this->table4);
@@ -44,6 +38,14 @@ class Classes_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from($this->table3);
 		$this->db->where('Prof_ID', $prof_id);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+	
+	public function read_details($class_id) {
+		$this->db->select("*");
+		$this->db->from($this->table3);
+		$this->db->where('Class_ID', $class_id);
 		$query=$this->db->get();
 		return $query->result_array();
 	}

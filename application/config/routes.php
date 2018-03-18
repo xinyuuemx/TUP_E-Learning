@@ -59,6 +59,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 //admin routes
 $route['admin'] = 'admin_dashboard';
-$route['admin/manage_classes'] = 'Admin_dashboard/index/manageclasses';
+$route['admin/manage_classes'] = 'Admin_dashboard/manageclasses';
 $route['admin/manage_classes/create'] = 'Admin_dashboard/index/createclass';
 $route['admin/manage_classes/edit'] = 'Admin_dashboard/index/editclass';
