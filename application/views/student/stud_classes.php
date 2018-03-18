@@ -1,5 +1,4 @@
 
-<body class="is-preload">
 <div class="main">
 	<div class="inner">
 		<header class="special">
@@ -50,4 +49,3 @@
 </div>
 </div>
 </div>
-</body>

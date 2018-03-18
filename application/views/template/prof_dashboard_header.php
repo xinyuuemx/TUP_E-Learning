@@ -39,4 +39,3 @@
 				<li><a href="<?php echo base_url().'Prof_dashboard/index/modules';?>">Modules</a></li>
 			</ul>
 		</div>
-	</body>
