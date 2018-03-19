@@ -6,7 +6,7 @@
 					<h2>Modules</h2>
 						<ul class="alt">
 							<li>School Year 2017-2018</li>
-							<li><?php echo $code?></li>
+							<li><?php $code=str_replace("%20"," ",$code);echo $code?></li>
 						</ul>
 				</header>
 				<div class="highlights">

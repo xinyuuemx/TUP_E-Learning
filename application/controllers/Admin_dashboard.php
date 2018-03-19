@@ -26,6 +26,7 @@ class Admin_dashboard extends CI_Controller {
 			switch ($scene) {	
 				case 'manageclasses':
 						$data['info']=$this->getTable();
+						$data['message']='';
 						//$data['links']=$this->pagination->create_links();
                         //var_dump($data['info']);
                         //$data['']
@@ -108,6 +109,7 @@ class Admin_dashboard extends CI_Controller {
 		if(isset($textInput) and !empty($textInput)){
 			
 			$data['info'] = $this->adminn->search_classes($textInput,$searchBy);
+			$data['message']="Keep the search box empty and hit 'Search' to display all classes.";
 			$this->load->view('template/admin_dashboard_header',$_SESSION);
 			$this->load->view('admin/admin_manageclasses',$data);
 		}

@@ -16,6 +16,12 @@
 			<input type="radio" id="bysc" name="radio" value="3">
 			<label for="bysc">by Subject Code</label>
 			<button class="button" type="submit" name="submit" ><i class="icon fa-search">&nbsp;&nbsp;&nbsp;</i>Search</button>
+			<?php if(empty($message)){
+					echo "<br />";
+				  }else {echo $message; }?>
+
+			<br />
+			<br />
 		</form>
 		
 		
