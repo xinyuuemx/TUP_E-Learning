@@ -16,13 +16,16 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  -->
 	
+
 	</head>
 
 	<body class="is-preload">
 		<nav>
 			<header id="header">
-				<div class="topnav" style="margin-left:1%;">
-					<a class="logo" href="<?php echo base_url().'Admin_dashboard/administrator'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
+				
+				<div class="topnav" style="margin-right:6px;">
+
+					<a class="logo" href="<?php echo base_url().'Admin_dashboard/homepage'?>"><i class="icon fa-university" style="margin-right:5px;">&nbsp;</i>TUP E-LEARNING WEBSITE</a>
 				</div>
 				<div class="topnav" style="margin-right:6px;">
 					<a href="<?php echo base_url().'admin' ?>"><?php echo $name; ?></a>

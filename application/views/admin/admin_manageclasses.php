@@ -1,10 +1,11 @@
 <div class="main">
-	
+	<div class="inner">
 		<h2>Manage Classes</h2>
 		<hr/>
 		
 		<a href="<?php echo base_url().'admin/manage_classes/create'?>" class="button large"><i class="icon fa-plus" style="">&nbsp;&nbsp;&nbsp;</i>Create New Class</a>
 		
+
 		<?php //echo form_open('Admin_dashboard/searchClasses'); ?>
                 
 		<form>
@@ -42,7 +43,8 @@
 				</tbody>	
 			</table>
                     <?php echo $this->pagination->create_links(); ?>
-		</div>		   
+		</div>		 
+
 </div>
 	 
 

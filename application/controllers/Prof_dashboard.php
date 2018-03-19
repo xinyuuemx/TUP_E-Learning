@@ -24,7 +24,10 @@ class Prof_dashboard extends CI_Controller {
 				case 'classes':
 				$data = $this->get_classes();
 				$this->session->set_userdata('error','');
-				$this->load->view('professors/prof_classes',$data);
+				$this->load->view('professor/prof_classes',$data);
+				break;
+				case 'modules':
+				$this->load->view('professor/prof_modules',$_SESSION);
 				break;
 
 				default:
@@ -201,7 +204,7 @@ class Prof_dashboard extends CI_Controller {
         $config['allowed_types']        = 'pdf|jpg';
 
         $this->load->library('upload', $config);
-        
+
         if ( ! $this->upload->do_upload('userfile'))
         {
                 $error = array('error' => $this->upload->display_errors());
@@ -212,7 +215,7 @@ class Prof_dashboard extends CI_Controller {
         }
         else
         {
-                $data = array('upload_data' => $this->upload->data());            
+                $data = array('upload_data' => $this->upload->data());
                 $pass = $data['upload_data']['file_name'];
             	$this->session->set_userdata('error','Successfully uploaded the file!');
                 $ins = array(
@@ -221,7 +224,7 @@ class Prof_dashboard extends CI_Controller {
                 	'T_file' => $pass,
                 	'T_description' => $_POST['description']
                 	);
-                
+
                 $this->load->view('template/prof_dashboard_header',$_SESSION);
                 $this->db->insert('topics',$ins);
                 $this->load->view('professor/prof_modules',$_SESSION['subject']);
