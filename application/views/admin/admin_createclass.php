@@ -1,4 +1,4 @@
-<?php echo form_open('Admin_dashboard/add_class'); ?>
+<?php echo form_open_multipart('Admin_dashboard/do_upload');?>
 <div class="main">
 	<div class="inner">
 		<div class="content">
@@ -33,6 +33,15 @@
 							<?php if ($this->session->flashdata('error')) { ?>
 									<div class="text-danger"> <?= $this->session->flashdata('error') ?> </div>
 							<?php } ?>
+						</div>
+
+						<div class="row gtr-uniform">
+							<div class="col-3 col-12-xsmall">
+									<h4>STUDENTS</h4>
+							</div>
+							<div class="col-9 col-12-xsmall">
+									<input type="file" name="userfile" required accept=".csv" />
+							</div>
 						</div>
 
 					</div>

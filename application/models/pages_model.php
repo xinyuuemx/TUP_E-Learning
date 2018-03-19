@@ -59,6 +59,15 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+	public function read_classID($sid, $pid) {
+		$this->db->select("Class_ID");
+		$this->db->from($this->table6);
+		$this->db->where('Subject_code', $sid);
+		$this->db->where('Prof_ID', $pid);
+		$query=$this->db->get();
+		$ret = $query->row();
+		return $ret->Class_ID;
+	}
 	public function submit_class($data)
 	{
 
