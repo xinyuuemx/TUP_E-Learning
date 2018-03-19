@@ -6,10 +6,4 @@ class About_us extends CI_Controller {
 				$this->load->helper('form');
 				$this->load->model('pages_model','pages'); //pre load all models
 		}
-
-    public function index(){
-				$this->load->view('include/header');
-				$this->load->view('aboutus');
-				$this->load->view('include/footer');
-    }
 }

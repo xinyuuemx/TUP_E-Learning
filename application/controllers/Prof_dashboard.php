@@ -26,7 +26,10 @@ class Prof_dashboard extends CI_Controller {
 				case 'classes':
 				$data = $this->get_classes();
 				$this->session->set_userdata('error','');
-				$this->load->view('professors/prof_classes',$data);
+				$this->load->view('professor/prof_classes',$data);
+				break;
+				case 'modules':
+				$this->load->view('professor/prof_modules',$_SESSION);
 				break;
 
 				default:
@@ -43,6 +46,8 @@ class Prof_dashboard extends CI_Controller {
 	$password = $this->input->post('psw');
 	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 	$result3 = $this->pages->read_profaccount($_POST['uname']);
+	$result4 = $this->pages->read_account($_POST['uname']);
+	//if user is attempting to login as professor
 	if(!empty($result) and !empty($result3))
 	{
 
@@ -69,6 +74,29 @@ class Prof_dashboard extends CI_Controller {
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'professor');
 
+	}
+	//if user attempting to login is admin
+	else if(!empty($result) && (empty($result4) && empty($result3))){
+		foreach($result as $results){
+			$data['username']=$results['Account_ID'];
+			$account_result = $this->pages->read_users($results['Account_ID'],$password);
+			$result2 = $this->pages->get_image($results['Account_ID']);
+		}
+		foreach ($account_result as $account_pass) {
+			$data['admin_id']=$account_pass['Account_ID'];
+			$data['name']="ADMINISTRATOR";
+		}
+		foreach($result2 as $pass3){
+			$data['img_id']=$pass3['img_ID'];
+		}
+		$session_data = array(
+			'admin_id' => $data['username'],
+			'password' => $password,
+			'name' => $data['name'],
+			'img_id' => $data['img_id']
+		);
+		$this->session->set_userdata($session_data);
+		redirect(base_url().'admin');
 	}
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
@@ -171,7 +199,7 @@ class Prof_dashboard extends CI_Controller {
         $config['allowed_types']        = 'pdf|jpg';
 
         $this->load->library('upload', $config);
-        
+
         if ( ! $this->upload->do_upload('userfile'))
         {
                 $error = array('error' => $this->upload->display_errors());
@@ -182,7 +210,7 @@ class Prof_dashboard extends CI_Controller {
         }
         else
         {
-                $data = array('upload_data' => $this->upload->data());            
+                $data = array('upload_data' => $this->upload->data());
                 $pass = $data['upload_data']['file_name'];
             	$this->session->set_userdata('error','Successfully uploaded the file!');
             	$counter = 0;
@@ -197,7 +225,6 @@ class Prof_dashboard extends CI_Controller {
                 	'T_file' => $pass,
                 	'T_description' => $_POST['description']
                 	);          
-                
                 $this->load->view('template/prof_dashboard_header',$_SESSION);
                 $this->topics->upload_topic($ins);
                 $this->load->view('professor/prof_modules',$_SESSION['subject']);
