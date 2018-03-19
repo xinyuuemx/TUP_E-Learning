@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'pages';
 $route['student'] = 'student_dashboard';
+$route['upload'] = 'upload';
 $route['professor'] = 'prof_dashboard';
 $route['login'] = 'login_controller';
 $route['loginprof'] = 'login_controller/professor';
