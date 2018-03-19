@@ -8,7 +8,7 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->library('session');
-                $this->load->library('pagination');
+        $this->load->library('pagination');
 	}
 	public function index($scene = null) {
 		if(!isset($_SESSION['admin_id'])){
@@ -19,16 +19,17 @@ class Admin_dashboard extends CI_Controller {
 		}
 		else{
 			$scene_data['scene'] = $scene;
-			//$this->load->view('template/admin_dashboard_header',$_SESSION);
+			$this->load->view('template/admin_dashboard_header',$_SESSION);
 			switch ($scene) {
 				
 				case 'manageclasses':
-                                $data['info']=$this->getTable();
-                                var_dump($data['info']);
-                                //$data['']
-                                //$this->getTable();
-                                $this->load->view('admin/admin_manageclasses',$data);
-				break;
+						$data['info']=$this->getTable();
+						//$data['links']=$this->pagination->create_links();
+                        //var_dump($data['info']);
+                        //$data['']
+                        //$this->getTable();
+                        $this->load->view('admin/admin_manageclasses',$data);
+						break;
 				
 				case 'createclass':
 				$this->load->view('admin/admin_createclass');
@@ -70,26 +71,30 @@ class Admin_dashboard extends CI_Controller {
         
         public function getTable(){
             $none=null;
+			$config['base_url'] = base_url().'admin/manage_classes';
             $config['total_rows'] = $this->adminn->count_classes();
-            $config['per_page'] = 10;
+            $config['per_page'] = 1;
+			
+			/*BOOTSTRAP PAGINATION CONFIG
+			$config['full_tag_open'] = "<ul class='pagination'>";
+			$config['full_tag_close'] ="</ul>";
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+			$config['next_tag_open'] = "<li>";
+			$config['next_tagl_close'] = "</li>";
+			$config['prev_tag_open'] = "<li>";
+			$config['prev_tagl_close'] = "</li>";
+			$config['first_tag_open'] = "<li>";
+			$config['first_tagl_close'] = "</li>";
+			$config['last_tag_open'] = "<li>";
+			$config['last_tagl_close'] = "</li>";*/
+			
             $this->pagination->initialize($config);
             $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
-            foreach($data as $datas){
-                $array['class']=$datas->Class_ID;
-                echo $array['class'].' ';
-                $data1=$this->classes->read_desc($datas->Subject_code);
-                foreach($data1 as $datas1){
-                    $array['subj']=$datas1['S_description'];
-                    echo $array['subj'].'    ';
-                }
-                $data2=$this->classes->read_professors($datas->Prof_ID);
-                foreach($data2 as $datas2){
-                    $array['prof']=$datas2['L_name'].', '.$datas2['F_name'].' '.$datas2['M_name'].'.';
-                    echo $array['prof'].'<br/>';
-                }
-            }
             if(isset($data)){
-                return $array;
+                return $data;
             }
             else return $none;
         }

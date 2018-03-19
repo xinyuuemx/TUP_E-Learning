@@ -22,22 +22,23 @@
 		<div class="table-wrapper">
 			<table class="alt" id="tbl">
 				<thead>
-                                    <tr>
-					<th>CLASS ID</th>
-					<th>CLASS DESCRIPTION</th>
-					<th>PROFESSOR</th>						
-                                    </tr>
+                    <tr>
+						<th>CLASS ID</th>
+						<th>CLASS NAME</th>
+						<th>PROF ID</th>						
+						<th>PROFESSOR NAME</th>						
+					</tr>
 				</thead>
 				<tbody>		
-                                    <?php foreach ($info as $key=>$infos){
-                                        foreach($infos as $infoss=>$infosss){
+                                    <?php foreach ($info as $infos){
                                         echo "<tr>".
-                                                "<td>".$infoss."</td>".
-                                                "<td>".$infoss."</td>".
-                                                "<td>".$infoss."</td>".
-                                        "</tr>";
+                                                "<td>".$infos->Class_ID."</td>".
+                                                "<td><a href=".'#'.">".$infos->S_description."</a></td>".
+                                                "<td>".$infos->Prof_ID."</td>".
+                                                "<td>".$infos->L_name.", ".$infos->F_name." ".$infos->M_name.","."</td>".
+											"</tr>";
                                                     
-                                    }} ?>
+                                    } ?>
 				</tbody>	
 			</table>
                     <?php echo $this->pagination->create_links(); ?>

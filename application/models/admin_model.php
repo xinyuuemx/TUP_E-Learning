@@ -42,8 +42,12 @@ class Admin_model extends CI_Model {
         //function for pagination data fetching
         public function read_classes($limit,$offset){
             $this->db->limit($limit,$offset);
-            $query=$this->db->get('class');
-            if($query->num_rows > 0){
+			$this->db->from('class');
+			$this->db->join('professors', 'class.Prof_ID = professors.Prof_ID');
+			$this->db->join('subjects', 'class.Subject_code = subjects.Subject_code');
+            $query=$this->db->get();
+            //var_dump($query->result());
+			if($query->num_rows > 0){
                 return $query->result();
             }else{
                 return $query->result();
