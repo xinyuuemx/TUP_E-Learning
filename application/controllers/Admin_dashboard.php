@@ -3,10 +3,14 @@ class Admin_dashboard extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		
+
 		$this->load->helper('form');
+		$this->load->model('admin_model','adminn');
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->library('session');
+        $this->load->library('pagination');
 
 	}
 	public function index($scene = null) {
@@ -19,15 +23,20 @@ class Admin_dashboard extends CI_Controller {
 		else{
 			$scene_data['scene'] = $scene;
 			$this->load->view('template/admin_dashboard_header',$_SESSION);
-			switch ($scene) {
-
+			switch ($scene) {	
 				case 'manageclasses':
-				$this->load->view('admin/admin_manageclasses');
-				break;
-
+						$data['info']=$this->getTable();
+						//$data['links']=$this->pagination->create_links();
+                        //var_dump($data['info']);
+                        //$data['']
+                        //$this->getTable();
+                        $this->load->view('admin/admin_manageclasses',$data);
+						break;
+				
 				case 'createclass':
 				$this->load->view('admin/admin_createclass');
 				break;
+				
 
 				default:
 				echo $scene;
@@ -45,15 +54,70 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('admin/admin_dashboard');
 	}
 
-	public function manageclasses(){
+	public function create_class(){
+		$this->load->view('template/admin_dashboard_header',$_SESSION);
+		$this->load->view('admin/admin_create_class');
+	}
+	
+	/*public function manageclasses(){
 		$this->load->view('template/admin_dashboard_header',$_SESSION);
 		$this->load->view('admin/admin_manageclasses');
-	}
+	}*/
 
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
 	}
+
+        
+        public function getTable(){
+            $none=null;
+			$config['base_url'] = base_url().'admin/manage_classes';
+            $config['total_rows'] = $this->adminn->count_classes();
+            $config['per_page'] = 1;
+			
+			/*BOOTSTRAP PAGINATION CONFIG
+			$config['full_tag_open'] = "<ul class='pagination'>";
+			$config['full_tag_close'] ="</ul>";
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+			$config['next_tag_open'] = "<li>";
+			$config['next_tagl_close'] = "</li>";
+			$config['prev_tag_open'] = "<li>";
+			$config['prev_tagl_close'] = "</li>";
+			$config['first_tag_open'] = "<li>";
+			$config['first_tagl_close'] = "</li>";
+			$config['last_tag_open'] = "<li>";
+			$config['last_tagl_close'] = "</li>";*/
+			
+            $this->pagination->initialize($config);
+            $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
+            if(isset($data)){
+                return $data;
+            }
+            else return $none;
+        }
+	
+	public function searchClasses(){
+		$textInput=$this->input->post('searchtext');
+		$searchBy=$this->input->post('radio');
+		
+		
+		if(isset($textInput) and !empty($textInput)){
+			
+			$data['info'] = $this->adminn->search_classes($textInput,$searchBy);
+			$this->load->view('template/admin_dashboard_header',$_SESSION);
+			$this->load->view('admin/admin_manageclasses',$data);
+		}
+		else{
+			redirect(base_url().'admin/manage_classes');
+		}
+		//$this->output->enable_profiler(TRUE);
+
+	}
+
 
 	public function homepage(){
 		$this->load->view('template/admin_homepage_header',$_SESSION);
@@ -133,4 +197,5 @@ class Admin_dashboard extends CI_Controller {
 						redirect(base_url().'admin/manage_classes/create');
 				}
 		}
+
 }

@@ -91,6 +91,7 @@ class Student_dashboard extends CI_Controller {
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'admin');
 	}
+	//if user attempting to login is professor
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
 		redirect(base_url().'login');

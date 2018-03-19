@@ -78,6 +78,7 @@ class Pages_model extends CI_Model {
 
 		$this->db->insert($this->table7, $data);
 	}
+
 }
 
 ?>
