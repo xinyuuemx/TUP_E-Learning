@@ -40,6 +40,8 @@ class Student_dashboard extends CI_Controller {
 	$password = $this->input->post('psw');
 	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 	$result3 = $this->pages->read_account($_POST['uname']);
+	$result4 = $this->pages->read_profaccount($_POST['uname']);
+	//if user attempting to login is a student
 	if(!empty($result) and !empty($result3))
 	{
 
@@ -65,6 +67,29 @@ class Student_dashboard extends CI_Controller {
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'student');
 
+	}
+	//if user attempting to login is admin
+	else if(!empty($result) && (empty($result4) && empty($result3))){
+		foreach($result as $results){
+			$data['username']=$results['Account_ID'];
+			$account_result = $this->pages->read_users($results['Account_ID'],$password);
+			$result2 = $this->pages->get_image($results['Account_ID']);
+		}
+		foreach ($account_result as $account_pass) {
+			$data['admin_id']=$account_pass['Account_ID'];
+			$data['name']="ADMINISTRATOR";
+		}
+		foreach($result2 as $pass3){
+			$data['img_id']=$pass3['img_ID'];
+		}
+		$session_data = array(
+			'admin_id' => $data['username'],
+			'password' => $password,
+			'name' => $data['name'],
+			'img_id' => $data['img_id']
+		);
+		$this->session->set_userdata($session_data);
+		redirect(base_url().'admin');
 	}
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');

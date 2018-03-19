@@ -1,43 +1,4 @@
-<!DOCTYPE HTML>
-<head>
-		<title>TUP E-LEARNING</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="" />
-		<meta name="keywords" content="" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	
-	<body class="is-preload">
 
-		<!-- Header -->
-		<nav>
-			<header id="header">
-				<div class="topnav">
-					<a href="home.html">Home</a>
-					<a href="">About Us</a>
-					<a href="">Contact Us</a>
-					</div>
-					<div class="topnav-right">
-						<a href="home.html">Sign Out</a>
-					</div>
-			</header>
-		</nav>
-			
-			<div class="sidenav">
-			<img src="images/f.png" alt="Profile Picture" width="240" height="240">
-			<ul class="alt">
-				<li><b>Someone</b></li>
-				<li>12345</li>
-			</ul>	
-						
-			<ul class="alt">
-				<li><a href="admin_dashboard.html">Dashboard</a></li>
-				<li><a class="active" href="admin_manage.html">Class Management</a></li>
-			</ul>
-			</div>
-			</section>
-			</div>	
 			<div class="main">
 			<div class="inner">
 				<header class="special">
@@ -111,5 +72,3 @@
 				</div>
 		</div>
 		</div>
-</body>
-</html>
