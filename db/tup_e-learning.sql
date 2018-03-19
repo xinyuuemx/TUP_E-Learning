@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 17, 2018 at 10:54 AM
+-- Generation Time: Mar 19, 2018 at 04:47 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 SET FOREIGN_KEY_CHECKS = 0;
 SET GROUP_CONCAT_MAX_LEN=32768;
@@ -27,7 +26,6 @@ EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 SET FOREIGN_KEY_CHECKS = 1;
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -36,7 +34,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 --
 -- Database: `tup_e-learning`
 --
-
 
 -- --------------------------------------------------------
 
@@ -59,7 +56,8 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('15-027-002', '123456'),
 ('15-027-003', '123456'),
 ('15-027-004', '123456'),
-('15-027-005', '123456');
+('15-027-005', '123456'),
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -82,7 +80,9 @@ INSERT INTO `class` (`Class_ID`, `Subject_code`, `Prof_ID`) VALUES
 (2221, 222, '2'),
 (3331, 333, '3'),
 (4441, 444, '4'),
-(5551, 555, '5');
+(5551, 555, '5'),
+(5552, 111, '2'),
+(5553, 222, '1');
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,8 @@ INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
 (2, '15-027-002'),
 (3, '15-027-003'),
 (4, '15-027-004'),
-(5, '15-027-005');
+(5, '15-027-005'),
+(5553, '15-027-031');
 
 -- --------------------------------------------------------
 
@@ -317,7 +318,7 @@ ALTER TABLE `class`
 -- Indexes for table `class_members`
 --
 ALTER TABLE `class_members`
-  ADD PRIMARY KEY (`Class_ID`);
+  ADD PRIMARY KEY (`Class_ID`,`Student_ID`);
 
 --
 -- Indexes for table `professors`
@@ -348,6 +349,16 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `topics`
   ADD PRIMARY KEY (`Topic_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `class`
+--
+ALTER TABLE `class`
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5554;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
