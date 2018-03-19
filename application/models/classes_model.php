@@ -62,4 +62,11 @@ class Classes_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
+	public function count_all_topic(){
+		$this->db->select("Topic_ID");
+		$this->db->from($this->table6);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
 }

@@ -9,6 +9,12 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/codemirror.min.css">
+ 
+    <!-- Include Editor style. -->
+    <link href="<?php echo base_url(); ?>assets/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 	</head>
 
 	<body class="is-preload">
@@ -24,8 +30,8 @@
 		</nav>
 
 		<div class="sidenav">
-			<?php $image=$img_id;?>
-			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg';?>" alt="Profile Picture" width="240" height="240">
+			<?php $image=$img_id; ?>
+			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg'; ?>" alt="Profile Picture" width="240" height="240">
 
 			<ul class="alt">
 				<li><b><?php $name_print = $name; echo $name_print;?></b></li>
@@ -36,7 +42,6 @@
 				<li><a href="<?php echo base_url().'professor';?>">Dashboard</a></li>
 				<li><a href="<?php echo base_url().'Prof_dashboard/index/classes';?>">Classes</a></li>
 				<li><a href="#">Discussions</a></li>
-				<li><a href="<?php echo base_url().'Prof_dashboard/index/modules';?>">Modules</a></li>
 			</ul>
 		</div>
-	</body>
+
