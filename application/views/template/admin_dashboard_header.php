@@ -9,6 +9,10 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<script type="text/javascript" src="<?php echo base_url().'/assets/js/jquery.min.js';?>"></script>
+		<script type="text/javascript">
+		
+		</script>
 	</head>
 
 	<body class="is-preload">
