@@ -12,6 +12,19 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+SET FOREIGN_KEY_CHECKS = 0;
+SET GROUP_CONCAT_MAX_LEN=32768;
+SET @tables = NULL;
+SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
+  FROM information_schema.tables
+  WHERE table_schema = (SELECT DATABASE());
+SELECT IFNULL(@tables,'dummy') INTO @tables;
+
+SET @tables = CONCAT('DROP TABLE IF EXISTS ', @tables);
+PREPARE stmt FROM @tables;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET FOREIGN_KEY_CHECKS = 1;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +51,10 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
+('admin', 'admin'),
 ('1', '123456'),
+('2', '123456'),
+('3', '123456');
 ('14-021-001', '123456'),
 ('14-021-002', '123456'),
 ('14-021-003', '123456'),
@@ -86,8 +102,6 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('17-037-008', '$2y$10$UgIbTZJr8YHWV1wOda.mUuRrSGpFSve3.n766rdNk.P52/Q11UA5a'),
 ('17-037-009', '$2y$10$/Z2iG7.iPmbtiwcozwrVreXXlbZKpx3xAeSD0AVqyu1CgX.5SL9uG'),
 ('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG'),
-('2', '123456'),
-('3', '123456');
 
 -- --------------------------------------------------------
 
@@ -152,6 +166,26 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`Account_ID`, `Topic_ID`, `Comment`) VALUES
 ('15-027-001', 11111, 'amam om');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `Account_ID` varchar(15) NOT NULL,
+  `Notification` text NOT NULL,
+  `Notif_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notifications`
+--
+
+INSERT INTO `notifications` (`Account_ID`, `Notification`, `Notif_date`) VALUES
+('15-027-001', 'Welcome to your E-Learning profile!', '2017-11-21'),
+('15-027-001', 'You have registered to CS311 Class. You can now read your modules.', '2017-12-06');
 
 -- --------------------------------------------------------
 
@@ -430,6 +464,12 @@ ALTER TABLE `class`
   ADD PRIMARY KEY (`Class_ID`);
 
 --
+-- Indexes for table `class_members`
+--
+ALTER TABLE `class_members`
+  ADD PRIMARY KEY (`Class_ID`,`Student_ID`);
+
+--
 -- Indexes for table `professors`
 --
 ALTER TABLE `professors`
@@ -458,6 +498,16 @@ ALTER TABLE `subjects`
 --
 ALTER TABLE `topics`
   ADD PRIMARY KEY (`Topic_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `class`
+--
+ALTER TABLE `class`
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5554;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
