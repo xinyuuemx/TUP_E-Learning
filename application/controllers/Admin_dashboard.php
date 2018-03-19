@@ -3,6 +3,8 @@ class Admin_dashboard extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		
+
 		$this->load->helper('form');
 		$this->load->model('admin_model','adminn');
 		$this->load->model('pages_model','pages');
@@ -98,38 +100,23 @@ class Admin_dashboard extends CI_Controller {
             else return $none;
         }
 	
-//	public function searchClasses(){
-//		$textInput=$this->input->post('searchtext');
-//		$searchBy=$this->input->post('radio');
-//		switch($searchBy){
-//			case '1': 
-//				$i=0;
-//				$none=null;
-//				$result=$this->adminn->read_classesByProfID($textInput);
-//				foreach($result as $results){
-//					$array['classID']=$results['Class_ID'];
-//					$array['profID']=$results['Prof_ID'];
-//					$array['scode']=$results['Subject_code'];
-//					$result1=$this->classes->read_desc($array['scode']);
-//					foreach($result1 as $results1){
-//						$array['desc']=$results1['S_Description'];
-//					}
-//					$result2=$this->pages->read_profaccount($array['profID']);
-//					foreach($result2 as $results2){
-//						$array['Lname']=$results2['L_name'];
-//						$array['Fname']=$results2['F_name'];
-//						$array['Mname']=$results2['M_name'];
-//					}
-//					$i=$i+1;
-//				}
-//				if(isset($array)){
-//					return $array;
-//				}
-//				else{
-//					return $none;
-//				}
-//		}
-//	}
+	public function searchClasses(){
+		$textInput=$this->input->post('searchtext');
+		$searchBy=$this->input->post('radio');
+		
+		
+		if(isset($textInput) and !empty($textInput)){
+			
+			$data['info'] = $this->adminn->search_classes($textInput,$searchBy);
+			$this->load->view('template/admin_dashboard_header',$_SESSION);
+			$this->load->view('admin/admin_manageclasses',$data);
+		}
+		else{
+			redirect(base_url().'admin/manage_classes');
+		}
+		//$this->output->enable_profiler(TRUE);
+
+	}
 
 
 	public function homepage(){
