@@ -142,7 +142,7 @@ class Student_dashboard extends CI_Controller {
 		$this->result_class($data);
 	}
 	public function search_topics($raw_data){
-		$class_id = $this->classes->read_class_id($raw_data);
+		$class_id = $this->classes->read_class_id(urldecode($raw_data));
 		$data['code'] = $raw_data;
 		foreach ($class_id as $key) {
 			//Get class ID to get the topics in the class

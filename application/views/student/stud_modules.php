@@ -6,7 +6,7 @@
 					<h2>Modules</h2>
 						<ul class="alt">
 							<li>School Year 2017-2018</li>
-							<li><?php echo $code?></li>
+							<li><?php echo urldecode($code)?></li>
 						</ul>
 				</header>
 				<div class="highlights">
