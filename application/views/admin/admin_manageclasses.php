@@ -41,7 +41,7 @@
 										echo "<tr>".
                                                 "<td>".$infos->Class_ID."</td>".
                                                 "<td>".$infos->Subject_code."</td>".
-                                                "<td><a href=".'#'.">".$infos->S_description."</a></td>".
+                                                "<td><a href=".'admin/manage_classes/'.$infos->Class_ID.">".$infos->S_description."</a></td>".
                                                 "<td>".$infos->Prof_ID."</td>".
                                                 "<td>".$infos->L_name.", ".$infos->F_name." ".$infos->M_name.","."</td>".
 											"</tr>";

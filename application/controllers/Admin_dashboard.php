@@ -75,7 +75,7 @@ class Admin_dashboard extends CI_Controller {
             $none=null;
 			$config['base_url'] = base_url().'admin/manage_classes';
             $config['total_rows'] = $this->adminn->count_classes();
-            $config['per_page'] = 1;
+            $config['per_page'] = 20;
 			
 			/*BOOTSTRAP PAGINATION CONFIG
 			$config['full_tag_open'] = "<ul class='pagination'>";
