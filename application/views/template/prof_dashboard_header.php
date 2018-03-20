@@ -11,10 +11,8 @@
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/codemirror.min.css">
+    <link rel="stylesheet" href="<?php echo base_url().'/assets/css/comment.css';?>" />
  
-    <!-- Include Editor style. -->
-    <link href="<?php echo base_url(); ?>assets/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <link href="<?php echo base_url(); ?>assets/css/froala_style.min.css" rel="stylesheet" type="text/css" />
 	</head>
 
 	<body class="is-preload">

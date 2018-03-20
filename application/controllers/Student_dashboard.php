@@ -116,7 +116,7 @@ class Student_dashboard extends CI_Controller {
 		$this->result_class($data);
 	}
 	public function search_topics($raw_data){
-		$class_id = $this->classes->read_class_id($raw_data);
+		$class_id = $this->classes->read_class_id(urldecode($raw_data));
 		$data['code'] = $raw_data;
 		foreach ($class_id as $key) {
 			//Get class ID to get the topics in the class
@@ -160,6 +160,17 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('template/student_dashboard_nav',$scene_data);
 		$this->load->view('student/stud_modules',$data);
 		$this->load->view('template/student_dashboard_footer');
+	}
+	public function view_topic($topic,$file){
+		$data = array('topic' => $topic,'file'=>$file);
+		$this->load->view('template/student_dashboard_header',$_SESSION);
+		$scene_data['scene'] = 'classes';
+		$this->load->view('template/student_dashboard_nav',$scene_data);
+		$this->load->view('main/view_topic',$data);
+		$this->load->view('template/student_dashboard_footer');
+	}
+	public function comments($data){
+		
 	}
 
 }

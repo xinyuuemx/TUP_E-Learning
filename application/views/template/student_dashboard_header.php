@@ -9,6 +9,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/comment.css';?>" />
 	</head>
 
 	<body class="is-preload">
