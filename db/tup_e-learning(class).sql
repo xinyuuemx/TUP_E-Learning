@@ -109,7 +109,8 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('17-037-009', '$2y$10$/Z2iG7.iPmbtiwcozwrVreXXlbZKpx3xAeSD0AVqyu1CgX.5SL9uG'),
 ('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG'),
 ('2', '123456'),
-('3', '123456');
+('3', '123456')
+('admin','admin');
 
 -- --------------------------------------------------------
 
@@ -488,7 +489,8 @@ INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
 ('15-027-004', 'm'),
 ('15-027-005', 'm'),
 ('15-027-002', 'm'),
-('15-027-001', 'm');
+('15-027-001', 'm')
+('admin','tup');
 
 -- --------------------------------------------------------
 
