@@ -6,7 +6,7 @@
 					<h2>Modules</h2>
 						<ul class="alt">
 							<li>School Year 2017-2018</li>
-							<li><?php echo $code?></li>
+							<li><?php echo urldecode($code)?></li>
 						</ul>
 				</header>
 				<div class="highlights">
@@ -17,9 +17,7 @@
 						<section>
 						<div class="content">
 						<header>
-							<a href="';
-							echo base_url().'assets/files/'.$file[$x].'" class="icon fa-graduation-cap">
-							<span class="label">Icon</span></a>
+							<a href="'.base_url().'Student_dashboard/view_topic/'.$data.'/'.$file[$x].'" class="icon fa-graduation-cap"></a>
 							<h3>'.$topic_id[$x].'</h3>
 						</header>'.
 						'<p>'.$description[$x].'</p>

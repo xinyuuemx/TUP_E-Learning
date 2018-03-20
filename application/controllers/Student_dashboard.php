@@ -6,6 +6,7 @@ class Student_dashboard extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
+		$this->load->model('comments_model','comments'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -116,7 +117,7 @@ class Student_dashboard extends CI_Controller {
 		$this->result_class($data);
 	}
 	public function search_topics($raw_data){
-		$class_id = $this->classes->read_class_id($raw_data);
+		$class_id = $this->classes->read_class_id(urldecode($raw_data));
 		$data['code'] = $raw_data;
 		foreach ($class_id as $key) {
 			//Get class ID to get the topics in the class
@@ -160,6 +161,32 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('template/student_dashboard_nav',$scene_data);
 		$this->load->view('student/stud_modules',$data);
 		$this->load->view('template/student_dashboard_footer');
+	}
+	public function view_topic($topic,$file){
+		$data = array('topic' => $topic,'file'=>$file);
+		$this->load->view('template/student_dashboard_header',$_SESSION);
+		$scene_data['scene'] = 'classes';
+		$this->load->view('template/student_dashboard_nav',$scene_data);
+		$this->load->view('main/view_topic',$data);
+		$pass = $this->get_comments($topic);
+		$this->load->view('main/comments',$pass);
+		$this->load->view('template/student_dashboard_footer');
+	}
+	public function get_comments($data){
+		$result = $this->comments->read($data);
+		$x = 0;
+		foreach ($result as $key) {
+			$result2 = $this->pages->get_image($key['Account_ID']);
+			$pics[$x] = $result2;
+			$x = $x + 1;
+		}
+		foreach ($result as $key) {
+			$data_pass = array(
+			'account_id' => $result,
+			'pic'	  => $pics 
+		);
+		}
+		return $data_pass;
 	}
 
 }

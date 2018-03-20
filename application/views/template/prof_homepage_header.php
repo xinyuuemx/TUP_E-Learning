@@ -9,6 +9,8 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<link href="<?php echo base_url().'/css/bootstrap.min.css'?>" rel="stylesheet" id="bootstrap-css">
+		<script src="<?php echo base_url().'js/bootstrap.min.js'?>"></script>
 	</head>
 
 	<body class="is-preload">

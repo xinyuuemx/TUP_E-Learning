@@ -9,6 +9,10 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/comment.css';?>" />
+		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+		<link href="<?php echo base_url().'assets/css/bootstrap.min.css'?>" rel="stylesheet" id="bootstrap-css">
+		<script src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script>
 	</head>
 
 	<body class="is-preload">
@@ -25,7 +29,7 @@
 
 		<div class="sidenav">
 			<?php $image=$img_id;?>
-			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg';?>" alt="Profile Picture" width="240" height="240">
+			<img src="<?php echo base_url().'assets/images/'.$image;?>" alt="Profile Picture" width="240" height="240">
 
 			<ul class="alt">
 				<li><b><?php $name_print = $name; echo $name_print;?></b></li>

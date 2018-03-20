@@ -4,8 +4,10 @@ class Prof_dashboard extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->helper('form');
+		$this->load->helper('file');
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
+		$this->load->model('topics_model','topics'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -117,7 +119,6 @@ class Prof_dashboard extends CI_Controller {
 			$data = null;
 		$this->result_class($data);
 	}
-
 	public function homepage(){
 		$this->load->view('template/prof_homepage_header',$_SESSION);
 		$this->load->view('home');
@@ -145,10 +146,15 @@ class Prof_dashboard extends CI_Controller {
 		$this->load->view('professor/prof_modules',$data);
 		$this->load->view('template/prof_dashboard_footer');
 	}
+	public function view_topic($topic,$file){
+		$data = array('topic' => $topic,'file'=>$file);
+		$this->load->view('template/prof_dashboard_header',$_SESSION);
+		$this->load->view('main/view_topic',$data);
+		$this->load->view('template/prof_dashboard_footer');
+	}
 	public function search_topics($raw_data){
-		$class_id = $this->classes->read_class_id($raw_data);
-		$data['code'] = $raw_data;
-		$counter = 0;
+		$class_id = $this->classes->read_class_id(urldecode($raw_data));
+		$data['code'] = urldecode($raw_data);
 		foreach ($class_id as $key) {
 			//Get class ID to get the topics in the class
 			$topics = $this->classes->read_topic($key['Class_ID']);
@@ -160,17 +166,28 @@ class Prof_dashboard extends CI_Controller {
 				$data['description'][$x] = $key['T_description'];
 				$x = $x + 1;
 			}
-		}
-		$y = $this->classes->count_all_topic();
-		foreach ($y as $key) {
-			$counter = $counter + 1;
-		}
-
-		$this->session->set_userdata('last',$counter+1);
+		}	
 
 	return $data;
 	}
-	public function do_upload()
+	public function get_topics($raw_data){
+		$result = $this->topics->get_topic_info($raw_data);
+		if(isset($result)){
+			foreach ($result as $key) {
+				$data = array(
+					'file' => $key['T_file'], 
+					'description' => $key['T_description'], 
+					'class_id' => $key['Class_ID'],
+					'topic_id' => $raw_data 
+				);
+			}	
+		}
+		else
+			$data = null;
+
+		return $data;
+	}
+	public function upload()
     {
         $config['upload_path']          = './assets/files';
         $config['allowed_types']        = 'pdf|jpg';
@@ -190,17 +207,65 @@ class Prof_dashboard extends CI_Controller {
                 $data = array('upload_data' => $this->upload->data());            
                 $pass = $data['upload_data']['file_name'];
             	$this->session->set_userdata('error','Successfully uploaded the file!');
+            	$counter = 0;
+            	$y = $this->topics->count_all_topic();
+				foreach ($y as $key) {
+					$counter = $counter + 1;
+				}
+				$this->session->set_userdata('last',$counter+1);
                 $ins = array(
                 	'Topic_ID' => $_SESSION['last'],
                 	'Class_ID' => $_SESSION['class_id'],
                 	'T_file' => $pass,
                 	'T_description' => $_POST['description']
-                	);
+                	);          
                 
                 $this->load->view('template/prof_dashboard_header',$_SESSION);
-                $this->db->insert('topics',$ins);
+                $this->topics->upload_topic($ins);
                 $this->load->view('professor/prof_modules',$_SESSION['subject']);
                 $this->load->view('template/prof_dashboard_footer',$_SESSION);
+                $location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
+    			redirect($location, 'refresh'); 
         }
+    }
+    public function delete($raw_data,$raw_data2){
+    	$del = urldecode($raw_data);
+    	$this->topics->delete($del);
+    	$path = './assets/files/'.$raw_data2;
+    	unlink($path);
+    	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
+    	redirect($location, 'refresh');
+    }
+    public function update_topic($data){
+    	$result = $this->get_topics($data);
+    	$this->load->view('template/prof_dashboard_header',$_SESSION);
+        $this->load->view('professor/prof_update',$result);
+        $this->load->view('template/prof_dashboard_footer');
+    }
+    public function edit_data(){
+    	$result = $this->get_topics($_POST['topic_id']);
+
+    	$config['upload_path']          = './assets/files';
+        $config['allowed_types']        = 'pdf|jpg';
+
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload('file')){
+    		$data = array(
+    			'T_file' => $result['file'],
+    			'T_description' => $_POST['description']
+    			 ); 
+        }                   
+    	else{
+    		$date = array('upload_data' => $this->upload->data());
+    		$data = array(
+    			'T_file' => $date['upload_data']['file_name'],
+    			'T_description' => $_POST['description']
+    			 ); 	
+    		$path = './assets/files/'.$result['file'];
+    		unlink($path);
+    	}
+    	$this->topics->update_topic($_POST['topic_id'],$data);
+    	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
+    	redirect($location, 'refresh'); 
     }
 }
