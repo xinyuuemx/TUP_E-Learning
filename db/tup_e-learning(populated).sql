@@ -1,4 +1,4 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
@@ -54,7 +54,7 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('admin', 'admin'),
 ('1', '123456'),
 ('2', '123456'),
-('3', '123456'),
+('3', '123456');
 ('14-021-001', '123456'),
 ('14-021-002', '123456'),
 ('14-021-003', '123456'),
@@ -101,7 +101,7 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('17-037-007', '$2y$10$VXn31B7F7Awunb5B8zN6H.2ANbm8SNPimtkbfGzn0bg20Srgb9dTq'),
 ('17-037-008', '$2y$10$UgIbTZJr8YHWV1wOda.mUuRrSGpFSve3.n766rdNk.P52/Q11UA5a'),
 ('17-037-009', '$2y$10$/Z2iG7.iPmbtiwcozwrVreXXlbZKpx3xAeSD0AVqyu1CgX.5SL9uG'),
-('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG');
+('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG'),
 
 -- --------------------------------------------------------
 
