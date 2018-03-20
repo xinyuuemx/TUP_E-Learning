@@ -62,7 +62,7 @@ class Admin_model extends CI_Model {
 				$this->db->from('class');
 				$this->db->join('professors', 'class.Prof_ID = professors.Prof_ID');
 				$this->db->join('subjects', 'class.Subject_code = subjects.Subject_code');
-				$this->db->like('class.Prof_ID',$searchkey);
+				$this->db->where('class.Prof_ID',$searchkey);
 				$query = $this->db->get();
 				//var_dump($query);
 				if($query->num_rows > 0){
@@ -76,7 +76,7 @@ class Admin_model extends CI_Model {
 				$this->db->from('class');
 				$this->db->join('professors', 'class.Prof_ID = professors.Prof_ID');
 				$this->db->join('subjects', 'class.Subject_code = subjects.Subject_code');
-				$this->db->like('class.Class_ID',$searchkey);
+				$this->db->where('class.Class_ID',$searchkey);
 				$query = $this->db->get();
 				
 				if($query->num_rows > 0){
@@ -90,7 +90,7 @@ class Admin_model extends CI_Model {
 				$this->db->from('class');
 				$this->db->join('professors', 'class.Prof_ID = professors.Prof_ID');
 				$this->db->join('subjects', 'class.Subject_code = subjects.Subject_code');
-				$this->db->like('class.Subject_code',$searchkey);
+				$this->db->where('class.Subject_code',$searchkey);
 				$query = $this->db->get();
 				
 				if($query->num_rows > 0){
