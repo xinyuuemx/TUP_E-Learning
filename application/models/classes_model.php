@@ -62,12 +62,5 @@ class Classes_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 }
