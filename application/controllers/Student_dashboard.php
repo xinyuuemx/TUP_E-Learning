@@ -41,6 +41,8 @@ class Student_dashboard extends CI_Controller {
 	$password = $this->input->post('psw');
 	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
 	$result3 = $this->pages->read_account($_POST['uname']);
+	$result4 = $this->pages->read_profaccount($_POST['uname']);
+	//if user attempting to login is a student
 	if(!empty($result) and !empty($result3))
 	{
 
@@ -67,6 +69,30 @@ class Student_dashboard extends CI_Controller {
 		redirect(base_url().'student');
 
 	}
+	//if user attempting to login is admin
+	else if(!empty($result) && (empty($result4) && empty($result3))){
+		foreach($result as $results){
+			$data['username']=$results['Account_ID'];
+			$account_result = $this->pages->read_users($results['Account_ID'],$password);
+			$result2 = $this->pages->get_image($results['Account_ID']);
+		}
+		foreach ($account_result as $account_pass) {
+			$data['admin_id']=$account_pass['Account_ID'];
+			$data['name']="ADMINISTRATOR";
+		}
+		foreach($result2 as $pass3){
+			$data['img_id']=$pass3['img_ID'];
+		}
+		$session_data = array(
+			'admin_id' => $data['username'],
+			'password' => $password,
+			'name' => $data['name'],
+			'img_id' => $data['img_id']
+		);
+		$this->session->set_userdata($session_data);
+		redirect(base_url().'admin');
+	}
+	//if user attempting to login is professor
 	else{
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
 		redirect(base_url().'login');
@@ -168,6 +194,7 @@ class Student_dashboard extends CI_Controller {
 		$scene_data['scene'] = 'classes';
 		$this->load->view('template/student_dashboard_nav',$scene_data);
 		$this->load->view('main/view_topic',$data);
+<<<<<<< HEAD
 		$pass = $this->get_comments($topic);
 		$this->load->view('main/comments',$pass);
 		$this->load->view('template/student_dashboard_footer');
@@ -187,6 +214,12 @@ class Student_dashboard extends CI_Controller {
 		);
 		}
 		return $data_pass;
+=======
+		$this->load->view('template/student_dashboard_footer');
+	}
+	public function comments($data){
+		
+>>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 	}
 
 }

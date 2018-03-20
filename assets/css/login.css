@@ -30,7 +30,7 @@ button {
 	background-color: #111111;
     box-shadow: inset 0 0 0 1px #ffffff;
     color: #ffffff !important; }
-}
+
 
 button:hover {
     opacity: 0.8;
