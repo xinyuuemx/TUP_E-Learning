@@ -187,5 +187,16 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('student/stud_modules',$data);
 		$this->load->view('template/student_dashboard_footer');
 	}
+	public function view_topic($topic,$file){
+		$data = array('topic' => $topic,'file'=>$file);
+		$this->load->view('template/student_dashboard_header',$_SESSION);
+		$scene_data['scene'] = 'classes';
+		$this->load->view('template/student_dashboard_nav',$scene_data);
+		$this->load->view('main/view_topic',$data);
+		$this->load->view('template/student_dashboard_footer');
+	}
+	public function comments($data){
+		
+	}
 
 }
