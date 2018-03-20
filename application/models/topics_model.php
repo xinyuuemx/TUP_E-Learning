@@ -25,6 +25,17 @@ class Topics_model extends CI_Model {
 		return $query->result_array();
 	}
 
+<<<<<<< HEAD
+	public function get_topic_info($data){
+		$this->db->select("*");
+		$this->db->from($this->table6);
+		$this->db->where('Topic_ID',$data);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+
+=======
+>>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
 	public function delete($data){
 		$this->db->where('Topic_ID', $data);
 		$this->db->delete($this->table6);

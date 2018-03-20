@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/codemirror.min.css">
+    <link rel="stylesheet" href="<?php echo base_url().'/assets/css/comment.css';?>" />
  
 	</head>
 
