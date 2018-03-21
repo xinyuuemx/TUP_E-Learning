@@ -185,11 +185,8 @@ class Prof_dashboard extends CI_Controller {
 		$data['code'] = urldecode($raw_data);
 <<<<<<< HEAD
 =======
-<<<<<<< HEAD
-=======
 		$counter = 0;
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 		foreach ($class_id as $key) {
 			//Get class ID to get the topics in the class
 			$topics = $this->classes->read_topic($key['Class_ID']);
@@ -203,33 +200,9 @@ class Prof_dashboard extends CI_Controller {
 			}
 		}	
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
 	return $data;
 	}
-	public function get_topics($raw_data){
-		$result = $this->topics->get_topic_info($raw_data);
-		if(isset($result)){
-			foreach ($result as $key) {
-				$data = array(
-					'file' => $key['T_file'], 
-					'description' => $key['T_description'], 
-					'class_id' => $key['Class_ID'],
-					'topic_id' => $raw_data 
-				);
-			}	
-		}
-		else
-			$data = null;
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
-
-		return $data;
-	}
-=======
-	return $data;
-	}
-<<<<<<< HEAD
 	public function get_topics($raw_data){
 		$result = $this->topics->get_topic_info($raw_data);
 		if(isset($result)){
@@ -248,8 +221,9 @@ class Prof_dashboard extends CI_Controller {
 		return $data;
 	}
 =======
+	return $data;
+	}
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 	public function upload()
     {
         $config['upload_path']          = './assets/files';
@@ -283,9 +257,6 @@ class Prof_dashboard extends CI_Controller {
                 	'T_description' => $_POST['description']
                 	);          
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
                 
 =======
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
@@ -307,9 +278,6 @@ class Prof_dashboard extends CI_Controller {
     }
     public function update_topic($data){
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
     	$result = $this->get_topics($data);
     	$this->load->view('template/prof_dashboard_header',$_SESSION);
         $this->load->view('professor/prof_update',$result);
@@ -318,19 +286,13 @@ class Prof_dashboard extends CI_Controller {
     public function edit_data(){
     	$result = $this->get_topics($_POST['topic_id']);
 
-<<<<<<< HEAD
-=======
 =======
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
     	$config['upload_path']          = './assets/files';
         $config['allowed_types']        = 'pdf|jpg';
 
         $this->load->library('upload', $config);
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
         if(!$this->upload->do_upload('file')){
     		$data = array(
     			'T_file' => $result['file'],
@@ -349,8 +311,6 @@ class Prof_dashboard extends CI_Controller {
     	$this->topics->update_topic($_POST['topic_id'],$data);
     	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
     	redirect($location, 'refresh'); 
-<<<<<<< HEAD
-=======
 =======
     	print_r($_POST);	
     	if($_POST['file']!=null){
@@ -365,6 +325,5 @@ class Prof_dashboard extends CI_Controller {
 	    }
     	$this->topics->update_topic($data,$update_data);
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
     }
 }

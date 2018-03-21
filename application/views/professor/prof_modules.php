@@ -31,16 +31,11 @@
 						<td>'.$class_id.'
 						</td>
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 						<td><a href="'.base_url().'Prof_dashboard/view_topic/'.$data.'/'.$file[$x].'" class="icon fa-graduation-cap">
 						'.$file[$x].'</a>
 						</td>'.
 						'<td>'.$description[$x].'</td>';
 						echo '<td><a href="'.base_url().'Prof_dashboard/update_topic/'.$data.'" class="button icon fa-edit">EDIT</a>
-<<<<<<< HEAD
-=======
 =======
 						<td><input type="file" name="file"/><a href="';
 							echo base_url().'assets/files/'.$file[$x].'" class="icon fa-graduation-cap">
@@ -52,7 +47,6 @@
 
 
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 							<a href="';
 							echo base_url().'Prof_dashboard/delete/'.$data.'/'.$file[$x].'" class="button">Delete</a>
 						</td>
