@@ -10,8 +10,11 @@
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<<<<<<< HEAD
+=======
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/codemirror.min.css">
     <link rel="stylesheet" href="<?php echo base_url().'/assets/css/comment.css';?>" />
+>>>>>>> 6805b096399d68704945699d066aef838ba89fa5
  
 	</head>
 
@@ -29,7 +32,7 @@
 
 		<div class="sidenav">
 			<?php $image=$img_id; ?>
-			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg'; ?>" alt="Profile Picture" width="240" height="240">
+			<img src="<?php echo base_url().'assets/images/'.$image; ?>" alt="Profile Picture" width="240" height="240">
 
 			<ul class="alt">
 				<li><b><?php $name_print = $name; echo $name_print;?></b></li>
