@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2018 at 11:28 AM
+-- Generation Time: Mar 21, 2018 at 03:36 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -12,6 +12,21 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+/* auto drop tables */
+SET FOREIGN_KEY_CHECKS = 0;
+SET GROUP_CONCAT_MAX_LEN=32768;
+SET @tables = NULL;
+SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
+  FROM information_schema.tables
+  WHERE table_schema = (SELECT DATABASE());
+SELECT IFNULL(@tables,'dummy') INTO @tables;
+
+SET @tables = CONCAT('DROP TABLE IF EXISTS ', @tables);
+PREPARE stmt FROM @tables;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+SET FOREIGN_KEY_CHECKS = 1;
+/* please copy until here after exporting the db */
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -96,6 +111,7 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 
 CREATE TABLE `class` (
   `Class_ID` int(10) NOT NULL,
+  `SY_ID` int(10) NOT NULL,
   `Subject_code` varchar(10) NOT NULL,
   `Prof_ID` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -104,10 +120,10 @@ CREATE TABLE `class` (
 -- Dumping data for table `class`
 --
 
-INSERT INTO `class` (`Class_ID`, `Subject_code`, `Prof_ID`) VALUES
-(1011, 'CS 101', '6'),
-(1111, 'CS 111', '16'),
-(1112, 'CS 111L', '16');
+INSERT INTO `class` (`Class_ID`, `SY_ID`, `Subject_code`, `Prof_ID`) VALUES
+(1011, 0, 'CS 101', '6'),
+(1111, 0, 'CS 111', '16'),
+(1112, 0, 'CS 111L', '16');
 
 -- --------------------------------------------------------
 
@@ -243,10 +259,23 @@ INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
 
 CREATE TABLE `quizzes` (
   `Quiz_ID` int(10) NOT NULL,
-  `Topic_ID` int(10) NOT NULL,
   `Question` varchar(30) NOT NULL,
   `Answer` varchar(20) NOT NULL,
   `Choices` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `school_years`
+--
+
+CREATE TABLE `school_years` (
+  `SY_ID` int(10) NOT NULL,
+  `SY_Start` year(4) NOT NULL,
+  `SY_End` year(4) NOT NULL,
+  `Semester` varchar(4) NOT NULL,
+  `Subject_Code` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -262,62 +291,61 @@ CREATE TABLE `students` (
   `M_name` varchar(20) NOT NULL,
   `Course` varchar(6) NOT NULL,
   `Section` varchar(2) NOT NULL,
-  `E-mail` varchar(30) NOT NULL,
-  `gender` varchar(12) NOT NULL
+  `E-mail` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`, `gender`) VALUES
-('14-021-001', 'Squarepants', 'Spongebob', 'S', 'BSIT', 'B', 'sbob.squarepants@example.com', 'm'),
-('14-021-002', 'Tentacles', 'Squidward', 'S', 'BSIT', 'C', 'stentacles@example.com', 'm'),
-('14-021-003', 'Sheldon', 'Plankton', 'P', 'BSIT', 'A', 's.plankton@example.com', 'm'),
-('14-021-004', 'Star', 'Patrick', 'M', 'BSIT', 'A', 'patrick.star@example.com', 'm'),
-('14-021-005', 'Krabs', 'Eugene', 'A', 'BSIT', 'C', 'e.krabs@example.com', 'm'),
-('14-021-006', 'Cheeks', 'Sandy', 'S', 'BSIT', 'B', 's.cheecks@example.com', 'f'),
-('14-021-007', 'Leg', 'My', 'I', 'BSIT', 'B', 'm.leg@example.com', 'm'),
-('14-021-008', 'Comp', 'Karen', 'C', 'BSIT', 'C', 'k.comp@example.com', 'f'),
-('14-021-009', 'Lobster', 'Larry', 'L', 'BSIT', 'C', 'l.lobster@example.com', 'm'),
-('14-021-010', 'Pirate', 'Patchy', 'P', 'BSIT', 'A', 'p.pirate@example.com', 'm'),
-('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com', 'm'),
-('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com', 'm'),
-('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com', 'm'),
-('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com', 'm'),
-('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com', 'm'),
-('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', 'B', 'janine.ramirez@tup.edu.ph', 'f'),
-('15-027-054', 'Boado', 'Jose Angelo David', 'San Gabriel', 'BSCS', 'B', 'davidsgboado@gmail.com', 'm'),
-('15-037-001', 'Rivera', 'Allan', 'C', 'BaSLT', 'A', 'allan.rivera@example.com', 'm'),
-('15-037-002', 'Rivera', 'Angel', 'A', 'BaSLT', 'A', 'angel.rivera@example.com', 'f'),
-('15-037-003', 'Rivera', 'Aeinreb', 'S', 'BaSLT', 'A', 'a.rivera@example.com', 'f'),
-('15-037-004', 'Rivera', 'Ronald', 'D', 'BaSLT', 'A', 'rronald@example.com', 'm'),
-('15-037-005', 'Lopez', 'Cierene', 'F', 'BaSLT', 'A', 'clopez@example.com', 'f'),
-('15-037-006', 'Salao', 'Mariea', 'S', 'BaSLT', 'B', 'msalao@example.com', 'f'),
-('15-037-007', 'Zuniga', 'Alicia', 'G', 'BaSLT', 'C', 'azuniga@example.com', 'f'),
-('15-037-008', 'Macabanti', 'Rosario', 'C', 'BaSLT', 'C', 'rmacabanti@example.com', 'f'),
-('15-037-009', 'Jagmis', 'Dean', 'H', 'BaSLT', 'C', 'djagmis@example.com', 'm'),
-('15-037-010', 'Nolasco', 'Reynz', 'J', 'BaSLT', 'C', 'rnolasco@example.com', 'm'),
-('16-019-001', 'Bautista', 'Jayson', 'L', 'BSES', 'A', 'j.bautista@example.com', 'm'),
-('16-019-002', 'Bautista', 'Cecille', 'S', 'BSES', 'A', 'c.bautista@example.com', 'f'),
-('16-019-003', 'Bautista', 'Aaron', 'N', 'BSES', 'A', 'a.bautista@example.com', 'm'),
-('16-019-004', 'Bautista', 'Francis', 'M', 'BSES', 'A', 'f.bautista@example.com', 'm'),
-('16-019-005', 'Sandiego', 'Ana', 'Q', 'BSES', 'B', 'a.sandiego@example.com', 'f'),
-('16-019-006', 'Sandiego', 'Jabel', 'W', 'BSES', 'B', 'j.sandiego@example.com', 'm'),
-('16-019-007', 'Sandiego', 'Kenneth', 'D', 'BSES', 'B', 'k.sandiego@example.com', 'm'),
-('16-019-008', 'Dimayuga', 'Auderic', 'M', 'BSES', 'B', 'auderic.dimayuga@example.com', 'm'),
-('16-019-009', 'Dimayuga', 'Aldrich', 'M', 'BSES', 'B', 'aldrich.dimayuga@example.com', 'm'),
-('16-019-010', 'Dimayuga', 'Alyanna', 'M', 'BSES', 'B', 'alyanna.dimayuga@example.com', 'f'),
-('17-037-001', 'Jagmis', 'Philippe', 'D', 'BSNFT', 'A', 'pj@example.com', 'm'),
-('17-037-002', 'Nagera', 'Jov', 'P', 'BSNFT', 'A', 'jnagera@example.com', 'm'),
-('17-037-003', 'Cornelius', 'Cathy', 'K', 'BSNFT', 'A', 'catcat@example.com', 'f'),
-('17-037-004', 'Mateo', 'Emmanuelle', 'M', 'BSNFT', 'A', 'mmm@example.com', 'm'),
-('17-037-005', 'Garcia', 'Joseph', 'M', 'BSNFT', 'B', 'jgarcia@example.com', 'm'),
-('17-037-006', 'Cueto', 'Tierce', 'N', 'BSNFT', 'B', 'mereeh@example.com', 'f'),
-('17-037-007', 'Cueto', 'Mary', 'B', 'BSNFT', 'C', 'mcueto@example.com', 'f'),
-('17-037-008', 'Putin', 'Nathan', 'I', 'BSNFT', 'C', 'nputin@example.com', 'm'),
-('17-037-009', 'Perez', 'Franco', 'B', 'BSNFT', 'C', 'fperez@example.com', 'm'),
-('17-037-010', 'Buendia', 'Ely', 'V', 'BSNFT', 'C', 'ely.buendia@example.com', 'm');
+INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `Section`, `E-mail`) VALUES
+('14-021-001', 'Squarepants', 'Spongebob', 'S', 'BSIT', 'B', 'sbob.squarepants@example.com'),
+('14-021-002', 'Tentacles', 'Squidward', 'S', 'BSIT', 'C', 'stentacles@example.com'),
+('14-021-003', 'Sheldon', 'Plankton', 'P', 'BSIT', 'A', 's.plankton@example.com'),
+('14-021-004', 'Star', 'Patrick', 'M', 'BSIT', 'A', 'patrick.star@example.com'),
+('14-021-005', 'Krabs', 'Eugene', 'A', 'BSIT', 'C', 'e.krabs@example.com'),
+('14-021-006', 'Cheeks', 'Sandy', 'S', 'BSIT', 'B', 's.cheecks@example.com'),
+('14-021-007', 'Leg', 'My', 'I', 'BSIT', 'B', 'm.leg@example.com'),
+('14-021-008', 'Comp', 'Karen', 'C', 'BSIT', 'C', 'k.comp@example.com'),
+('14-021-009', 'Lobster', 'Larry', 'L', 'BSIT', 'C', 'l.lobster@example.com'),
+('14-021-010', 'Pirate', 'Patchy', 'P', 'BSIT', 'A', 'p.pirate@example.com'),
+('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com'),
+('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com'),
+('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com'),
+('15-027-004', 'Dela Cruz', 'Auderic', 'D', 'BSCS', 'B', 'delacruz.auderic@example.com'),
+('15-027-005', 'Dela Cruz', 'Wilberto', 'E', 'BSCS', 'A', 'delacruz.wilberto@example.com'),
+('15-027-036', 'Ramirez', 'Janine', 'Brecia', 'BSCS', 'B', 'janine.ramirez@tup.edu.ph'),
+('15-027-054', 'Boado', 'Jose Angelo David', 'San Gabriel', 'BSCS', 'B', 'davidsgboado@gmail.com'),
+('15-037-001', 'Rivera', 'Allan', 'C', 'BaSLT', 'A', 'allan.rivera@example.com'),
+('15-037-002', 'Rivera', 'Angel', 'A', 'BaSLT', 'A', 'angel.rivera@example.com'),
+('15-037-003', 'Rivera', 'Aeinreb', 'S', 'BaSLT', 'A', 'a.rivera@example.com'),
+('15-037-004', 'Rivera', 'Ronald', 'D', 'BaSLT', 'A', 'rronald@example.com'),
+('15-037-005', 'Lopez', 'Cierene', 'F', 'BaSLT', 'A', 'clopez@example.com'),
+('15-037-006', 'Salao', 'Mariea', 'S', 'BaSLT', 'B', 'msalao@example.com'),
+('15-037-007', 'Zuniga', 'Alicia', 'G', 'BaSLT', 'C', 'azuniga@example.com'),
+('15-037-008', 'Macabanti', 'Rosario', 'C', 'BaSLT', 'C', 'rmacabanti@example.com'),
+('15-037-009', 'Jagmis', 'Dean', 'H', 'BaSLT', 'C', 'djagmis@example.com'),
+('15-037-010', 'Nolasco', 'Reynz', 'J', 'BaSLT', 'C', 'rnolasco@example.com'),
+('16-019-001', 'Bautista', 'Jayson', 'L', 'BSES', 'A', 'j.bautista@example.com'),
+('16-019-002', 'Bautista', 'Cecille', 'S', 'BSES', 'A', 'c.bautista@example.com'),
+('16-019-003', 'Bautista', 'Aaron', 'N', 'BSES', 'A', 'a.bautista@example.com'),
+('16-019-004', 'Bautista', 'Francis', 'M', 'BSES', 'A', 'f.bautista@example.com'),
+('16-019-005', 'Sandiego', 'Ana', 'Q', 'BSES', 'B', 'a.sandiego@example.com'),
+('16-019-006', 'Sandiego', 'Jabel', 'W', 'BSES', 'B', 'j.sandiego@example.com'),
+('16-019-007', 'Sandiego', 'Kenneth', 'D', 'BSES', 'B', 'k.sandiego@example.com'),
+('16-019-008', 'Dimayuga', 'Auderic', 'M', 'BSES', 'B', 'auderic.dimayuga@example.com'),
+('16-019-009', 'Dimayuga', 'Aldrich', 'M', 'BSES', 'B', 'aldrich.dimayuga@example.com'),
+('16-019-010', 'Dimayuga', 'Alyanna', 'M', 'BSES', 'B', 'alyanna.dimayuga@example.com'),
+('17-037-001', 'Jagmis', 'Philippe', 'D', 'BSNFT', 'A', 'pj@example.com'),
+('17-037-002', 'Nagera', 'Jov', 'P', 'BSNFT', 'A', 'jnagera@example.com'),
+('17-037-003', 'Cornelius', 'Cathy', 'K', 'BSNFT', 'A', 'catcat@example.com'),
+('17-037-004', 'Mateo', 'Emmanuelle', 'M', 'BSNFT', 'A', 'mmm@example.com'),
+('17-037-005', 'Garcia', 'Joseph', 'M', 'BSNFT', 'B', 'jgarcia@example.com'),
+('17-037-006', 'Cueto', 'Tierce', 'N', 'BSNFT', 'B', 'mereeh@example.com'),
+('17-037-007', 'Cueto', 'Mary', 'B', 'BSNFT', 'C', 'mcueto@example.com'),
+('17-037-008', 'Putin', 'Nathan', 'I', 'BSNFT', 'C', 'nputin@example.com'),
+('17-037-009', 'Perez', 'Franco', 'B', 'BSNFT', 'C', 'fperez@example.com'),
+('17-037-010', 'Buendia', 'Ely', 'V', 'BSNFT', 'C', 'ely.buendia@example.com');
 
 -- --------------------------------------------------------
 
@@ -469,6 +497,12 @@ ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`Quiz_ID`);
 
 --
+-- Indexes for table `school_years`
+--
+ALTER TABLE `school_years`
+  ADD PRIMARY KEY (`SY_ID`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -495,6 +529,18 @@ ALTER TABLE `topics`
 --
 ALTER TABLE `class`
   MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1113;
+
+--
+-- AUTO_INCREMENT for table `school_years`
+--
+ALTER TABLE `school_years`
+  MODIFY `SY_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `topics`
+--
+ALTER TABLE `topics`
+  MODIFY `Topic_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
