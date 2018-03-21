@@ -44,33 +44,6 @@
 								<p>Students can download modules from their classes and review lessons anytime, anywhere.</p>
 							</div>
 						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-line-chart"><span class="label">Icon</span></a>
-									<h3>Achievements</h3>
-								</header>
-								<p>Students have achievement board where every activity they do inside the E-Learning is recorded.</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-paper-plane-o"><span class="label">Icon</span></a>
-									<h3>Connect</h3>
-								</header>
-								<p>Both students and professors can connect with each other through personal message and discussions.</p>
-							</div>
-						</section>
-						<section>
-							<div class="content">
-								<header>
-									<a href="#" class="icon fa-qrcode"><span class="label">Icon</span></a>
-									<h3>Registration Code</h3>
-								</header>
-								<p>Students are required to enter a verificaion code to join a specific online class created by professors.</p>
-							</div>	
-						</section>
 					</div>
 				</div>
 			</section>

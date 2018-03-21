@@ -10,12 +10,8 @@
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
 		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-<<<<<<< HEAD
-=======
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/codemirror.min.css">
-    <link rel="stylesheet" href="<?php echo base_url().'/assets/css/comment.css';?>" />
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
- 
+		<link href="<?php echo base_url().'assets/css/bootstrap.min.css'?>" rel="stylesheet" id="bootstrap-css">
+		<script src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script>
 	</head>
 
 	<body class="is-preload">
