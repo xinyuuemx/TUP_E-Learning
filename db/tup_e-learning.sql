@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2018 at 03:36 PM
+-- Generation Time: Mar 21, 2018 at 11:07 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -121,9 +121,8 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`Class_ID`, `SY_ID`, `Subject_code`, `Prof_ID`) VALUES
-(1011, 0, 'CS 101', '6'),
-(1111, 0, 'CS 111', '16'),
-(1112, 0, 'CS 111L', '16');
+(1118, 4, '111', '2'),
+(1119, 4, '222', '1');
 
 -- --------------------------------------------------------
 
@@ -141,13 +140,12 @@ CREATE TABLE `class_members` (
 --
 
 INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
-(1111, '15-027-001'),
-(2221, '15-027-001'),
-(2221, '15-027-002'),
-(3331, '15-027-001'),
-(3331, '15-027-003'),
-(4441, '15-027-004'),
-(5551, '15-027-005');
+(1118, '15-027-031'),
+(1118, '15-027-032'),
+(1118, '15-027-033'),
+(1119, '15-027-031'),
+(1119, '15-027-032'),
+(1119, '15-027-033');
 
 -- --------------------------------------------------------
 
@@ -272,11 +270,19 @@ CREATE TABLE `quizzes` (
 
 CREATE TABLE `school_years` (
   `SY_ID` int(10) NOT NULL,
-  `SY_Start` year(4) NOT NULL,
-  `SY_End` year(4) NOT NULL,
-  `Semester` varchar(4) NOT NULL,
-  `Subject_Code` varchar(10) NOT NULL
+  `SY_Start` date NOT NULL,
+  `SY_End` date NOT NULL,
+  `Semester` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `school_years`
+--
+
+INSERT INTO `school_years` (`SY_ID`, `SY_Start`, `SY_End`, `Semester`) VALUES
+(1, '2016-06-01', '2016-10-30', '1st'),
+(2, '2016-11-01', '2017-03-30', '2nd'),
+(4, '2017-11-01', '2018-03-30', '2nd');
 
 -- --------------------------------------------------------
 
@@ -445,6 +451,28 @@ INSERT INTO `subjects` (`Subject_code`, `S_description`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sy_subjects`
+--
+
+CREATE TABLE `sy_subjects` (
+  `SY_ID` int(10) NOT NULL,
+  `Subject_Code` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sy_subjects`
+--
+
+INSERT INTO `sy_subjects` (`SY_ID`, `Subject_Code`) VALUES
+(1, '333'),
+(2, '444'),
+(2, '555'),
+(4, '111'),
+(4, '222');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `topics`
 --
 
@@ -500,7 +528,7 @@ ALTER TABLE `quizzes`
 -- Indexes for table `school_years`
 --
 ALTER TABLE `school_years`
-  ADD PRIMARY KEY (`SY_ID`);
+  ADD PRIMARY KEY (`SY_ID`,`SY_Start`,`SY_End`);
 
 --
 -- Indexes for table `students`
@@ -513,6 +541,12 @@ ALTER TABLE `students`
 --
 ALTER TABLE `subjects`
   ADD PRIMARY KEY (`Subject_code`);
+
+--
+-- Indexes for table `sy_subjects`
+--
+ALTER TABLE `sy_subjects`
+  ADD PRIMARY KEY (`SY_ID`,`Subject_Code`);
 
 --
 -- Indexes for table `topics`
@@ -528,13 +562,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1113;
-
---
--- AUTO_INCREMENT for table `school_years`
---
-ALTER TABLE `school_years`
-  MODIFY `SY_ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1120;
 
 --
 -- AUTO_INCREMENT for table `topics`
