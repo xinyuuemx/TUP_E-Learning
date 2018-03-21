@@ -6,7 +6,6 @@ class Student_dashboard extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
-		$this->load->model('comments_model','comments'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -194,32 +193,10 @@ class Student_dashboard extends CI_Controller {
 		$scene_data['scene'] = 'classes';
 		$this->load->view('template/student_dashboard_nav',$scene_data);
 		$this->load->view('main/view_topic',$data);
-<<<<<<< HEAD
-		$pass = $this->get_comments($topic);
-		$this->load->view('main/comments',$pass);
-		$this->load->view('template/student_dashboard_footer');
-	}
-	public function get_comments($data){
-		$result = $this->comments->read($data);
-		$x = 0;
-		foreach ($result as $key) {
-			$result2 = $this->pages->get_image($key['Account_ID']);
-			$pics[$x] = $result2;
-			$x = $x + 1;
-		}
-		foreach ($result as $key) {
-			$data_pass = array(
-			'account_id' => $result,
-			'pic'	  => $pics 
-		);
-		}
-		return $data_pass;
-=======
 		$this->load->view('template/student_dashboard_footer');
 	}
 	public function comments($data){
 		
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 	}
 
 }

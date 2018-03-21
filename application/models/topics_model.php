@@ -26,9 +26,6 @@ class Topics_model extends CI_Model {
 	}
 
 <<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 	public function get_topic_info($data){
 		$this->db->select("*");
 		$this->db->from($this->table6);
@@ -37,11 +34,8 @@ class Topics_model extends CI_Model {
 		return $query->result_array();
 	}
 
-<<<<<<< HEAD
-=======
 =======
 >>>>>>> a800f1132d0bde99ddd0767a4163f2f3fa61bd94
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 	public function delete($data){
 		$this->db->where('Topic_ID', $data);
 		$this->db->delete($this->table6);
