@@ -3,8 +3,10 @@
 <h1>Professor</h1>
   <div class="form">
     <form class="login-form">
-      <input type="text" placeholder="username" name="uname" required />
-      <input type="password" placeholder="password" name="psw" required />
+	 <p style="margin-bottom:0px;">USERNAME</p>
+      <input type="text" placeholder="Username" name="uname" required />
+	  <p style="margin-bottom:0px;">PASSWORD</p>
+      <input type="password" placeholder="Password" name="psw" required />
       <button>login</button>
        <p class="message">Not a professor? <a href="<?php echo base_url().'login'?>">Login here</a></p>
 	  <?php echo "<p class='text-danger'>".$this->session->flashdata("error")."<p>"; ?>
