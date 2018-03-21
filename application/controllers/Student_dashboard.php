@@ -194,7 +194,6 @@ class Student_dashboard extends CI_Controller {
 		$scene_data['scene'] = 'classes';
 		$this->load->view('template/student_dashboard_nav',$scene_data);
 		$this->load->view('main/view_topic',$data);
-<<<<<<< HEAD
 		$pass = $this->get_comments($topic);
 		$this->load->view('main/comments',$pass);
 		$this->load->view('template/student_dashboard_footer');
@@ -214,12 +213,6 @@ class Student_dashboard extends CI_Controller {
 		);
 		}
 		return $data_pass;
-=======
-		$this->load->view('template/student_dashboard_footer');
-	}
-	public function comments($data){
-		
->>>>>>> 6805b096399d68704945699d066aef838ba89fa5
 	}
 
 }

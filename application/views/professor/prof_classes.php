@@ -24,8 +24,16 @@
 			 }
 		 }
 		 else
-			 echo '<li>No Classes</li>
-				 </ul></header>'
+			 echo '<section>
+					<div class="content">
+					<header>
+						<i class="icon fa-exclamation">
+						<span class="label">Icon</span></i>
+						<h3>Sorry</h3>
+					</header>
+					<p>No class available</p>
+					</div>
+				</section>'
 		 ?>
 </div>
 </div>

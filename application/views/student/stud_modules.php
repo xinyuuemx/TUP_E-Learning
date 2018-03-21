@@ -3,12 +3,11 @@
 		<div class="main">
 			<div class="inner">
 				<header class="special">
-					<h2>Modules</h2>
+					<h2><?php echo urldecode($code)?> Modules</h2>
 						<ul class="alt">
 							<li>School Year 2017-2018</li>
-							<!-- "%" bug fix if ever still needed
-							<li><?php //$code=str_replace("%20"," ",$code);echo $code?></li> -->
-							<li><?php echo urldecode($code)?></li>
+							<li>Second Semester</li>
+							
 						</ul>
 				</header>
 				<div class="highlights">
@@ -29,7 +28,16 @@
 				}
 			}
 			else
-				echo '<section><p>No Modules</p></section>'
+				echo '<section>
+					<div class="content">
+					<header>
+						<i class="icon fa-exclamation">
+						<span class="label">Icon</span></i>
+						<h3>Sorry</h3>
+					</header>
+					<p>No module available</p>
+					</div>
+				</section>'
 			?>
 	</div>
 </div>
