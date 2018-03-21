@@ -1,30 +1,17 @@
-﻿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2018 at 09:47 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Mar 21, 2018 at 11:28 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-SET FOREIGN_KEY_CHECKS = 0;
-SET GROUP_CONCAT_MAX_LEN=32768;
-SET @tables = NULL;
-SELECT GROUP_CONCAT('`', table_name, '`') INTO @tables
-  FROM information_schema.tables
-  WHERE table_schema = (SELECT DATABASE());
-SELECT IFNULL(@tables,'dummy') INTO @tables;
-
-SET @tables = CONCAT('DROP TABLE IF EXISTS ', @tables);
-PREPARE stmt FROM @tables;
-EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
-SET FOREIGN_KEY_CHECKS = 1;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -51,10 +38,6 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
-('admin', 'admin'),
-('1', '123456'),
-('2', '123456'),
-('3', '123456'),
 ('14-021-001', '123456'),
 ('14-021-002', '123456'),
 ('14-021-003', '123456'),
@@ -82,6 +65,7 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('15-037-008', '123456'),
 ('15-037-009', '123456'),
 ('15-037-010', '123456'),
+('16', '123456'),
 ('16-019-001', '123456'),
 ('16-019-002', '123456'),
 ('16-019-003', '123456'),
@@ -101,7 +85,8 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('17-037-007', '$2y$10$VXn31B7F7Awunb5B8zN6H.2ANbm8SNPimtkbfGzn0bg20Srgb9dTq'),
 ('17-037-008', '$2y$10$UgIbTZJr8YHWV1wOda.mUuRrSGpFSve3.n766rdNk.P52/Q11UA5a'),
 ('17-037-009', '$2y$10$/Z2iG7.iPmbtiwcozwrVreXXlbZKpx3xAeSD0AVqyu1CgX.5SL9uG'),
-('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG');
+('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG'),
+('admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -141,12 +126,12 @@ CREATE TABLE `class_members` (
 
 INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
 (1111, '15-027-001'),
+(2221, '15-027-001'),
 (2221, '15-027-002'),
+(3331, '15-027-001'),
 (3331, '15-027-003'),
 (4441, '15-027-004'),
-(5551, '15-027-005'),
-(2221, '15-027-001'),
-(3331, '15-027-001');
+(5551, '15-027-005');
 
 -- --------------------------------------------------------
 
@@ -165,7 +150,9 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`Account_ID`, `Topic_ID`, `Comment`) VALUES
-('15-027-001', 11111, 'amam om');
+('15-027-001', 11111, 'amam om'),
+('1', 1, 'This is a sample data'),
+('15-027-001', 1, '123123123asdfasdf');
 
 -- --------------------------------------------------------
 
@@ -231,7 +218,7 @@ INSERT INTO `professors` (`Prof_ID`, `L_name`, `F_name`, `M_name`, `E-mail`) VAL
 
 CREATE TABLE `profile_elements` (
   `Account_ID` varchar(11) NOT NULL,
-  `img_ID` varchar(11) NOT NULL
+  `img_ID` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -239,13 +226,14 @@ CREATE TABLE `profile_elements` (
 --
 
 INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
-('15-027-036', 'j_pp'),
-('15-027-054', 'david_pp'),
-('15-027-003', 'm'),
-('15-027-004', 'm'),
-('15-027-005', 'm'),
-('15-027-002', 'm'),
-('15-027-001', 'm');
+('15-027-036', 'j_pp.jpg'),
+('15-027-054', 'david_pp.jpg'),
+('15-027-003', 'm.jpg'),
+('15-027-004', 'm.jpg'),
+('15-027-005', 'm.jpg'),
+('15-027-002', 'm.jpg'),
+('15-027-001', 'm.jpg'),
+('1', 'sir-butch.jpg');
 
 -- --------------------------------------------------------
 
@@ -444,8 +432,7 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`Topic_ID`, `Class_ID`, `T_file`, `T_description`) VALUES
-(11111, 1111, 'html_tutorial.pdf', 'topic 1'),
-(11112, 1111, 'css_tutorial.pdf', 'Topic 2');
+(1, 1111, 'TAP_NOTES.pdf', 'HTML');
 
 --
 -- Indexes for dumped tables
@@ -507,7 +494,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5554;
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1113;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
