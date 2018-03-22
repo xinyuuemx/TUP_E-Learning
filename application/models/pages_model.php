@@ -8,19 +8,16 @@ class Pages_model extends CI_Model {
 	private $table5 = "subjects";
 	private $table6 = "class";
 	private $table7 = "class_members";
-	private $table8 = "school_years";
-	private $table9 = "sy_subjects";
 	// Constructor
 	public function __construct() {
 		parent::__construct();
 		$this->load->database();
 	}
 
-	public function read_users($uname,$psw) {
+	public function read_users($uname) {
 		$this->db->select("*");
 		$this->db->from($this->table);
 		$this->db->where('Account_ID', $uname);
-		$this->db->where('Password', $psw);
 		$query=$this->db->get();
 		return $query->result_array();
 	}
@@ -32,6 +29,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
 	public function get_image($account_id){
 		$this->db->select("*");
 		$this->db->from($this->table3);
@@ -39,6 +37,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
 	public function read_profaccount($acc) {
 		$this->db->select("*");
 		$this->db->from($this->table4);
@@ -46,6 +45,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
 	public function read_subject($code) {
 		$this->db->select("*");
 		$this->db->from($this->table5);
@@ -53,14 +53,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
-	public function read_sy_subjects($code, $syid) {
-		$this->db->select("*");
-		$this->db->from($this->table9);
-		$this->db->where('Subject_code', $code);
-		$this->db->where('SY_ID', $syid);
-		$query=$this->db->get();
-		return $query->result_array();
-	}
+
 	public function read_class($sid, $pid) {
 		$this->db->select("*");
 		$this->db->from($this->table6);
@@ -69,6 +62,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
 	public function read_classID($sid, $pid) {
 		$this->db->select("Class_ID");
 		$this->db->from($this->table6);
@@ -78,24 +72,13 @@ class Pages_model extends CI_Model {
 		$ret = $query->row();
 		return $ret->Class_ID;
 	}
-	public function submit_class($data)
-	{
 
+	public function submit_class($data) {
 		$this->db->insert($this->table6, $data);
 	}
-	public function submit_class_members($data)
-	{
 
+	public function submit_class_members($data) {
 		$this->db->insert($this->table7, $data);
-	}
-	public function read_schoolyear($curdate) {
-		$this->db->select("*");
-		$this->db->from($this->table8);
-		$this->db->where('SY_Start <=', $curdate);
-		$this->db->where('SY_End >=', $curdate);
-		$query=$this->db->get();
-		$ret = $query->row();
-		return $ret->SY_ID;
 	}
 
 }
