@@ -41,7 +41,6 @@ class Student_dashboard extends CI_Controller {
 		$result = $this->pages->read_users($_POST['uname']);
 		$result3 = $this->pages->read_account($_POST['uname']);
 		$result4 = $this->pages->read_profaccount($_POST['uname']);
-		//if user attempting to login is a student
 		foreach($result as $results) {
 			$dbp = $results['Password'];
 		}

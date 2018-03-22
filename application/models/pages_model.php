@@ -55,6 +55,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
 	public function read_sy_subjects($code, $syid) {
 		$this->db->select("*");
 		$this->db->from($this->table9);
@@ -63,6 +64,7 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+	
 	public function read_class($sid, $pid) {
 		$this->db->select("*");
 		$this->db->from($this->table6);
