@@ -149,7 +149,7 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('7', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
 ('8', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
 ('9', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
-('admin', 'admin');
+('admin', '$2y$10$1ayszW/EJHvxwqwYZNOlM.zVOwXEeoW2qGqASotMZ60DQDNfGLWhO');
 
 -- --------------------------------------------------------
 
