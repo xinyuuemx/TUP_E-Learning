@@ -6,7 +6,7 @@ class Classes_model extends CI_Model {
 	private $table4 = "professors";
 	private $table5 = "subjects";
 	private $table6 = "topics";
-	
+
 	// Constructor
 	public function __construct() {
 		parent::__construct();
