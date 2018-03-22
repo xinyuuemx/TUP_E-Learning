@@ -47,6 +47,14 @@ class Classes_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+	public function read_subjectsavail($prof_id,$subcode) {
+		$this->db->select("*");
+		$this->db->from($this->table3);
+		$this->db->where('Prof_ID', $prof_id);
+		$this->db->where('Subject_Code', $subcode);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
 	public function read_class_id($subject_code)
 	{
 		$this->db->select("*");

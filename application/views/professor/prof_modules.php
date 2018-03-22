@@ -43,13 +43,15 @@
 						</td>
 						</tr>';
 						$x = $x+1;
+						echo form_close();
 				}
-					
+
 			}
 			else
 				echo '<section><p>No Modules</p></section>'
 			?>
 			</tbody>
 		</table>
+
 	</div>
-</div>	 
+</div>
