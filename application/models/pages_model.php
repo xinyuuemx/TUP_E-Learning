@@ -88,11 +88,12 @@ class Pages_model extends CI_Model {
 
 		$this->db->insert($this->table7, $data);
 	}
-	public function read_schoolyear($curdate) {
+	public function read_schoolyear($curdate, $cursem) {
 		$this->db->select("*");
 		$this->db->from($this->table8);
 		$this->db->where('SY_Start <=', $curdate);
 		$this->db->where('SY_End >=', $curdate);
+		$this->db->where('Semester', $cursem);
 		$query=$this->db->get();
 		$ret = $query->row();
 		return $ret->SY_ID;
