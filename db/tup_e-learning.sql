@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2018 at 11:07 PM
+-- Generation Time: Mar 22, 2018 at 10:45 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -121,8 +121,8 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`Class_ID`, `SY_ID`, `Subject_code`, `Prof_ID`) VALUES
-(1118, 4, '111', '2'),
-(1119, 4, '222', '1');
+(1120, 4, '111', '16'),
+(1121, 4, '222', '16');
 
 -- --------------------------------------------------------
 
@@ -140,12 +140,12 @@ CREATE TABLE `class_members` (
 --
 
 INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
-(1118, '15-027-031'),
-(1118, '15-027-032'),
-(1118, '15-027-033'),
-(1119, '15-027-031'),
-(1119, '15-027-032'),
-(1119, '15-027-033');
+(1120, '15-027-001'),
+(1120, '15-027-002'),
+(1120, '15-027-003'),
+(1121, '15-027-001'),
+(1121, '15-027-002'),
+(1121, '15-027-003');
 
 -- --------------------------------------------------------
 
@@ -252,14 +252,28 @@ INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `Question_ID` int(10) NOT NULL,
+  `Question` varchar(55) NOT NULL,
+  `Choice1` varchar(55) NOT NULL,
+  `Choice2` varchar(55) NOT NULL,
+  `Choice3` varchar(55) NOT NULL,
+  `Choice4` varchar(55) NOT NULL,
+  `Answer` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `quizzes`
 --
 
 CREATE TABLE `quizzes` (
   `Quiz_ID` int(10) NOT NULL,
-  `Question` varchar(30) NOT NULL,
-  `Answer` varchar(20) NOT NULL,
-  `Choices` varchar(80) NOT NULL
+  `Question_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -270,8 +284,8 @@ CREATE TABLE `quizzes` (
 
 CREATE TABLE `school_years` (
   `SY_ID` int(10) NOT NULL,
-  `SY_Start` date NOT NULL,
-  `SY_End` date NOT NULL,
+  `SY_Start` year(4) NOT NULL,
+  `SY_End` year(4) NOT NULL,
   `Semester` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -280,9 +294,10 @@ CREATE TABLE `school_years` (
 --
 
 INSERT INTO `school_years` (`SY_ID`, `SY_Start`, `SY_End`, `Semester`) VALUES
-(1, '2016-06-01', '2016-10-30', '1st'),
-(2, '2016-11-01', '2017-03-30', '2nd'),
-(4, '2017-11-01', '2018-03-30', '2nd');
+(1, 2016, 2017, '1st'),
+(2, 2016, 2017, '2nd'),
+(3, 2017, 2018, '1st'),
+(4, 2017, 2018, '2nd');
 
 -- --------------------------------------------------------
 
@@ -519,6 +534,12 @@ ALTER TABLE `professors`
   ADD PRIMARY KEY (`Prof_ID`);
 
 --
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`Question_ID`);
+
+--
 -- Indexes for table `quizzes`
 --
 ALTER TABLE `quizzes`
@@ -528,7 +549,7 @@ ALTER TABLE `quizzes`
 -- Indexes for table `school_years`
 --
 ALTER TABLE `school_years`
-  ADD PRIMARY KEY (`SY_ID`,`SY_Start`,`SY_End`);
+  ADD PRIMARY KEY (`SY_ID`);
 
 --
 -- Indexes for table `students`
@@ -562,7 +583,19 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1120;
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1122;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `Question_ID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `school_years`
+--
+ALTER TABLE `school_years`
+  MODIFY `SY_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `topics`
