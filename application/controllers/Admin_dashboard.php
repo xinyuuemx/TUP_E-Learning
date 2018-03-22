@@ -71,35 +71,35 @@ class Admin_dashboard extends CI_Controller {
 	}
 
 
-        public function getTable(){
-            $none=null;
-			$config['base_url'] = base_url().'admin/manage';
-            $config['total_rows'] = $this->adminn->count_classes();
-            $config['per_page'] = 1;
+    public function getTable(){
+        $none=null;
+		$config['base_url'] = base_url().'admin/manage';
+        $config['total_rows'] = $this->adminn->count_classes();
+        $config['per_page'] = 1;
 
-			/*BOOTSTRAP PAGINATION CONFIG
-			$config['full_tag_open'] = "<ul class='pagination'>";
-			$config['full_tag_close'] ="</ul>";
-			$config['num_tag_open'] = '<li>';
-			$config['num_tag_close'] = '</li>';
-			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-			$config['next_tag_open'] = "<li>";
-			$config['next_tagl_close'] = "</li>";
-			$config['prev_tag_open'] = "<li>";
-			$config['prev_tagl_close'] = "</li>";
-			$config['first_tag_open'] = "<li>";
-			$config['first_tagl_close'] = "</li>";
-			$config['last_tag_open'] = "<li>";
-			$config['last_tagl_close'] = "</li>";*/
+		/*BOOTSTRAP PAGINATION CONFIG
+		$config['full_tag_open'] = "<ul class='pagination'>";
+		$config['full_tag_close'] ="</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tagl_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";*/
 
-            $this->pagination->initialize($config);
-            $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
-            if(isset($data)){
-                return $data;
-            }
-            else return $none;
+        $this->pagination->initialize($config);
+        $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
+        if(isset($data)){
+            return $data;
         }
+        else return $none;
+    }
 
 	public function searchClasses(){
 		$textInput=$this->input->post('searchtext');
@@ -123,11 +123,21 @@ class Admin_dashboard extends CI_Controller {
 	public function viewClass(){
 		//check if url segment is numeric
 		if(is_numeric($this->uri->segment(4))){
-			var_dump($this->uri->segment(4));
+			$segmentno=4;
 		}
 		else if(is_numeric($this->uri->segment(5))){
-			var_dump($this->uri->segment(5));
+			$segmentno=5;
 		}
+		$classID=(string)$this->uri->segment($segmentno);
+		$data['details']=$this->adminn->search_classes($classID,2);
+		$data['studs']=$this->adminn->read_classmembers($classID);
+		$this->load->view('admin/admin_viewclass',$data);
+
+	}
+
+	public function deleteStud(){
+		$arrayName = array('x' => 3 );
+		var_dump($arrayName);
 	}
 
 	public function homepage(){

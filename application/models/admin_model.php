@@ -15,30 +15,7 @@ class Admin_model extends CI_Model {
         public function count_classes(){
             return $this->db->count_all('class');
         }
-        
-	public function read_classesByProfID($prof_ID) {
-		$this->db->select("*");
-		$this->db->from($this->classtable);
-		$this->db->where('Prof_ID', $prof_ID);
-		$query=$this->db->get();
-		return $query->result_array();
-	}
-	
-	public function read_classByClassID($class_ID) {
-		$this->db->select("*");
-		$this->db->from($this->classtable);
-		$this->db->where('Class_ID', $class_ID);
-		$query=$this->db->get();
-		return $query->result_array();
-	}
-	
-	public function read_classesBySubjectID($class_ID) {
-		$this->db->select("*");
-		$this->db->from($this->classtable);
-		$this->db->where('Class_ID', $class_ID);
-		$query=$this->db->get();
-		return $query->result_array();
-	}
+
 	//function for pagination data fetching
 	public function read_classes($limit,$offset){
 		$this->db->limit($limit,$offset);
@@ -47,6 +24,19 @@ class Admin_model extends CI_Model {
 		$this->db->join('subjects', 'class.Subject_code = subjects.Subject_code');
 		$query=$this->db->get();
 		//var_dump($query->result());			
+		if($query->num_rows > 0){
+			return $query->result();            
+		}
+		else{
+			return $query->result();
+		}
+	}
+
+	public function read_classmembers($cid){	
+		$this->db->from('class_members');
+		$this->db->join('students', 'class_members.Student_ID = students.Student_ID');
+		$this->db->where('class_members.Class_ID',$cid);
+		$query=$this->db->get();
 		if($query->num_rows > 0){
 			return $query->result();            
 		}
