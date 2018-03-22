@@ -8,6 +8,8 @@ class Pages_model extends CI_Model {
 	private $table5 = "subjects";
 	private $table6 = "class";
 	private $table7 = "class_members";
+	private $table8 = "school_years";
+	private $table9 = "sy_subjects";
 	// Constructor
 	public function __construct() {
 		parent::__construct();
@@ -53,7 +55,14 @@ class Pages_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
-
+	public function read_sy_subjects($code, $syid) {
+		$this->db->select("*");
+		$this->db->from($this->table9);
+		$this->db->where('Subject_code', $code);
+		$this->db->where('SY_ID', $syid);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
 	public function read_class($sid, $pid) {
 		$this->db->select("*");
 		$this->db->from($this->table6);
