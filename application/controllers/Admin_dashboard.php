@@ -140,7 +140,14 @@ class Admin_dashboard extends CI_Controller {
 	public function do_upload()
     {
 			$this->load->view('template/admin_dashboard_header',$_SESSION);
-			$result3 = $this->pages->read_schoolyear(date("Y-m-d"));
+			$semdate = date('m-d', strtotime('11-01'));
+			if (date('m-d')>=$semdate) {
+				$sem="2nd";
+			}
+			else{
+				$sem="1st";
+			}
+			$result3 = $this->pages->read_schoolyear(date("Y"), $sem);
 			$result =  $this->pages->read_sy_subjects($_POST['subcode'], $result3);
 			$result2 = $this->pages->read_profaccount($_POST['profid']);
 
