@@ -310,31 +310,38 @@ class Prof_dashboard extends CI_Controller {
 		}
 
 		public function do_question(){
-			$choices = array(
-				'Choice1' =>$_POST['c1'],
-				'Choice2' =>$_POST['c2'],
-				'Choice3' =>$_POST['c3'],
-				'Choice4' =>$_POST['c4'],
-			);
-				if (in_array($_POST['answer'], $choices)) {
-					$data = array(
-						'Question_ID' => NULL,
-						'Prof_ID' => $_SESSION['prof_id'],
-						'Subject_Code' => $_POST['subcode'],
-						'Question' => $_POST['question'],
-						'Choice1' =>$_POST['c1'],
-						'Choice2' =>$_POST['c2'],
-						'Choice3' =>$_POST['c3'],
-						'Choice4' =>$_POST['c4'],
-						'Answer' =>$_POST['answer']
-					);
-					$this->quizzes->submit_question($data);
-					redirect('Prof_dashboard/view_quizzes');
-				}
-				else {
-					$this->session->set_flashdata('error', 'Answer not available in choices');
-					redirect('Prof_dashboard/add_question');
-				}
+			$result =  $this->classes->read_subjectsavail($_SESSION['prof_id'], $_POST['subcode']);
+			if(!empty($result)){
+				$choices = array(
+					'Choice1' =>$_POST['c1'],
+					'Choice2' =>$_POST['c2'],
+					'Choice3' =>$_POST['c3'],
+					'Choice4' =>$_POST['c4'],
+				);
+					if (in_array($_POST['answer'], $choices)) {
+						$data = array(
+							'Question_ID' => NULL,
+							'Prof_ID' => $_SESSION['prof_id'],
+							'Subject_Code' => $_POST['subcode'],
+							'Question' => $_POST['question'],
+							'Choice1' =>$_POST['c1'],
+							'Choice2' =>$_POST['c2'],
+							'Choice3' =>$_POST['c3'],
+							'Choice4' =>$_POST['c4'],
+							'Answer' =>$_POST['answer']
+						);
+						$this->quizzes->submit_question($data);
+						redirect('Prof_dashboard/view_quizzes');
+					}
+					else {
+						$this->session->set_flashdata('error', 'Answer not available in choices');
+						redirect('Prof_dashboard/add_question');
+					}
+			}
+			else{
+				$this->session->set_flashdata('error2', 'You have no classes on this subject');
+				redirect('Prof_dashboard/add_question');
+			}
 
 	}
 }

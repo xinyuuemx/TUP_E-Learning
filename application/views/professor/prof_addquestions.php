@@ -12,6 +12,9 @@
 				</div>
 				<div class="col-9 col-12-xsmall">
 					<input type="text" name="subcode"  required />
+					<?php if ($this->session->flashdata('error2')) { ?>
+							<div class="text-danger"> <?= $this->session->flashdata('error2') ?> </div>
+					<?php } ?>
 				</div>
 
 				<div class="col-3 col-12-xsmall">
@@ -54,7 +57,9 @@
 				</div>
 				<div class="col-9 col-12-xsmall">
 					<input type="text" name="answer"  required />
-					<div class="text-danger"> <?= $this->session->flashdata('error') ?> </div>
+					<?php if ($this->session->flashdata('error')) { ?>
+							<div class="text-danger"> <?= $this->session->flashdata('error') ?> </div>
+					<?php } ?>
 				</div>
 
 
