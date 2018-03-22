@@ -602,6 +602,54 @@ ol {
   ol li {
     padding-left: 0.25rem; }
 
+
+#invibox{
+			 width: 50px; height: 400px; 
+			 border: 1px;
+			 background:rgba(0,0,0,0);	
+			
+}
+.cobra{
+			 width: 600px; height: 560px; 
+			 border: 1px solid #aaa;
+			 background:#C41E3A;	 
+			 margin: 0px auto;
+			 box-sizing: border-box;
+			 padding: 10px;
+			 padding:left;
+			 position: relative;
+			 overflow: auto;
+			 padding-left:25px;
+			 
+			 
+}
+.cobra1{
+			 
+			 width: 520px; height: 150px; 
+			 border: 1px solid #aaa;
+			 background-color: #fff; 
+			 margin: 0px auto;
+			 box-sizing: border-box;
+			 padding: 10px;
+			 float:left;
+			 position: relative;
+			 margin-left:10px;
+			 margin-bottom:10px;
+			  
+}
+.cobra2{
+			 width: 600px; height: 560px; 
+			 border: 1px solid #aaa;
+			 background-color: #fff; 
+			 margin-left: 150px;
+			 padding: 10px;
+			 background: #BEBEBE;
+}
+
+
+	
+	
+	
 ul {
   list-style: disc;
   margin: 0 0 2rem 0;
