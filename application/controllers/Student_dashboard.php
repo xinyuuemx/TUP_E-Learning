@@ -46,6 +46,9 @@ class Student_dashboard extends CI_Controller {
 		}
 		//if user attempting to login is a student
 		if (password_verify($password,$dbp) && !empty($result3)) {
+			if($password=="123456") {
+				$this->load->view('fileNiThroy');
+			} else {
 		foreach($result as $pass) {
 			// Get the DATA
 			$data['username']=$pass['Account_ID'];
@@ -67,6 +70,7 @@ class Student_dashboard extends CI_Controller {
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'student');
+	}
 	} else if(!empty($result) && (empty($result4) && empty($result3))) { //if user attempting to login is admin
 		foreach($result as $results){
 			$data['username']=$results['Account_ID'];
