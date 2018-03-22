@@ -352,7 +352,9 @@ CREATE TABLE `questions` (
 
 CREATE TABLE `quizzes` (
   `Quiz_ID` int(10) NOT NULL,
-  `Question_ID` int(10) NOT NULL,  
+  `Question` varchar(30) NOT NULL,
+  `Answer` varchar(20) NOT NULL,
+  `Choices` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -366,6 +368,7 @@ CREATE TABLE `school_years` (
   `SY_Start` year(4) NOT NULL,
   `SY_End` year(4) NOT NULL,
   `Semester` varchar(4) NOT NULL,
+  `Subject_Code` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
