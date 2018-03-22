@@ -30,9 +30,6 @@
 							<?php if ($this->session->flashdata('error4')) { ?>
 							    <div class="text-danger"> <?= $this->session->flashdata('error4') ?> </div>
 							<?php } ?>
-							<?php if ($this->session->flashdata('error')) { ?>
-									<div class="text-danger"> <?= $this->session->flashdata('error') ?> </div>
-							<?php } ?>
 						</div>
 
 						<div class="row gtr-uniform">
