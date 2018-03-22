@@ -42,6 +42,10 @@ class Admin_dashboard extends CI_Controller {
 						$this->viewClass();
 						break;
 
+				case 'deletestud':
+						$this->deleteStud();
+						break;
+
 
 				default:
 						echo $scene;
@@ -136,8 +140,16 @@ class Admin_dashboard extends CI_Controller {
 	}
 
 	public function deleteStud(){
-		$arrayName = array('x' => 3 );
-		var_dump($arrayName);
+		$last = $this->uri->total_segments();
+		$id = $this->uri->segment($last);
+		$class = $this->uri->segment($last-1);
+		if($this->adminn->deleteStud($id)){
+			redirect(base_url().'admin/manage/view/'.$class);
+		}
+		else{
+
+		}
+
 	}
 
 	public function homepage(){

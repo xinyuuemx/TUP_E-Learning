@@ -45,6 +45,12 @@ class Admin_model extends CI_Model {
 		}
 	}
 		
+	public function deleteStud($id){
+		$this->db->select('*');
+		$this->db->where('Student_ID', $id);
+		$this->db->delete('class_members');
+		return true;
+	}
 	public function search_classes($searchkey,$type){
 		switch($type){
 			//if input is prof_ID

@@ -65,8 +65,8 @@ $route['admin/manage/create'] = 'Admin_dashboard/index/createclass';
 $route['admin/manage/search'] = 'Admin_dashboard/searchClasses';
 //routes for viewing specific class
 $route['admin/manage/:num/view/:num'] = 'Admin_dashboard/index/editclass';
-$route['admin/manage/:num/view/:num/:num'] = 'Admin_dashboard/index/manageclasses';
 $route['admin/manage/view/:num'] = 'Admin_dashboard/index/editclass';
-$route['admin/manage/view/:num//:num'] = 'Admin_dashboard/deleteStud';
 $route['admin/manage/search/view/:num'] = 'Admin_dashboard/index/editclass';
-$route['admin/manage/search/view/:num/delete'] = 'Admin_dashboard/deleteStud';
+//deleting studs
+$route['admin/manage/view/:num/:any']='Admin_dashboard/index/deletestud';
+$route['admin/manage/:num/view/:num/:any']='Admin_dashboard/index/deletestud';
