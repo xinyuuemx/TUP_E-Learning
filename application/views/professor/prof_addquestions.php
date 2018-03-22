@@ -8,6 +8,13 @@
 		<form class="login-form">
 			<div class="row gtr-uniform">
 				<div class="col-3 col-12-xsmall">
+					<h4>SUBJECT CODE:</h4>
+				</div>
+				<div class="col-9 col-12-xsmall">
+					<input type="text" name="subcode"  required />
+				</div>
+
+				<div class="col-3 col-12-xsmall">
 					<h4>QUESTION:</h4>
 				</div>
 				<div class="col-9 col-12-xsmall">

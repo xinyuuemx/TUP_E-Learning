@@ -338,7 +338,7 @@ INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
 CREATE TABLE `questions` (
   `Question_ID` int(10) NOT NULL,
   `Prof_ID` varchar(10) NOT NULL,
-  `Class_ID` int(10) NOT NULL,
+  `Subject_Code` varchar(10) NOT NULL,
   `Question` varchar(55) NOT NULL,
   `Choice1` varchar(55) NOT NULL,
   `Choice2` varchar(55) NOT NULL,

@@ -43,6 +43,7 @@
 						</td>
 						</tr>';
 						$x = $x+1;
+						echo form_close();
 				}
 
 			}
@@ -51,5 +52,6 @@
 			?>
 			</tbody>
 		</table>
+
 	</div>
 </div>

@@ -30,6 +30,9 @@ class Prof_dashboard extends CI_Controller {
 				case 'modules':
 					$this->load->view('professor/prof_modules',$_SESSION);
 					break;
+				case 'quizzes':
+					$this->load->view('professor/prof_quizzes',$_SESSION);
+					break;
 				default:
 					echo $scene;
 					$this->load->view('professor/prof_dashboard',$_SESSION);
@@ -173,6 +176,12 @@ class Prof_dashboard extends CI_Controller {
 		$this->load->view('template/prof_dashboard_footer');
 	}
 
+	public function view_quizzes() {
+		$this->load->view('template/prof_dashboard_header',$_SESSION);
+		$this->load->view('professor/prof_quizzes',$_SESSION);
+		$this->load->view('template/prof_dashboard_footer');
+	}
+
 	public function view_topic($topic,$file) {
 		$data = array('topic' => $topic,'file'=>$file);
 		$this->load->view('template/prof_dashboard_header',$_SESSION);
@@ -310,8 +319,8 @@ class Prof_dashboard extends CI_Controller {
 				if (in_array($_POST['answer'], $choices)) {
 					$data = array(
 						'Question_ID' => NULL,
-						'Prof_ID' => $session_data['username'],
-						'Class_ID' => '1',
+						'Prof_ID' => $_SESSION['prof_id'],
+						'Subject_Code' => $_POST['subcode'],
 						'Question' => $_POST['question'],
 						'Choice1' =>$_POST['c1'],
 						'Choice2' =>$_POST['c2'],
@@ -320,6 +329,7 @@ class Prof_dashboard extends CI_Controller {
 						'Answer' =>$_POST['answer']
 					);
 					$this->quizzes->submit_question($data);
+					redirect('Prof_dashboard/view_quizzes');
 				}
 				else {
 					$this->session->set_flashdata('error', 'Answer not available in choices');
