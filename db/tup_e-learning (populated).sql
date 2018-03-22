@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2018 at 11:34 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Generation Time: Mar 22, 2018 at 02:54 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -27,6 +27,7 @@ EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
 SET FOREIGN_KEY_CHECKS = 1;
 /* please copy until here after exporting the db */
+
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -169,24 +170,26 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`Class_ID`, `SY_ID`, `Subject_code`, `Prof_ID`) VALUES
-(1011, 0, 'CS 101', '6'),
-(1111, 0, 'CS 111', '16'),
-(1112, 0, 'CS 111L', '16'),
-(1113, 0, 'PHYS 2B', '15'),
-(1114, 0, 'PHYS 2BL', '15'),
-(1115, 0, 'CS 212', '4'),
-(1116, 0, 'CS 212L', '4'),
-(1117, 0, 'CSE', '4'),
-(1118, 0, 'CSE 2', '4'),
-(1119, 0, 'CSE 3', '4'),
-(1120, 0, 'CSE 4', '4'),
-(1121, 0, 'CSF 1', '3'),
-(1122, 0, 'CSF 2', '3'),
-(1123, 0, 'CSF 3', '3'),
-(1124, 0, 'CSF 4', '3'),
-(1125, 0, 'ENG 1', '7'),
-(1126, 0, 'ENG 2', '7'),
-(1127, 0, 'FIL 2', '9');
+(1011, 1, 'CS 101', '6'),
+(1111, 1, 'CS 111', '16'),
+(1112, 1, 'CS 111L', '16'),
+(1113, 2, 'PHYS 2B', '15'),
+(1114, 2, 'PHYS 2BL', '15'),
+(1115, 2, 'CS 212', '4'),
+(1116, 3, 'CS 212L', '4'),
+(1117, 3, 'CSE', '4'),
+(1118, 3, 'CSE 2', '4'),
+(1119, 2, 'CSE 3', '4'),
+(1120, 2, 'CSE 4', '4'),
+(1121, 2, 'CSF 1', '3'),
+(1122, 1, 'CSF 2', '3'),
+(1123, 3, 'CSF 3', '3'),
+(1124, 1, 'CSF 4', '3'),
+(1125, 1, 'ENG 1', '7'),
+(1126, 4, 'ENG 2', '7'),
+(1127, 4, 'FIL 2', '9'),
+(1128, 4, '111', '1'),
+(1131, 4, '111', '1');
 
 -- --------------------------------------------------------
 
@@ -205,6 +208,12 @@ CREATE TABLE `class_members` (
 
 INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
 (1111, '15-027-001'),
+(1128, '15-027-001'),
+(1128, '15-027-002'),
+(1128, '15-027-003'),
+(1131, '15-027-001'),
+(1131, '15-027-002'),
+(1131, '15-027-003'),
 (2221, '15-027-001'),
 (2221, '15-027-002'),
 (3331, '15-027-001'),
@@ -330,11 +339,14 @@ INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
 
 -- --------------------------------------------------------
 
+--
 -- Table structure for table `questions`
 --
 
 CREATE TABLE `questions` (
   `Question_ID` int(10) NOT NULL,
+  `Prof_ID` varchar(10) NOT NULL,
+  `Class_ID` int(10) NOT NULL,
   `Question` varchar(55) NOT NULL,
   `Choice1` varchar(55) NOT NULL,
   `Choice2` varchar(55) NOT NULL,
@@ -346,15 +358,20 @@ CREATE TABLE `questions` (
 -- --------------------------------------------------------
 
 --
---
 -- Table structure for table `quizzes`
 --
 
 CREATE TABLE `quizzes` (
   `Quiz_ID` int(10) NOT NULL,
+<<<<<<< Updated upstream
   `Question` varchar(30) NOT NULL,
   `Answer` varchar(20) NOT NULL,
   `Choices` varchar(80) NOT NULL
+=======
+  `Prof_ID` varchar(10) NOT NULL,
+  `Class_ID` int(10) NOT NULL,
+  `Question_ID` int(10) NOT NULL
+>>>>>>> Stashed changes
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -367,8 +384,12 @@ CREATE TABLE `school_years` (
   `SY_ID` int(10) NOT NULL,
   `SY_Start` year(4) NOT NULL,
   `SY_End` year(4) NOT NULL,
+<<<<<<< Updated upstream
   `Semester` varchar(4) NOT NULL,
   `Subject_Code` varchar(10) NOT NULL
+=======
+  `Semester` varchar(4) NOT NULL
+>>>>>>> Stashed changes
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -381,8 +402,7 @@ INSERT INTO `school_years` (`SY_ID`, `SY_Start`, `SY_End`, `Semester`) VALUES
 (3, 2017, 2018, '1st'),
 (4, 2017, 2018, '2nd');
 
-
--- -------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `students`
@@ -569,7 +589,6 @@ INSERT INTO `subjects` (`Subject_code`, `S_description`) VALUES
 -- --------------------------------------------------------
 
 --
-
 -- Table structure for table `sy_subjects`
 --
 
@@ -636,7 +655,8 @@ ALTER TABLE `class_members`
 --
 ALTER TABLE `professors`
   ADD PRIMARY KEY (`Prof_ID`);
-  
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
@@ -666,10 +686,12 @@ ALTER TABLE `students`
 ALTER TABLE `subjects`
   ADD PRIMARY KEY (`Subject_code`);
 
+--
 -- Indexes for table `sy_subjects`
 --
 ALTER TABLE `sy_subjects`
   ADD PRIMARY KEY (`SY_ID`,`Subject_Code`);
+
 --
 -- Indexes for table `topics`
 --
@@ -684,14 +706,13 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1122;
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1132;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Question_ID` int(10) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `Question_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1115;
 
 --
 -- AUTO_INCREMENT for table `school_years`

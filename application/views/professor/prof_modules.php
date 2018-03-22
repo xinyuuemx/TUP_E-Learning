@@ -44,7 +44,7 @@
 						</tr>';
 						$x = $x+1;
 				}
-					
+
 			}
 			else
 				echo '<section><p>No Modules</p></section>'
@@ -52,4 +52,4 @@
 			</tbody>
 		</table>
 	</div>
-</div>	 
+</div>

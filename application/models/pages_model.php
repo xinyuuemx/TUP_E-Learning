@@ -79,6 +79,7 @@ class Pages_model extends CI_Model {
 		$this->db->from($this->table6);
 		$this->db->where('Subject_code', $sid);
 		$this->db->where('Prof_ID', $pid);
+		$this->db->order_by('Class_ID',"DESC");
 		$query=$this->db->get();
 		$ret = $query->row();
 		return $ret->Class_ID;

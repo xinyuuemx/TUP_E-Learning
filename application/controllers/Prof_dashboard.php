@@ -8,6 +8,7 @@ class Prof_dashboard extends CI_Controller {
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->model('topics_model','topics'); //pre load all models
+		$this->load->model('quizzes_model','quizzes'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -193,7 +194,12 @@ class Prof_dashboard extends CI_Controller {
 				$x = $x + 1;
 			}
 		}
+<<<<<<< Updated upstream
 		return $data;
+=======
+
+	return $data;
+>>>>>>> Stashed changes
 	}
 
 	public function get_topics($raw_data) {
@@ -240,13 +246,18 @@ class Prof_dashboard extends CI_Controller {
                 	'Class_ID' => $_SESSION['class_id'],
                 	'T_file' => $pass,
                 	'T_description' => $_POST['description']
+<<<<<<< Updated upstream
                 );
+=======
+                	);
+>>>>>>> Stashed changes
                 $this->load->view('template/prof_dashboard_header',$_SESSION);
                 $this->topics->upload_topic($ins);
                 $this->load->view('professor/prof_modules',$_SESSION['subject']);
                 $this->load->view('template/prof_dashboard_footer',$_SESSION);
                 $location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
     			redirect($location, 'refresh');
+<<<<<<< Updated upstream
       }
   }
 
@@ -288,5 +299,82 @@ class Prof_dashboard extends CI_Controller {
   	$this->topics->update_topic($_POST['topic_id'],$data);
   	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
   	redirect($location, 'refresh');
+=======
+        }
+    }
+    public function delete($raw_data,$raw_data2){
+    	$del = urldecode($raw_data);
+    	$this->topics->delete($del);
+    	$path = './assets/files/'.$raw_data2;
+    	unlink($path);
+    	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
+    	redirect($location, 'refresh');
+    }
+    public function update_topic($data){
+    	$result = $this->get_topics($data);
+    	$this->load->view('template/prof_dashboard_header',$_SESSION);
+        $this->load->view('professor/prof_update',$result);
+        $this->load->view('template/prof_dashboard_footer');
+    }
+    public function edit_data(){
+    	$result = $this->get_topics($_POST['topic_id']);
+    	$config['upload_path']          = './assets/files';
+        $config['allowed_types']        = 'pdf|jpg';
+
+        $this->load->library('upload', $config);
+        if(!$this->upload->do_upload('file')){
+    		$data = array(
+    			'T_file' => $result['file'],
+    			'T_description' => $_POST['description']
+    			 );
+        }
+    	else{
+    		$date = array('upload_data' => $this->upload->data());
+    		$data = array(
+    			'T_file' => $date['upload_data']['file_name'],
+    			'T_description' => $_POST['description']
+    			 );
+    		$path = './assets/files/'.$result['file'];
+    		unlink($path);
+    	}
+    	$this->topics->update_topic($_POST['topic_id'],$data);
+    	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
+    	redirect($location, 'refresh');
+
+    }
+
+		public function add_question(){
+			$this->load->view('template/prof_dashboard_header',$_SESSION);
+			$this->load->view('professor/prof_addquestions',$_SESSION);
+			$this->load->view('template/prof_dashboard_footer',$_SESSION);
+		}
+
+		public function do_question(){
+			$choices = array(
+				'Choice1' =>$_POST['c1'],
+				'Choice2' =>$_POST['c2'],
+				'Choice3' =>$_POST['c3'],
+				'Choice4' =>$_POST['c4'],
+			);
+				if (in_array($_POST['answer'], $choices)) {
+					$data = array(
+						'Question_ID' => NULL,
+						'Prof_ID' => $session_data['username'],
+						'Class_ID' => '1',
+						'Question' => $_POST['question'],
+						'Choice1' =>$_POST['c1'],
+						'Choice2' =>$_POST['c2'],
+						'Choice3' =>$_POST['c3'],
+						'Choice4' =>$_POST['c4'],
+						'Answer' =>$_POST['answer']
+					);
+					$this->quizzes->submit_question($data);
+				}
+				else {
+					$this->session->set_flashdata('error', 'Answer not available in choices');
+					redirect('Prof_dashboard/add_question');
+				}
+
+>>>>>>> Stashed changes
 	}
 }
