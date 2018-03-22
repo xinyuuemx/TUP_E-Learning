@@ -38,7 +38,7 @@
 			<ul class="alt">
 				<li><a href="<?php echo base_url().'professor';?>">Dashboard</a></li>
 				<li><a href="<?php echo base_url().'Prof_dashboard/index/classes';?>">Classes</a></li>
+				<li><a href="<?php echo base_url().'Prof_dashboard/index/quizzes';?>">Quizzes</a></li>
 				<li><a href="#">Discussions</a></li>
 			</ul>
 		</div>
-
