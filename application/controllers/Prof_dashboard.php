@@ -194,12 +194,8 @@ class Prof_dashboard extends CI_Controller {
 				$x = $x + 1;
 			}
 		}
-<<<<<<< Updated upstream
 		return $data;
-=======
 
-	return $data;
->>>>>>> Stashed changes
 	}
 
 	public function get_topics($raw_data) {
@@ -246,60 +242,15 @@ class Prof_dashboard extends CI_Controller {
                 	'Class_ID' => $_SESSION['class_id'],
                 	'T_file' => $pass,
                 	'T_description' => $_POST['description']
-<<<<<<< Updated upstream
                 );
-=======
-                	);
->>>>>>> Stashed changes
+
                 $this->load->view('template/prof_dashboard_header',$_SESSION);
                 $this->topics->upload_topic($ins);
                 $this->load->view('professor/prof_modules',$_SESSION['subject']);
                 $this->load->view('template/prof_dashboard_footer',$_SESSION);
                 $location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
     			redirect($location, 'refresh');
-<<<<<<< Updated upstream
-      }
-  }
 
-  public function delete($raw_data,$raw_data2) {
-  	$del = urldecode($raw_data);
-  	$this->topics->delete($del);
-  	$path = './assets/files/'.$raw_data2;
-  	unlink($path);
-  	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
-  	redirect($location, 'refresh');
-  }
-
-  public function update_topic($data) {
-  	$result = $this->get_topics($data);
-  	$this->load->view('template/prof_dashboard_header',$_SESSION);
-    $this->load->view('professor/prof_update',$result);
-    $this->load->view('template/prof_dashboard_footer');
-  }
-
-  public function edit_data() {
-  	$result = $this->get_topics($_POST['topic_id']);
-  	$config['upload_path']          = './assets/files';
-    $config['allowed_types']        = 'pdf|jpg';
-		$this->load->library('upload', $config);
-    if(!$this->upload->do_upload('file')) {
-  		$data = array(
-  			'T_file' => $result['file'],
-  			'T_description' => $_POST['description']
-  		);
-    } else {
-  		$date = array('upload_data' => $this->upload->data());
-  		$data = array(
-  			'T_file' => $date['upload_data']['file_name'],
-  			'T_description' => $_POST['description']
-  		);
-  		$path = './assets/files/'.$result['file'];
-  		unlink($path);
-  	}
-  	$this->topics->update_topic($_POST['topic_id'],$data);
-  	$location = 'Prof_dashboard/view_class/'.$_SESSION['subject']['code'];
-  	redirect($location, 'refresh');
-=======
         }
     }
     public function delete($raw_data,$raw_data2){
@@ -375,6 +326,5 @@ class Prof_dashboard extends CI_Controller {
 					redirect('Prof_dashboard/add_question');
 				}
 
->>>>>>> Stashed changes
 	}
 }
