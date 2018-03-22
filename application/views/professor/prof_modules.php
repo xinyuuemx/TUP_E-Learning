@@ -26,12 +26,9 @@
 				foreach($topic_id as $data){
 						echo form_open('Prof_dashboard/update_topic/'.$data);
 						echo'<tr>
-						<td>'.$data.'
-						</td>
-						<td>'.$class_id.'
-						</td>
-
-						<td><a href="'.base_url().'Prof_dashboard/view_topic/'.$data.'/'.$file[$x].'" class="icon fa-graduation-cap">
+						<td>'.$data.'</td>
+						<td>'.$class_id.'</td>
+						<td><a href="'.base_url().'Prof_dashboard/view_topic/'.$data.'/'.$file[$x].'" cxlass="icon fa-graduation-cap">
 						'.$file[$x].'</a>
 						</td>'.
 						'<td>'.$description[$x].'</td>';
