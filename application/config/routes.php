@@ -64,5 +64,6 @@ $route['admin/manage/:num'] = 'Admin_dashboard/index/manageclasses';
 $route['admin/manage/create'] = 'Admin_dashboard/index/createclass';
 $route['admin/manage/search'] = 'Admin_dashboard/searchClasses';
 //routes for viewing specific class
-$route['admin/manage/:num/view/:num'] = 'Admin_dashboard/index/updateclass';
-$route['admin/manage/search/view/:num'] = 'Admin_dashboard/index/updateclass';
+$route['admin/manage/:num/view/:num'] = 'Admin_dashboard/index/editclass';
+$route['admin/manage/view/:num'] = 'Admin_dashboard/index/editclass';
+$route['admin/manage/search/view/:num'] = 'Admin_dashboard/index/editclass';
