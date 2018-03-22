@@ -38,6 +38,9 @@ class Admin_dashboard extends CI_Controller {
 				$this->load->view('admin/admin_createclass');
 				break;
 
+				case 'editclass':
+				break;
+
 
 				default:
 				echo $scene;
@@ -75,7 +78,7 @@ class Admin_dashboard extends CI_Controller {
             $none=null;
 			$config['base_url'] = base_url().'admin/manage_classes';
             $config['total_rows'] = $this->adminn->count_classes();
-            $config['per_page'] = 20;
+            $config['per_page'] = 1;
 
 			/*BOOTSTRAP PAGINATION CONFIG
 			$config['full_tag_open'] = "<ul class='pagination'>";
@@ -114,7 +117,7 @@ class Admin_dashboard extends CI_Controller {
 			$this->load->view('admin/admin_manageclasses',$data);
 		}
 		else{
-			redirect(base_url().'admin/manage_classes');
+			redirect(base_url().'admin/manage');
 		}
 		//$this->output->enable_profiler(TRUE);
 
