@@ -21,6 +21,14 @@ class Quizzes_model extends CI_Model {
 		$this->db->insert($this->table, $data);
 	}
 
+	public function read_questions($profid) {
+		$this->db->select("*");
+		$this->db->from($this->table);
+		$this->db->where('Prof_ID', $profid);
+		$query=$this->db->get();
+		return $query->result();
+	}
+
 }
 
 ?>
