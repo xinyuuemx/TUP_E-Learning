@@ -230,7 +230,7 @@ class Prof_dashboard extends CI_Controller {
 
 	public function upload() {
         $config['upload_path']          = './assets/files';
-        $config['allowed_types']        = 'pdf|jpg';
+        $config['allowed_types']        = 'pdf|docx|pptx';
 
         $this->load->library('upload', $config);
 
@@ -283,7 +283,7 @@ class Prof_dashboard extends CI_Controller {
     public function edit_data(){
     	$result = $this->get_topics($_POST['topic_id']);
     	$config['upload_path']          = './assets/files';
-        $config['allowed_types']        = 'pdf|jpg';
+        $config['allowed_types']        = 'pdf|docx|pptx';
 
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload('file')){
