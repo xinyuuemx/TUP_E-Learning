@@ -115,6 +115,19 @@ class Student_dashboard extends CI_Controller {
 				}
 			$x = $x+1;
 		}
+		$x=0;
+		foreach ($result as $key) {
+			$need1[$x] = $this->classes->read_details($key['Class_ID']);
+			foreach ($need1[$x] as $key) {
+				$need2[$x] = $this->classes->read_professors($key['Prof_ID']);
+			}
+			foreach ($need2 as $key) {
+			$name[$x] = $key[0]['L_name'].", ".$key[0]['F_name'].' '.$key[0]['M_name'];
+		}
+			$x = $x+1;
+		}
+		
+		$data['name'] =$name;
 		if(isset($data)) {
 			return $data;
 		}

@@ -18,6 +18,7 @@
 						 <h3>'.$data.'</h3>
 					 </header>'.
 					 '<p>'.$description[$x].'</p>
+					 <a href="'.base_url().'my_students_controller/classes/'.$data.'">My Students</a>
 					 </div>
 					 </section>';
 					 $x = $x+1;

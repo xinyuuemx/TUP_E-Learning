@@ -23,6 +23,7 @@
 							<h3>'.$data.'</h3>
 						</header>'.
 						'<p>'.$description[$x].'</p>
+						<p>Prof. '.$name[$x].'</p>
 						</div>
 						</section>';
 						$x = $x+1;
