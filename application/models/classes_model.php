@@ -70,5 +70,19 @@ class Classes_model extends CI_Model {
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+	public function get_class_id($data){
+		$this->db->select('*');
+		$this->db->from($this->table3);
+		$this->db->where('Subject_code',$data);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+	public function get_memebers($data){
+		$this->db->select('Student_ID');
+		$this->db->from($this->table2);
+		$this->db->where('Class_ID',$data);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
 
 }
