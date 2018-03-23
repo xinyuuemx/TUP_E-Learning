@@ -9,8 +9,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
-		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-		<link href="<?php echo base_url().'assets/css/bootstrap.min.css'?>" rel="stylesheet" id="bootstrap-css">
+
 		<script src="<?php echo base_url().'assets/js/bootstrap.min.js'?>"></script>
 	</head>
 
