@@ -231,7 +231,9 @@ class Student_dashboard extends CI_Controller {
 		foreach ($result as $key) {
 			$data_pass = array(
 			'account_id' => $result,
+
 			'name' =>$name,
+
 			'pic'	  => $pics
 			);
 		}

@@ -35,21 +35,8 @@ class Admin_dashboard extends CI_Controller {
 						break;
 
 				case 'createclass':
-						$this->load->view('admin/admin_createclass');
-						break;
-
-				case 'editclass':
-						$this->viewClass();
-						break;
-
-				case 'deletestud':
-						$this->deleteStud();
-						break;
-				case 'newprof':
-						$this->newProf();
-						break;
-
-
+				$this->load->view('admin/admin_createclass');
+				break;
 				default:
 						echo $scene;
 						$this->load->view('admin/admin_dashboard',$_SESSION);
@@ -71,43 +58,40 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('admin/admin_create_class');
 	}
 
-
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
 	}
 
+        public function getTable(){
+            $none=null;
+			$config['base_url'] = base_url().'admin/manage_classes';
+            $config['total_rows'] = $this->adminn->count_classes();
+            $config['per_page'] = 20;
 
-    public function getTable(){
-        $none=null;
-		$config['base_url'] = base_url().'admin/manage';
-        $config['total_rows'] = $this->adminn->count_classes();
-        $config['per_page'] = 10;
+			/*BOOTSTRAP PAGINATION CONFIG
+			$config['full_tag_open'] = "<ul class='pagination'>";
+			$config['full_tag_close'] ="</ul>";
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
+			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+			$config['next_tag_open'] = "<li>";
+			$config['next_tagl_close'] = "</li>";
+			$config['prev_tag_open'] = "<li>";
+			$config['prev_tagl_close'] = "</li>";
+			$config['first_tag_open'] = "<li>";
+			$config['first_tagl_close'] = "</li>";
+			$config['last_tag_open'] = "<li>";
+			$config['last_tagl_close'] = "</li>";*/
 
-		/*BOOTSTRAP PAGINATION CONFIG
-		$config['full_tag_open'] = "<ul class='pagination'>";
-		$config['full_tag_close'] ="</ul>";
-		$config['num_tag_open'] = '<li>';
-		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-		$config['next_tag_open'] = "<li>";
-		$config['next_tagl_close'] = "</li>";
-		$config['prev_tag_open'] = "<li>";
-		$config['prev_tagl_close'] = "</li>";
-		$config['first_tag_open'] = "<li>";
-		$config['first_tagl_close'] = "</li>";
-		$config['last_tag_open'] = "<li>";
-		$config['last_tagl_close'] = "</li>";*/
-
-        $this->pagination->initialize($config);
-        $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
-        if(isset($data)){
-            return $data;
+            $this->pagination->initialize($config);
+            $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
+            if(isset($data)){
+                return $data;
+            }
+            else return $none;
         }
-        else return $none;
-    }
-
 	public function searchClasses(){
 		$textInput=$this->input->post('searchtext');
 		$searchBy=$this->input->post('radio');

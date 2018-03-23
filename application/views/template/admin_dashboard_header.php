@@ -35,12 +35,12 @@
 			</header>
 		</nav>
 
-		<div class="sidenav">
+		<div class="sidenav" style="background-color:#111; color:#fff;">
 			<?php $image=$img_id;?>
-			<img src="<?php echo base_url().'assets/images/'.$image.'.jpg';?>" alt="Profile Picture" width="240" height="240">
-
+			
 			<ul class="alt">
 				<li><b><?php $name_print = $name; echo $name_print;?></b></li>
+				<li></li>
 			</ul>
 
 			<ul class="alt">

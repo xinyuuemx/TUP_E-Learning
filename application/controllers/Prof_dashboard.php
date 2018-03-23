@@ -348,6 +348,7 @@ class Prof_dashboard extends CI_Controller {
 			}
 
 	}
+
 		public function get_comments($data) {
 		$result = $this->comments->read($data);
 		$x = 0;
@@ -374,4 +375,5 @@ class Prof_dashboard extends CI_Controller {
 		}
 		return $data_pass;
 	}
+
 }

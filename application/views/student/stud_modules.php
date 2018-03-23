@@ -4,11 +4,7 @@
 			<div class="inner">
 				<header class="special">
 					<h2><?php echo urldecode($code)?> Modules</h2>
-						<ul class="alt">
-							<li>School Year 2017-2018</li>
-							<li>Second Semester</li>
-							
-						</ul>
+						
 				</header>
 				<div class="highlights">
 					<?php $x = 0;
@@ -28,7 +24,8 @@
 				}
 			}
 			else
-				echo '<section>
+				echo '
+			<section>
 					<div class="content">
 					<header>
 						<i class="icon fa-exclamation">

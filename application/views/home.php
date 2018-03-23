@@ -32,7 +32,7 @@
 									<a href="#" class="icon fa-files-o"><span class="label">Icon</span></a>
 									<h3>Modules</h3>
 								</header>
-								<p>Students can have access to lessons per topic from different classes; and take exams online. </p>
+								<p>Students can have access to lessons from different classes, post comments and take exams online. </p>
 							</div>
 						</section>
 						<section>

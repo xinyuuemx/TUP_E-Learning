@@ -1,8 +1,8 @@
 <div class="main">
 
-
+<div class="inner">
  <header class="special">
-		 <h2>Your Classes</h2>
+		 <h2>Classes</h2>
 			 <ul class="alt">
  <?php $x = 0;
 		 if(isset($code)){
@@ -25,7 +25,9 @@
 			 }
 		 }
 		 else
-			 echo '<section>
+			 echo '
+		 <div class="highlights">
+			<section>
 					<div class="content">
 					<header>
 						<i class="icon fa-exclamation">
@@ -36,5 +38,6 @@
 					</div>
 				</section>'
 		 ?>
+</div>
 </div>
 </div>

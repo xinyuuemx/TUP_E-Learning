@@ -8,9 +8,10 @@
 						<section>
 							<h4>Important Features</h4>
 							<ul class="alt">
-								<li><a href="#">Classes</a></li>
-								<li><a href="#">Discussions</a></li>
-								<li><a href="#">Achievements Board</a></li>
+								<li>View Existing Classes</li>
+								<li>Read Available Lectures</li>
+								<li>View Comments/Discussions</li>
+								<li>Participate in Discussions</li>
 							</ul>
 						</section>
 						<section>
