@@ -35,14 +35,25 @@ class Admin_dashboard extends CI_Controller {
 						break;
 
 				case 'createclass':
-				$this->load->view('admin/admin_createclass');
-				break;
+						$this->load->view('admin/admin_createclass');
+						break;
+
+				case 'editclass':
+						$this->viewClass();
+						break;
+
+				case 'deletestud':
+						$this->deleteStud();
+						break;
+				case 'newprof':
+						$this->newProf();
+						break;
 
 
 				default:
-				echo $scene;
-				$this->load->view('admin/admin_dashboard',$_SESSION);
-				break;
+						echo $scene;
+						$this->load->view('admin/admin_dashboard',$_SESSION);
+						break;
 
 			}
 			$this->load->view('template/student_dashboard_footer');
@@ -60,10 +71,6 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('admin/admin_create_class');
 	}
 
-	/*public function manageclasses(){
-		$this->load->view('template/admin_dashboard_header',$_SESSION);
-		$this->load->view('admin/admin_manageclasses');
-	}*/
 
 	public function logout(){
 		session_destroy();
@@ -71,35 +78,35 @@ class Admin_dashboard extends CI_Controller {
 	}
 
 
-        public function getTable(){
-            $none=null;
-			$config['base_url'] = base_url().'admin/manage_classes';
-            $config['total_rows'] = $this->adminn->count_classes();
-            $config['per_page'] = 20;
+    public function getTable(){
+        $none=null;
+		$config['base_url'] = base_url().'admin/manage';
+        $config['total_rows'] = $this->adminn->count_classes();
+        $config['per_page'] = 10;
 
-			/*BOOTSTRAP PAGINATION CONFIG
-			$config['full_tag_open'] = "<ul class='pagination'>";
-			$config['full_tag_close'] ="</ul>";
-			$config['num_tag_open'] = '<li>';
-			$config['num_tag_close'] = '</li>';
-			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-			$config['next_tag_open'] = "<li>";
-			$config['next_tagl_close'] = "</li>";
-			$config['prev_tag_open'] = "<li>";
-			$config['prev_tagl_close'] = "</li>";
-			$config['first_tag_open'] = "<li>";
-			$config['first_tagl_close'] = "</li>";
-			$config['last_tag_open'] = "<li>";
-			$config['last_tagl_close'] = "</li>";*/
+		/*BOOTSTRAP PAGINATION CONFIG
+		$config['full_tag_open'] = "<ul class='pagination'>";
+		$config['full_tag_close'] ="</ul>";
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
+		$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+		$config['next_tag_open'] = "<li>";
+		$config['next_tagl_close'] = "</li>";
+		$config['prev_tag_open'] = "<li>";
+		$config['prev_tagl_close'] = "</li>";
+		$config['first_tag_open'] = "<li>";
+		$config['first_tagl_close'] = "</li>";
+		$config['last_tag_open'] = "<li>";
+		$config['last_tagl_close'] = "</li>";*/
 
-            $this->pagination->initialize($config);
-            $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
-            if(isset($data)){
-                return $data;
-            }
-            else return $none;
+        $this->pagination->initialize($config);
+        $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
+        if(isset($data)){
+            return $data;
         }
+        else return $none;
+    }
 
 	public function searchClasses(){
 		$textInput=$this->input->post('searchtext');
@@ -114,12 +121,57 @@ class Admin_dashboard extends CI_Controller {
 			$this->load->view('admin/admin_manageclasses',$data);
 		}
 		else{
-			redirect(base_url().'admin/manage_classes');
+			redirect(base_url().'admin/manage');
 		}
 		//$this->output->enable_profiler(TRUE);
 
 	}
 
+	public function viewClass(){
+		//check if url segment is numeric
+		if(is_numeric($this->uri->segment(4))){
+			$segmentno=4;
+		}
+		else if(is_numeric($this->uri->segment(5))){
+			$segmentno=5;
+		}
+		$classID=(string)$this->uri->segment($segmentno);
+		$data['details']=$this->adminn->search_classes($classID,2);
+		$data['studs']=$this->adminn->read_classmembers($classID);
+		$data['profs']=$this->adminn->read_professors();
+		$proff=$this->adminn->search_classes($classID,2);
+		foreach($proff as $proffs){
+			$data['pro']=$proffs->Prof_ID;
+		}
+		$this->load->view('admin/admin_viewclass',$data);
+
+	}
+
+	public function deleteStud(){
+		$last = $this->uri->total_segments();
+		$id = $this->uri->segment($last);
+		$class = $this->uri->segment($last-1);
+		if($this->adminn->deleteStud($id)){
+			$this->session->set_flashdata('error','Successfully deleted.');
+			redirect(base_url().'admin/manage/view/'.$class);
+		}
+		else{
+
+		}
+
+	}
+
+	public function newProf(){
+		$last = $this->uri->total_segments();
+		$pid = $this->uri->segment($last);
+		$class = $this->uri->segment($last-2);
+		if($this->adminn->assignProf($pid,$class)){
+			redirect(base_url().'admin/manage/view/'.$class);
+		}
+		else{
+
+		}
+	}
 
 	public function homepage(){
 		$this->load->view('template/admin_homepage_header',$_SESSION);
