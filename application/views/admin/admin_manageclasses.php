@@ -5,11 +5,11 @@
 				
 		</header>
 		
-		<a href="<?php echo base_url().'admin/manage_classes/create'?>" class="button large"><i class="icon fa-plus" style="">&nbsp;&nbsp;&nbsp;</i>Create New Class</a>
+		<a href="<?php echo base_url().'admin/manage/create'?>" class="button large"><i class="icon fa-plus" style="">&nbsp;&nbsp;&nbsp;</i>Create New Class</a>
 		
 
 		
-		<form action="<?php echo base_url().'Admin_dashboard/searchClasses'?>" method="post">
+		<form action="<?php echo base_url().'admin/manage/search'?>" method="post">
 			<input type="text" name="searchtext" placeholder="Search by Professor's ID, Class Code or Subject Code" />
 			<input type="radio" id="bypid" name="radio" checked="checked" value="1">
 			<label for="bypid">by Professor's ID</label>
@@ -23,6 +23,7 @@
 				  }else {echo $message; }?>
 
 			<br />
+			<?php echo $this->session->flashdata['error'];?>
 			<br />
 		</form>
 		
@@ -43,7 +44,7 @@
 										echo "<tr>".
                                                 "<td>".$infos->Class_ID."</td>".
                                                 "<td>".$infos->Subject_code."</td>".
-                                                "<td><a href=".'admin/manage_classes/'.$infos->Class_ID.">".$infos->S_description."</a></td>".
+                                                "<td><a href=".current_url()."/view/".$infos->Class_ID.">".$infos->S_description."</a></td>".
                                                 "<td>".$infos->Prof_ID."</td>".
                                                 "<td>".$infos->L_name.", ".$infos->F_name." ".$infos->M_name.","."</td>".
 											"</tr>";

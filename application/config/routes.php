@@ -59,8 +59,17 @@ $route['translate_uri_dashes'] = FALSE;
 
 //admin routes
 $route['admin'] = 'admin_dashboard';
-$route['admin/manage_classes'] = 'Admin_dashboard/index/manageclasses';
-$route['admin/manage_classes/:num'] = 'Admin_dashboard/index/manageclasses';
-$route['admin/manage_classes/create'] = 'Admin_dashboard/index/createclass';
-$route['admin/manage_classes/edit'] = 'Admin_dashboard/index/editclass';
-$route['admin/manage_classes/search'] = 'Admin_dashboard/searchClasses';
+$route['admin/manage'] = 'Admin_dashboard/index/manageclasses';
+$route['admin/manage/:num'] = 'Admin_dashboard/index/manageclasses';
+$route['admin/manage/create'] = 'Admin_dashboard/index/createclass';
+$route['admin/manage/search'] = 'Admin_dashboard/searchClasses';
+//routes for viewing specific class
+$route['admin/manage/:num/view/:num'] = 'Admin_dashboard/index/editclass';
+$route['admin/manage/view/:num'] = 'Admin_dashboard/index/editclass';
+$route['admin/manage/search/view/:num'] = 'Admin_dashboard/index/editclass';
+//deleting studs
+$route['admin/manage/view/:num/:any']='Admin_dashboard/index/deletestud';
+$route['admin/manage/:num/view/:num/:any']='Admin_dashboard/index/deletestud';
+//updating prof
+$route['admin/manage/view/:num/assignprof/:any']='Admin_dashboard/index/newprof';
+$route['admin/manage/:num/view/:num/assignprof/:any']='Admin_dashboard/index/newprof';

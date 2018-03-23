@@ -3,11 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Mar 22, 2018 at 10:45 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.1
-
+-- Generation Time: Mar 23, 2018 at 06:27 AM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -195,7 +193,6 @@ INSERT INTO `class` (`Class_ID`, `SY_ID`, `Subject_code`, `Prof_ID`) VALUES
 (1129, 4, '222', '01-04-1980'),
 (1130, 4, '111', '01-04-1980');
 
-
 -- --------------------------------------------------------
 
 --
@@ -212,12 +209,13 @@ CREATE TABLE `class_members` (
 --
 
 INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
-(1120, '15-027-001'),
-(1120, '15-027-002'),
-(1120, '15-027-003'),
-(1121, '15-027-001'),
-(1121, '15-027-002'),
-(1121, '15-027-003');
+(1111, '15-027-001'),
+(2221, '15-027-001'),
+(2221, '15-027-002'),
+(3331, '15-027-001'),
+(3331, '15-027-003'),
+(4441, '15-027-004'),
+(5551, '15-027-005');
 
 -- --------------------------------------------------------
 
@@ -645,7 +643,6 @@ ALTER TABLE `professors`
 
 --
 -- Indexes for table `questions`
-
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`Question_ID`);
@@ -661,62 +658,6 @@ ALTER TABLE `quizzes`
 --
 ALTER TABLE `school_years`
   ADD PRIMARY KEY (`SY_ID`);
-
---
--- Indexes for table `students`
---
-ALTER TABLE `questions`
-  ADD PRIMARY KEY (`Question_ID`);
-
---
--- Indexes for table `subjects`
---
-ALTER TABLE `subjects`
-  ADD PRIMARY KEY (`Subject_code`);
-
---
--- Indexes for table `sy_subjects`
---
-ALTER TABLE `sy_subjects`
-  ADD PRIMARY KEY (`SY_ID`,`Subject_Code`);
-
---
--- Indexes for table `topics`
---
-ALTER TABLE `topics`
-  ADD PRIMARY KEY (`Topic_ID`);
-
---
--- AUTO_INCREMENT for dumped tables
-
---
-ALTER TABLE `quizzes`
-  ADD PRIMARY KEY (`Quiz_ID`);
-
---
--- Indexes for table `school_years`
---
-ALTER TABLE `class`
-  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1122;
-
---
--- AUTO_INCREMENT for table `questions`
---
-ALTER TABLE `questions`
-  MODIFY `Question_ID` int(10) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `school_years`
---
-ALTER TABLE `school_years`
-  MODIFY `SY_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `topics`
---
-ALTER TABLE `topics`
-  MODIFY `Topic_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

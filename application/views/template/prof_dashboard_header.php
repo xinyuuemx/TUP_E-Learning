@@ -9,6 +9,7 @@
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/main.css';?>" />
 		<link rel="stylesheet" href="<?php echo base_url().'/assets/css/login.css';?>" />
+
 		<link href="<?php echo base_url(); ?>assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	</head>
 
@@ -37,6 +38,6 @@
 				<li><a href="<?php echo base_url().'professor';?>">Dashboard</a></li>
 				<li><a href="<?php echo base_url().'Prof_dashboard/index/classes';?>">Classes</a></li>
 				<li><a href="<?php echo base_url().'Prof_dashboard/index/quizzes';?>">Quizzes</a></li>
-				
+
 			</ul>
 		</div>

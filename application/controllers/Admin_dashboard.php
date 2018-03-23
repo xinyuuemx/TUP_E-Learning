@@ -37,12 +37,10 @@ class Admin_dashboard extends CI_Controller {
 				case 'createclass':
 				$this->load->view('admin/admin_createclass');
 				break;
-
-
 				default:
-				echo $scene;
-				$this->load->view('admin/admin_dashboard',$_SESSION);
-				break;
+						echo $scene;
+						$this->load->view('admin/admin_dashboard',$_SESSION);
+						break;
 
 			}
 			$this->load->view('template/student_dashboard_footer');
@@ -60,16 +58,10 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('admin/admin_create_class');
 	}
 
-	/*public function manageclasses(){
-		$this->load->view('template/admin_dashboard_header',$_SESSION);
-		$this->load->view('admin/admin_manageclasses');
-	}*/
-
 	public function logout(){
 		session_destroy();
 		redirect(base_url().'pages');
 	}
-
 
         public function getTable(){
             $none=null;
@@ -100,7 +92,6 @@ class Admin_dashboard extends CI_Controller {
             }
             else return $none;
         }
-
 	public function searchClasses(){
 		$textInput=$this->input->post('searchtext');
 		$searchBy=$this->input->post('radio');
@@ -114,12 +105,57 @@ class Admin_dashboard extends CI_Controller {
 			$this->load->view('admin/admin_manageclasses',$data);
 		}
 		else{
-			redirect(base_url().'admin/manage_classes');
+			redirect(base_url().'admin/manage');
 		}
 		//$this->output->enable_profiler(TRUE);
 
 	}
 
+	public function viewClass(){
+		//check if url segment is numeric
+		if(is_numeric($this->uri->segment(4))){
+			$segmentno=4;
+		}
+		else if(is_numeric($this->uri->segment(5))){
+			$segmentno=5;
+		}
+		$classID=(string)$this->uri->segment($segmentno);
+		$data['details']=$this->adminn->search_classes($classID,2);
+		$data['studs']=$this->adminn->read_classmembers($classID);
+		$data['profs']=$this->adminn->read_professors();
+		$proff=$this->adminn->search_classes($classID,2);
+		foreach($proff as $proffs){
+			$data['pro']=$proffs->Prof_ID;
+		}
+		$this->load->view('admin/admin_viewclass',$data);
+
+	}
+
+	public function deleteStud(){
+		$last = $this->uri->total_segments();
+		$id = $this->uri->segment($last);
+		$class = $this->uri->segment($last-1);
+		if($this->adminn->deleteStud($id)){
+			$this->session->set_flashdata('error','Successfully deleted.');
+			redirect(base_url().'admin/manage/view/'.$class);
+		}
+		else{
+
+		}
+
+	}
+
+	public function newProf(){
+		$last = $this->uri->total_segments();
+		$pid = $this->uri->segment($last);
+		$class = $this->uri->segment($last-2);
+		if($this->adminn->assignProf($pid,$class)){
+			redirect(base_url().'admin/manage/view/'.$class);
+		}
+		else{
+
+		}
+	}
 
 	public function homepage(){
 		$this->load->view('template/admin_homepage_header',$_SESSION);

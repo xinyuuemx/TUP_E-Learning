@@ -7,6 +7,7 @@ class Student_dashboard extends CI_Controller {
 		$this->load->model('pages_model','pages');
 		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->model('comments_model','comments'); //pre load all models
+		$this->load->model('comment_model','commenting'); //pre load all models
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -61,7 +62,6 @@ class Student_dashboard extends CI_Controller {
 		}
 		$session_data = array(
 			'student_id' => $data['username'],
-			'password' => $password,
 			'name' => $data['name'],
 			'img_id' => $data['img_id']
 		);
@@ -209,9 +209,18 @@ class Student_dashboard extends CI_Controller {
 			$pics[$x] = $result2;
 			$x = $x + 1;
 		}
+		$x = 0;
+		foreach ($result as $key) {
+			$get_data = $this->commenting->get_name($key['Account_ID']);
+			$name[$x] = $get_data[0]['F_name'];
+			$x = $x + 1;
+		}
 		foreach ($result as $key) {
 			$data_pass = array(
 			'account_id' => $result,
+
+			'name' =>$name,
+
 			'pic'	  => $pics
 			);
 		}

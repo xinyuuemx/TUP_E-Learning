@@ -9,6 +9,8 @@ class Prof_dashboard extends CI_Controller {
 		$this->load->model('classes_model','classes'); //pre load all models
 		$this->load->model('topics_model','topics'); //pre load all models
 		$this->load->model('quizzes_model','quizzes'); //pre load all models
+		$this->load->model('comments_model','comments'); //pre load all 
+		$this->load->model('comment_model','commenting'); //pre load all 
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
@@ -186,6 +188,8 @@ class Prof_dashboard extends CI_Controller {
 		$data = array('topic' => $topic,'file'=>$file);
 		$this->load->view('template/prof_dashboard_header',$_SESSION);
 		$this->load->view('main/view_topic',$data);
+		$pass = $this->get_comments($topic);
+		$this->load->view('main/comments',$pass);
 		$this->load->view('template/prof_dashboard_footer');
 	}
 
@@ -226,7 +230,7 @@ class Prof_dashboard extends CI_Controller {
 
 	public function upload() {
         $config['upload_path']          = './assets/files';
-        $config['allowed_types']        = 'pdf|jpg';
+        $config['allowed_types']        = 'pdf|docx|pptx';
 
         $this->load->library('upload', $config);
 
@@ -279,7 +283,7 @@ class Prof_dashboard extends CI_Controller {
     public function edit_data(){
     	$result = $this->get_topics($_POST['topic_id']);
     	$config['upload_path']          = './assets/files';
-        $config['allowed_types']        = 'pdf|jpg';
+        $config['allowed_types']        = 'pdf|docx|pptx';
 
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload('file')){
@@ -344,4 +348,32 @@ class Prof_dashboard extends CI_Controller {
 			}
 
 	}
+
+		public function get_comments($data) {
+		$result = $this->comments->read($data);
+		$x = 0;
+		$y=0;
+		foreach ($result as $key) {
+			$result2 = $this->pages->get_image($key['Account_ID']);
+			//$get_data = $this->comment->get_name($key['Account_ID']);
+			$pics[$x] = $result2;
+			//$name[$x] = $get_data;
+			$x = $x + 1;
+		}
+		$x = 0;
+		foreach ($result as $key) {
+			$get_data = $this->commenting->get_name($key['Account_ID']);
+			$name[$x] = $get_data[0]['F_name'];
+			$x = $x + 1;
+		}
+		foreach ($result as $key) {
+			$data_pass = array(
+			'account_id' => $result,
+			'name' =>$name,
+			'pic'	  => $pics
+			);
+		}
+		return $data_pass;
+	}
+
 }
