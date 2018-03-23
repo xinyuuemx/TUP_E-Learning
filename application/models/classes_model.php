@@ -6,7 +6,7 @@ class Classes_model extends CI_Model {
 	private $table4 = "professors";
 	private $table5 = "subjects";
 	private $table6 = "topics";
-	
+
 	// Constructor
 	public function __construct() {
 		parent::__construct();
@@ -44,6 +44,14 @@ class Classes_model extends CI_Model {
 		$this->db->select("*");
 		$this->db->from($this->table3);
 		$this->db->where('Prof_ID', $prof_id);
+		$query=$this->db->get();
+		return $query->result_array();
+	}
+	public function read_subjectsavail($prof_id,$subcode) {
+		$this->db->select("*");
+		$this->db->from($this->table3);
+		$this->db->where('Prof_ID', $prof_id);
+		$this->db->where('Subject_Code', $subcode);
 		$query=$this->db->get();
 		return $query->result_array();
 	}

@@ -3,7 +3,7 @@ class Admin_dashboard extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		
+
 
 		$this->load->helper('form');
 		$this->load->model('admin_model','adminn');
@@ -23,7 +23,7 @@ class Admin_dashboard extends CI_Controller {
 		else{
 			$scene_data['scene'] = $scene;
 			$this->load->view('template/admin_dashboard_header',$_SESSION);
-			switch ($scene) {	
+			switch ($scene) {
 				case 'manageclasses':
 						$data['info']=$this->getTable();
 						$data['message']='';
@@ -33,11 +33,11 @@ class Admin_dashboard extends CI_Controller {
                         //$this->getTable();
                         $this->load->view('admin/admin_manageclasses',$data);
 						break;
-				
+
 				case 'createclass':
 				$this->load->view('admin/admin_createclass');
 				break;
-				
+
 
 				default:
 				echo $scene;
@@ -59,7 +59,7 @@ class Admin_dashboard extends CI_Controller {
 		$this->load->view('template/admin_dashboard_header',$_SESSION);
 		$this->load->view('admin/admin_create_class');
 	}
-	
+
 	/*public function manageclasses(){
 		$this->load->view('template/admin_dashboard_header',$_SESSION);
 		$this->load->view('admin/admin_manageclasses');
@@ -70,13 +70,13 @@ class Admin_dashboard extends CI_Controller {
 		redirect(base_url().'pages');
 	}
 
-        
+
         public function getTable(){
             $none=null;
 			$config['base_url'] = base_url().'admin/manage_classes';
             $config['total_rows'] = $this->adminn->count_classes();
             $config['per_page'] = 20;
-			
+
 			/*BOOTSTRAP PAGINATION CONFIG
 			$config['full_tag_open'] = "<ul class='pagination'>";
 			$config['full_tag_close'] ="</ul>";
@@ -92,7 +92,7 @@ class Admin_dashboard extends CI_Controller {
 			$config['first_tagl_close'] = "</li>";
 			$config['last_tag_open'] = "<li>";
 			$config['last_tagl_close'] = "</li>";*/
-			
+
             $this->pagination->initialize($config);
             $data = $this->adminn->read_classes($config['per_page'],$this->uri->segment(3));
             if(isset($data)){
@@ -100,14 +100,14 @@ class Admin_dashboard extends CI_Controller {
             }
             else return $none;
         }
-	
+
 	public function searchClasses(){
 		$textInput=$this->input->post('searchtext');
 		$searchBy=$this->input->post('radio');
-		
-		
+
+
 		if(isset($textInput) and !empty($textInput)){
-			
+
 			$data['info'] = $this->adminn->search_classes($textInput,$searchBy);
 			$data['message']="Keep the search box empty and hit 'Search' to display all classes.";
 			$this->load->view('template/admin_dashboard_header',$_SESSION);
@@ -140,16 +140,22 @@ class Admin_dashboard extends CI_Controller {
 	public function do_upload()
     {
 			$this->load->view('template/admin_dashboard_header',$_SESSION);
-			$result = $this->pages->read_subject($_POST['subcode']);
+			$semdate = date('m-d', strtotime('11-01'));
+			if (date('m-d')>=$semdate) {
+				$sem="2nd";
+			}
+			else{
+				$sem="1st";
+			}
+			$result3 = $this->pages->read_schoolyear(date("Y"), $sem);
+			$result =  $this->pages->read_sy_subjects($_POST['subcode'], $result3);
 			$result2 = $this->pages->read_profaccount($_POST['profid']);
-			$result3 = $this->pages->read_class($_POST['subcode'], $_POST['profid']);
 
 			if(!empty($result) and !empty($result2))
 			{
-				if(empty($result3))
-				{
 					$cdata = array(
 						'Class_ID' => NULL,
+						'SY_ID' => $result3,
 						'Subject_code' =>$_POST['subcode'],
 						'Prof_ID' =>$_POST['profid']
 					);
@@ -179,15 +185,10 @@ class Admin_dashboard extends CI_Controller {
 								}
 						}
 						redirect(base_url().'admin/manage_classes');
-					}
-					else{
-						$this->session->set_flashdata('error', 'Class already exist');
-						redirect(base_url().'admin/manage_classes/create');
-					}
 				}
 
 				else if(empty($result) and !empty($result2)){
-						$this->session->set_flashdata('error2', 'Subject Code does not exist');
+						$this->session->set_flashdata('error2', 'Subject Code does not exist in this semester');
 						redirect(base_url().'admin/manage_classes/create');
 				}
 				else if(empty($result2) and !empty($result)){

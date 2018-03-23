@@ -4,10 +4,7 @@
 	<div class="inner">
 		<header class="special">
 			<h2>Classes</h2>
-				<ul class="alt">
-					<li>School Year 2017-2018</li>
-					<li>Second Semester</li>
-				</ul>
+				
 		</header>
 		<div class="highlights">
 			<?php $x = 0;

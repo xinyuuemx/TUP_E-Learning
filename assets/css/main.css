@@ -184,10 +184,26 @@ h6 {
 
 .sidenav a {
     text-decoration: none;
-    color: #818181;
+    color: #fff;
     display: block;
 	text-align: left;
 	font-weight: 600; }
+	
+	
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}	
+	
 
 .main {
     margin-left: 300px; /* Same as the width of the sidenav */
@@ -265,7 +281,7 @@ color: #ce1b28;
 text-decoration: none;}
 
 
-strong, b {
+strong {
   color: #555555; }
 
 h1, h2, h3, h4, h5, h6 {

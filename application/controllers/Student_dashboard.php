@@ -10,14 +10,14 @@ class Student_dashboard extends CI_Controller {
 		$this->load->library('session');
 		$this->load->library('form_validation');
 	}
+
 	public function index($scene = null) {
 		if(!isset($_SESSION['student_id'])){
 			// Load Login Page
 			$this->load->view('template/header');
 			$this->load->view('login_page');
 			$this->load->view('template/footer');
-		}
-		else{
+		} else {
 			// Load Dashboard
 			$scene_data['scene'] = $scene;
 			$this->load->view('template/student_dashboard_header',$_SESSION);
@@ -31,22 +31,22 @@ class Student_dashboard extends CI_Controller {
 				echo $scene;
 				$this->load->view('student/stud_dashboard',$_SESSION);
 				break;
-
 			}
 			$this->load->view('template/student_dashboard_footer');
 		}
-
 	}
-	public function login_validate(){
-	$password = $this->input->post('psw');
-	$result = $this->pages->read_users($_POST['uname'],$_POST['psw']);
-	$result3 = $this->pages->read_account($_POST['uname']);
-	$result4 = $this->pages->read_profaccount($_POST['uname']);
-	//if user attempting to login is a student
-	if(!empty($result) and !empty($result3))
-	{
 
-		foreach($result as $pass){
+	public function login_validate(){
+		$password = $this->input->post('psw');
+		$result = $this->pages->read_users($_POST['uname']);
+		$result3 = $this->pages->read_account($_POST['uname']);
+		$result4 = $this->pages->read_profaccount($_POST['uname']);
+		foreach($result as $results) {
+			$dbp = $results['Password'];
+		}
+		//if user attempting to login is a student
+		if (password_verify($password,$dbp) && !empty($result3)) {
+		foreach($result as $pass) {
 			// Get the DATA
 			$data['username']=$pass['Account_ID'];
 			$account_result = $this->pages->read_account($pass['Account_ID']);
@@ -56,7 +56,7 @@ class Student_dashboard extends CI_Controller {
 			$data['student_id']=$account_pass['Student_ID'];
 			$data['name']=$account_pass['L_name'].", ".$account_pass['F_name']." ".$account_pass['M_name'];
 		}
-		foreach($result2 as $pass3){
+		foreach($result2 as $pass3) {
 			$data['img_id']=$pass3['img_ID'];
 		}
 		$session_data = array(
@@ -67,10 +67,7 @@ class Student_dashboard extends CI_Controller {
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'student');
-
-	}
-	//if user attempting to login is admin
-	else if(!empty($result) && (empty($result4) && empty($result3))){
+	} else if(!empty($result) && (empty($result4) && empty($result3))) { //if user attempting to login is admin
 		foreach($result as $results){
 			$data['username']=$results['Account_ID'];
 			$account_result = $this->pages->read_users($results['Account_ID'],$password);
@@ -80,7 +77,7 @@ class Student_dashboard extends CI_Controller {
 			$data['admin_id']=$account_pass['Account_ID'];
 			$data['name']="ADMINISTRATOR";
 		}
-		foreach($result2 as $pass3){
+		foreach($result2 as $pass3) {
 			$data['img_id']=$pass3['img_ID'];
 		}
 		$session_data = array(
@@ -91,44 +88,43 @@ class Student_dashboard extends CI_Controller {
 		);
 		$this->session->set_userdata($session_data);
 		redirect(base_url().'admin');
-	}
-	//if user attempting to login is professor
-	else{
+	} else { //if user attempting to login is professor
 		$this->session->set_flashdata('error', 'Invalid Username and Password');
 		redirect(base_url().'login');
 		}
 	}
-	public function logout(){
+
+	public function logout() {
 		session_destroy();
 		redirect(base_url().'pages');
 	}
 
-	public function get_classes(){
+	public function get_classes() {
 		$dummy = null;
 		$x=0;
 		$result = $this->classes->read_classes($_SESSION['student_id']);
-		foreach($result as $pass){
-			// Get the DATA
+		foreach($result as $pass) { // Get the DATA
 			$data['classes'][$x]= $pass['Class_ID'];
 				$result2 = $this->classes->read_details($pass['Class_ID']);
-				foreach($result2 as $code){
+				foreach($result2 as $code) {
 					$data['code'][$x] = $code['Subject_code'];
 					$desc_result = $this->classes->read_desc($data['code'][$x]);
-					foreach($desc_result as $desc_pass){
+					foreach($desc_result as $desc_pass) {
 						$data['description'][$x] = $desc_pass['S_description'];
-						}
+					}
 				}
 			$x = $x+1;
 		}
-		if(isset($data)){
+		if(isset($data)) {
 			return $data;
 		}
 		else
 			return $dummy;
 	}
-	public function search_class(){
+
+	public function search_class() {
 		$class_id = $this->input->post('class_ID');
-		if(isset($class_id)){
+		if(isset($class_id)) {
 		$result2 = $this->classes->read_details($class_id);
 			foreach ($result2 as $key) {
 				$data['subject_code']= $key['Subject_code'];
@@ -142,11 +138,11 @@ class Student_dashboard extends CI_Controller {
 			$data = null;
 		$this->result_class($data);
 	}
-	public function search_topics($raw_data){
+
+	public function search_topics($raw_data) {
 		$class_id = $this->classes->read_class_id(urldecode($raw_data));
 		$data['code'] = $raw_data;
-		foreach ($class_id as $key) {
-			//Get class ID to get the topics in the class
+		foreach ($class_id as $key) { //Get class ID to get the topics in the class
 			$topics = $this->classes->read_topic($key['Class_ID']);
 			$x = 0;
 			foreach ($topics as $key) {
@@ -156,31 +152,36 @@ class Student_dashboard extends CI_Controller {
 				$x = $x + 1;
 			}
 		}
-	return $data;
+		return $data;
 	}
-	public function result_class($data){
+
+	public function result_class($data) {
 		$this->load->view('template/student_dashboard_header',$_SESSION);
 		$scene_data['scene']='classes';
 		$this->load->view('template/student_dashboard_nav',$scene_data);
 		$this->load->view('student/stud_result_class',$data);
 		$this->load->view('template/student_dashboard_footer');
 	}
-	public function homepage(){
+
+	public function homepage() {
 		$this->load->view('template/student_homepage_header',$_SESSION);
 		$this->load->view('home');
 		$this->load->view('template/footer');
 	}
-	public function contact(){
+
+	public function contact() {
 		$this->load->view('template/student_homepage_header',$_SESSION);
 		$this->load->view('contact_us');
 		$this->load->view('template/footer');
 	}
-	public function about(){
+
+	public function about() {
 		$this->load->view('template/student_homepage_header',$_SESSION);
 		$this->load->view('about_us');
 		$this->load->view('template/footer');
 	}
-	public function view_class($scene){
+
+	public function view_class($scene) {
 		$data = $this->search_topics($scene);
 		$this->load->view('template/student_dashboard_header',$_SESSION);
 		$scene_data['scene'] = 'classes';
@@ -188,7 +189,8 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('student/stud_modules',$data);
 		$this->load->view('template/student_dashboard_footer');
 	}
-	public function view_topic($topic,$file){
+
+	public function view_topic($topic,$file) {
 		$data = array('topic' => $topic,'file'=>$file);
 		$this->load->view('template/student_dashboard_header',$_SESSION);
 		$scene_data['scene'] = 'classes';
@@ -198,7 +200,8 @@ class Student_dashboard extends CI_Controller {
 		$this->load->view('main/comments',$pass);
 		$this->load->view('template/student_dashboard_footer');
 	}
-	public function get_comments($data){
+
+	public function get_comments($data) {
 		$result = $this->comments->read($data);
 		$x = 0;
 		foreach ($result as $key) {
@@ -209,10 +212,9 @@ class Student_dashboard extends CI_Controller {
 		foreach ($result as $key) {
 			$data_pass = array(
 			'account_id' => $result,
-			'pic'	  => $pics 
-		);
+			'pic'	  => $pics
+			);
 		}
 		return $data_pass;
 	}
-
 }

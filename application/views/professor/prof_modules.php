@@ -1,15 +1,30 @@
 <div class="main">
 	<div class="inner">
 		<header class="special">
-			<h2>Modules</h2>
+			<h2><?php echo urldecode($code);?> Modules</h2>
 		</header>
+		
+		<h3> <b>Add Modules </b></h3>
 		<?php echo '<font color="red">'.$error.'</font>'; ?>
 		<?php echo form_open_multipart('Prof_dashboard/upload');?>
-		<input class="button icon fa-plus" type="file" name="userfile" />
-		<input class="button icon fa-plus" type="text" name="description" />
-		<br /><br />
+		
+			<div>	
+				<section>
+				<div class="alert alert-danger">
+                <input type="file" name="userfile" />	
+                </div>	
+				</section>
+				</div>
+				
+				<div>
+				<section>
+				<input type="text" name="description" placeholder="Input Description"  />	
+				</section>
+			</div>
 		<input class="button icon fa-plus" type="submit" value="upload" />
 		<?php echo form_close(); ?>
+		<br/>
+		<h3> <b>List of Modules</b> </h3>
 		<table>
 			<thead>
 				<tr>
@@ -31,7 +46,7 @@
 						<td>'.$class_id.'
 						</td>
 
-						<td><a href="'.base_url().'Prof_dashboard/view_topic/'.$data.'/'.$file[$x].'" class="icon fa-graduation-cap">
+						<td><a href="'.base_url().'Prof_dashboard/view_topic/'.$data.'/'.$file[$x].'" class="icon fa-file">
 						'.$file[$x].'</a>
 						</td>'.
 						'<td>'.$description[$x].'</td>';
@@ -43,13 +58,15 @@
 						</td>
 						</tr>';
 						$x = $x+1;
+						echo form_close();
 				}
-					
+
 			}
 			else
 				echo '<section><p>No Modules</p></section>'
 			?>
 			</tbody>
 		</table>
+
 	</div>
-</div>	 
+</div>
