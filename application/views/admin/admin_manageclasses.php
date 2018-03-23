@@ -21,6 +21,7 @@
 				  }else {echo $message; }?>
 
 			<br />
+			<?php echo $this->session->flashdata['error'];?>
 			<br />
 		</form>
 		

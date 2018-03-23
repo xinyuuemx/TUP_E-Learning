@@ -70,3 +70,6 @@ $route['admin/manage/search/view/:num'] = 'Admin_dashboard/index/editclass';
 //deleting studs
 $route['admin/manage/view/:num/:any']='Admin_dashboard/index/deletestud';
 $route['admin/manage/:num/view/:num/:any']='Admin_dashboard/index/deletestud';
+//updating prof
+$route['admin/manage/view/:num/assignprof/:any']='Admin_dashboard/index/newprof';
+$route['admin/manage/:num/view/:num/assignprof/:any']='Admin_dashboard/index/newprof';

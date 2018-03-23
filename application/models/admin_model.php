@@ -44,11 +44,26 @@ class Admin_model extends CI_Model {
 			return $query->result();
 		}
 	}
-		
+
+	public function read_professors(){
+		$query=$this->db->get('professors');
+		if($query->num_rows > 0){
+			return $query->result();            
+		}
+		else{
+			return $query->result();
+		}
+	}
 	public function deleteStud($id){
 		$this->db->select('*');
 		$this->db->where('Student_ID', $id);
 		$this->db->delete('class_members');
+		return true;
+	}
+	public function assignProf($pid,$cid){
+		$this->db->set('Prof_ID', $pid);
+		$this->db->where('Class_ID',$cid);
+		$this->db->update('class');
 		return true;
 	}
 	public function search_classes($searchkey,$type){
