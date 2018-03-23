@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2018 at 10:45 AM
+-- Generation Time: Mar 23, 2018 at 12:24 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.1
 
@@ -53,44 +53,72 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
-('14-021-001', '123456'),
-('14-021-002', '123456'),
-('14-021-003', '123456'),
-('14-021-004', '123456'),
-('14-021-005', '123456'),
-('14-021-006', '123456'),
-('14-021-007', '123456'),
-('14-021-008', '123456'),
-('14-021-009', '123456'),
-('14-021-010', '123456'),
-('15-027-001', '123456'),
-('15-027-002', '123456'),
-('15-027-003', '123456'),
-('15-027-004', '123456'),
-('15-027-005', '123456'),
-('15-027-036', '123456'),
-('15-027-054', '123456'),
-('15-037-001', '123456'),
-('15-037-002', '123456'),
-('15-037-003', '123456'),
-('15-037-004', '123456'),
-('15-037-005', '123456'),
-('15-037-006', '123456'),
-('15-037-007', '123456'),
-('15-037-008', '123456'),
-('15-037-009', '123456'),
-('15-037-010', '123456'),
-('16', '123456'),
-('16-019-001', '123456'),
-('16-019-002', '123456'),
-('16-019-003', '123456'),
-('16-019-004', '123456'),
-('16-019-005', '123456'),
-('16-019-006', '123456'),
-('16-019-007', '123456'),
-('16-019-008', '123456'),
-('16-019-009', '123456'),
-('16-019-010', '123456'),
+('1', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('10', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('11', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('12', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('13', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-001', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-003', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-004', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-005', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-006', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-007', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-008', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-009', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('14-021-010', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-001', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-003', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-004', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-005', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-006', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-007', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-008', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-009', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-022-010', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-001', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-003', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-004', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-005', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-006', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-007', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-008', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-009', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-025-010', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-001', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-003', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-004', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-005', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-036', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-027-054', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-001', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-003', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-004', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-005', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-006', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-007', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-008', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-009', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('15-037-010', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-001', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-003', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-004', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-005', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-006', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-007', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-008', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-009', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('16-019-010', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('17', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
 ('17-037-001', '$2y$10$zpcA7UAk7c26Nadm4dV8o.8R.tf.3GBWdCyYKqJZGegseNlljfnf2'),
 ('17-037-002', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
 ('17-037-003', '$2y$10$d3czZ7ey3IJ1RNDzbK8O8e1INMLGshqxqTBN/B1fTBmOaDyJZmD8e'),
@@ -101,7 +129,28 @@ INSERT INTO `accounts` (`Account_ID`, `Password`) VALUES
 ('17-037-008', '$2y$10$UgIbTZJr8YHWV1wOda.mUuRrSGpFSve3.n766rdNk.P52/Q11UA5a'),
 ('17-037-009', '$2y$10$/Z2iG7.iPmbtiwcozwrVreXXlbZKpx3xAeSD0AVqyu1CgX.5SL9uG'),
 ('17-037-010', '$2y$10$a3rfG6WUKzo8bBmoEukUrOwEdMmsRKgYnt7tidUdKwA9eDaN7G6FG'),
-('admin', 'admin');
+('18', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('19', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('2', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('20', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('21', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('22', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('23', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('24', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('25', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('26', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('27', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('28', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('29', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('3', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('30', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('4', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('5', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('6', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('7', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('8', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('9', '$2y$10$1tReOZnTjCXtjDjhjJyu1OQwkEUizGdNOi0JckwEHwrdOww5JqcDW'),
+('admin', '$2y$10$1ayszW/EJHvxwqwYZNOlM.zVOwXEeoW2qGqASotMZ60DQDNfGLWhO');
 
 -- --------------------------------------------------------
 
@@ -121,8 +170,24 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`Class_ID`, `SY_ID`, `Subject_code`, `Prof_ID`) VALUES
-(1120, 4, '111', '16'),
-(1121, 4, '222', '16');
+(1011, 0, 'CS 101', '6'),
+(1111, 0, 'CS 111', '16'),
+(1112, 0, 'CS 111L', '16'),
+(1113, 0, 'PHYS 2B', '15'),
+(1114, 0, 'PHYS 2BL', '15'),
+(1115, 0, 'CS 212', '4'),
+(1116, 0, 'CS 212L', '4'),
+(1117, 0, 'CSE', '4'),
+(1118, 0, 'CSE 2', '4'),
+(1119, 0, 'CSE 3', '4'),
+(1120, 0, 'CSE 4', '4'),
+(1121, 0, 'CSF 1', '3'),
+(1122, 0, 'CSF 2', '3'),
+(1123, 0, 'CSF 3', '3'),
+(1124, 0, 'CSF 4', '3'),
+(1125, 0, 'ENG 1', '7'),
+(1126, 0, 'ENG 2', '7'),
+(1127, 0, 'FIL 2', '9');
 
 -- --------------------------------------------------------
 
@@ -140,12 +205,13 @@ CREATE TABLE `class_members` (
 --
 
 INSERT INTO `class_members` (`Class_ID`, `Student_ID`) VALUES
-(1120, '15-027-001'),
-(1120, '15-027-002'),
-(1120, '15-027-003'),
-(1121, '15-027-001'),
-(1121, '15-027-002'),
-(1121, '15-027-003');
+(1111, '15-027-001'),
+(2221, '15-027-001'),
+(2221, '15-027-002'),
+(3331, '15-027-001'),
+(3331, '15-027-003'),
+(4441, '15-027-004'),
+(5551, '15-027-005');
 
 -- --------------------------------------------------------
 
@@ -215,8 +281,22 @@ INSERT INTO `professors` (`Prof_ID`, `L_name`, `F_name`, `M_name`, `E-mail`) VAL
 ('14', 'Sotelo', 'Precy', 'B', 'psotelo@example.com'),
 ('15', 'Logmao', 'Dario', 'P', 'dlogmao@example.com'),
 ('16', 'Amador', 'Madz', 'P', 'madz.amador@example.com'),
+('17', 'Narisma', 'Michael ', 'L', 'm.narisma@example.com'),
+('18', 'Estember', 'Vicente', 'E ', 'v.estember@example.com'),
+('19', 'Maltezo', 'Melbern Rose ', 'C', 'mmaltezo@example.com'),
 ('2', 'Garcia', 'May', 'B', 'garcia.may@example.com'),
+('20', 'Sareno', 'Julius ', 'A', 'j.sareno@example.com'),
+('21', 'Basa', 'Gina ', 'L', 'g.basa@example.com'),
+('22', 'Macalintal', 'Edwin  ', 'G', 'e.macalintal@example.com'),
+('23', 'Torralba', 'Amelia ', 'C', 'a.torralba@example.com'),
+('24', 'Virrey', 'Elpidio ', 'S', 'e.virrey@example.com'),
+('25', 'Floresca', 'Bilomar', 'N ', 'b.floreca@example.com'),
+('26', 'Nora', 'Teresita ', 'C', 't.nora@example.com'),
+('27', 'Celarta', 'Cristina ', 'B', 'c.celarta@example.com'),
+('28', 'Sangalang', 'Elmer ', 'M', 'e.sangalang@example.com'),
+('29', 'Ranay', 'Teresa ', 'M', 't.ransay@example.com'),
 ('3', 'Calayag', 'Ernita', 'C', 'calayag.nitz@example.com'),
+('30', 'Agudon', 'Rita  ', 'G', 'r.agudon@example.com'),
 ('4', 'Molino', 'Yany', 'D', 'molino.yany@example.com'),
 ('5', 'Renegado', 'Fernando', 'E', 'renegado.fernando@example.com'),
 ('6', 'Tarnate', 'Ken', 'F', 'ken.tarnate@example.com'),
@@ -257,6 +337,8 @@ INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
 
 CREATE TABLE `questions` (
   `Question_ID` int(10) NOT NULL,
+  `Prof_ID` varchar(10) NOT NULL,
+  `Subject_Code` varchar(10) NOT NULL,
   `Question` varchar(55) NOT NULL,
   `Choice1` varchar(55) NOT NULL,
   `Choice2` varchar(55) NOT NULL,
@@ -272,6 +354,20 @@ CREATE TABLE `questions` (
 --
 
 CREATE TABLE `quizzes` (
+  `Quiz_ID` int(10) NOT NULL,
+  `Prof_ID` varchar(10) NOT NULL,
+  `Class_ID` int(10) NOT NULL,
+  `Quiz_Deadline` datetime NOT NULL,
+  `Duration` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_questions`
+--
+
+CREATE TABLE `quiz_questions` (
   `Quiz_ID` int(10) NOT NULL,
   `Question_ID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -330,6 +426,26 @@ INSERT INTO `students` (`Student_ID`, `L_name`, `F_name`, `M_name`, `Course`, `S
 ('14-021-008', 'Comp', 'Karen', 'C', 'BSIT', 'C', 'k.comp@example.com'),
 ('14-021-009', 'Lobster', 'Larry', 'L', 'BSIT', 'C', 'l.lobster@example.com'),
 ('14-021-010', 'Pirate', 'Patchy', 'P', 'BSIT', 'A', 'p.pirate@example.com'),
+('15-022-001', 'Petronel', 'Loke', 'Serafino', 'BSEE', 'A', 'l.petronel@example.com'),
+('15-022-002', 'Destinee', 'Stacee', 'Lesleigh', 'BSEE', 'A', 's.destinee@example.com'),
+('15-022-003', 'Sidney', 'Fredric', 'Kyleigh', 'BSEE', 'A', 'f.sidney@gmail.com'),
+('15-022-004', 'Jessie', 'Kasandra', 'Glen', 'BSEE', 'B', 'k.jessie@example.com'),
+('15-022-005', 'Beryl', 'Sloan', 'Slade', 'BSEE', 'C', 's.beryl@example.com'),
+('15-022-006', 'Rochelle', 'Max', 'Alesia', 'BSEE', 'A', 'm.rochelle@example.com'),
+('15-022-007', 'Fae', 'Jaynie', 'Kendal', 'BSEE', 'B', 'j.fae@example.com'),
+('15-022-008', 'Janae', 'Normina', 'Harris', 'BSEE', 'A', 'n.janae@example.com'),
+('15-022-009', 'Van', 'Jemmy', 'Liza', 'BSEE', 'D', 'j.van@example.com'),
+('15-022-010', 'King', 'Pippa', 'Lacey', 'BSEE', 'C', 'p.king@example.com'),
+('15-025-001', 'Merideth', 'Elle  ', 'Storm', 'BSCE', 'A', 'e.merideth@example.com'),
+('15-025-002', 'Greer', 'Peta ', 'Jorja ', 'BSCE', 'B', 'p.greer@example.com'),
+('15-025-003', 'Carlyle', 'Deonne ', 'Steph', 'BSCE', 'C', 'd.carlyle@example.com'),
+('15-025-004', 'Derek', 'Darryl ', 'Simon ', 'BSCE', 'D', 'd.derek@example.com'),
+('15-025-005', 'Carlyn', 'Cathleen ', 'Alicia ', 'BSCE', 'A', 'c.cathleen@example.com'),
+('15-025-006', 'Tommy', 'Clarinda ', 'Aveline ', 'BSCE', 'B', 'c.tommy@example.com'),
+('15-025-007', 'Allen', 'Lisette ', 'Doretta ', 'BSCE', 'C', 'l.allen@example.com'),
+('15-025-008', 'Curt', 'Isebella ', 'Shanna ', 'BSCE', 'D', 'i.cur@example.com'),
+('15-025-009', 'Errol', 'Pansy ', 'Eben ', 'BSCE', 'A', 'p.errol@example.com'),
+('15-025-010', 'Erick', 'Rhianna ', 'Christie ', 'BSCE', 'B', 'r.erick@example.com'),
 ('15-027-001', 'Dela Cruz', 'Juan', 'A', 'BSCS', 'A', 'delacruz.juan@example.com'),
 ('15-027-002', 'Dela Cruz', 'Pedro', 'B', 'BSCS', 'B', 'delacruz.pedro@example.com'),
 ('15-027-003', 'Dela Cruz', 'Bugoy', 'C', 'BSCS', 'A', 'delacruz.bugoy@example.com'),
@@ -546,6 +662,12 @@ ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`Quiz_ID`);
 
 --
+-- Indexes for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  ADD PRIMARY KEY (`Quiz_ID`,`Question_ID`);
+
+--
 -- Indexes for table `school_years`
 --
 ALTER TABLE `school_years`
@@ -583,13 +705,13 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1122;
+  MODIFY `Class_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1128;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Question_ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `Question_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1115;
 
 --
 -- AUTO_INCREMENT for table `school_years`

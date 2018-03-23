@@ -302,6 +302,12 @@ class Prof_dashboard extends CI_Controller {
     	redirect($location, 'refresh');
 
     }
+		public function create_quiz(){
+			$data['question_id'] = $this->quizzes->read_questions($_SESSION['prof_id']);
+			$this->load->view('template/prof_dashboard_header',$_SESSION);
+			$this->load->view('professor/prof_createquiz',$data);
+			$this->load->view('template/prof_dashboard_footer',$_SESSION);
+		}
 
 		public function add_question(){
 			$this->load->view('template/prof_dashboard_header',$_SESSION);

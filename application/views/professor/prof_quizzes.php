@@ -7,6 +7,9 @@
 		<input href="<?php echo base_url().'Prof_dashboard/add_question/'?>" class="button icon fa-plus" type="submit" value="create question" />
 		<?php echo form_close(); ?>
 
+		<?php echo form_open('Prof_dashboard/create_quiz/');?>
+		<input href="<?php echo base_url().'Prof_dashboard/create_quiz/'?>" class="button icon fa-plus" type="submit" value="create quiz" />
+		<?php echo form_close(); ?>
 
 
 	</div>
