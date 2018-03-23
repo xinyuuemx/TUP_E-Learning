@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 23, 2018 at 02:02 AM
+-- Generation Time: Mar 23, 2018 at 02:16 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -312,14 +312,15 @@ CREATE TABLE `profile_elements` (
 --
 
 INSERT INTO `profile_elements` (`Account_ID`, `img_ID`) VALUES
-('15-027-036', 'j_pp.jpg'),
-('15-027-054', 'david_pp.jpg'),
-('15-027-003', 'm.jpg'),
-('15-027-004', 'm.jpg'),
-('15-027-005', 'm.jpg'),
-('15-027-002', 'm.jpg'),
-('15-027-001', 'm.jpg'),
-('1', 'sir-butch.jpg');
+('15-027-036', 'j_pp'),
+('15-027-054', 'david_pp'),
+('15-027-003', 'm'),
+('15-027-004', 'm'),
+('15-027-005', 'm'),
+('15-027-002', 'm'),
+('15-027-001', 'm'),
+('01-01-1980', 'sir-butch'),
+('admin', 'tup');
 
 -- --------------------------------------------------------
 
